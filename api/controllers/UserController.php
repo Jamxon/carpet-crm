@@ -1,8 +1,12 @@
 <?php
 namespace api\controllers;
 
-class UserController extends \yii\rest\ActiveController
-{
-    public $modelClass = 'common\models\User';
+use api\models\User;
 
+class UserController extends MyController
+{
+    public function actionIndex()
+    {
+        return User::find()->all();
+    }
 }

@@ -2,9 +2,8 @@
 
 namespace api\controllers;
 
-use yii\rest\ActiveController;
 
-class CleanitemController extends ActiveController
+class CleanitemController extends MyController
 {
     public $modelClass = 'common\models\CleanItem';
 }

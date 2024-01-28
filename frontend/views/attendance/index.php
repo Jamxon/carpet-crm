@@ -33,13 +33,13 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-//            'user_id',
-            [
-                'attribute' => 'user_id',
-                'value' => function (Attendance $model) {
-                    return $model->user->username;
-                }
-            ],
+            'user_id',
+//            [
+//                'attribute' => 'user_id',
+//                'value' => function (Attendance $model) {
+//                    return $model->user->username;
+//                }
+//            ],
             'come_time',
             'go_time',
             'full_time:datetime',

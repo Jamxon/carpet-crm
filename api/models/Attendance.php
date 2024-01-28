@@ -1,6 +1,6 @@
 <?php
 
-namespace common\models;
+namespace api\models;
 
 use Yii;
 
@@ -15,7 +15,7 @@ use Yii;
  * @property int|null $daily_salary
  * @property string|null $comment
  */
-class Attendance extends \yii\db\ActiveRecord
+class Attendance extends \common\models\Attendance
 {
     /**
      * {@inheritdoc}
@@ -24,7 +24,18 @@ class Attendance extends \yii\db\ActiveRecord
     {
         return 'attendance';
     }
-
+    public function fields()
+    {
+        return [
+            'id',
+            'user',
+            'come_time',
+            'go_time',
+            'full_time',
+            'daily_salary',
+            'comment',
+        ];
+    }
     /**
      * {@inheritdoc}
      */
@@ -51,9 +62,5 @@ class Attendance extends \yii\db\ActiveRecord
             'daily_salary' => 'Daily Salary',
             'comment' => 'Comment',
         ];
-    }
-    public function getUser()
-    {
-        return $this->hasOne(\api\models\User::className(), ['id' => 'user_id']);
     }
 }

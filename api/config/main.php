@@ -10,6 +10,7 @@ return [
     'id' => 'api-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
+    'modules' => [],
     'controllerNamespace' => 'api\controllers',
     'components' => [
         'request' => [
@@ -58,11 +59,11 @@ return [
                         'order',
                         'orderitem',
                         'typeemployer',
-                    ]
+                    ],
                 ],
+                'POST auth/login' => 'auth/login',
             ],
         ]
-
     ],
     'params' => $params,
 ];

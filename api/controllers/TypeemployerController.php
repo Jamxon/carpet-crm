@@ -2,7 +2,7 @@
 
 namespace api\controllers;
 
-class TypeemployerController  extends \yii\rest\ActiveController
+class TypeemployerController  extends MyController
 {
     public $modelClass = 'common\models\TypeEmployer';
 }

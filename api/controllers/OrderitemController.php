@@ -2,7 +2,7 @@
 
 namespace api\controllers;
 
-class OrderitemController extends \yii\rest\ActiveController
+class OrderitemController extends MyController
 {
     public $modelClass = 'common\models\OrderItem';
 }
