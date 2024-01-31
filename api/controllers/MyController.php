@@ -3,7 +3,10 @@
 namespace api\controllers;
 
 use api\models\User;
+use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBasicAuth;
+use yii\filters\auth\HttpBearerAuth;
+use yii\filters\auth\QueryParamAuth;
 use yii\rest\Controller;
 
 class MyController extends Controller
@@ -17,15 +20,12 @@ class MyController extends Controller
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
-            'class' => HttpBasicAuth::class,
-//            'auth' => function ($username, $password) {
-//                $user = User::find()->where(['username' => $username])->one();
-//                if ($user && $user->validatePassword($password)){
-//                    return $user;
-//                }else{
-//                    return null;
-//                }
-//            }
+            'class' => CompositeAuth::class,
+            'authMethods' => [
+                HttpBasicAuth::class,
+                HttpBearerAuth::class,
+                QueryParamAuth::class,
+            ],
         ];
         return $behaviors;
     }

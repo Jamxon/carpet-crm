@@ -2,6 +2,7 @@
 
 namespace api\models;
 
+use api\models\TypeEmployer;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -29,9 +30,18 @@ class User extends \common\models\User
     {
         return [
             'username',
-            'comp_id',
-            'type_id',
+            'company',
+            'type',
+            'phone',
             'access_token',
         ];
+    }
+    public function getType()
+    {
+        return $this->hasOne(TypeEmployer::className(), ['id' => 'type_id']);
+    }
+    public function getCompany()
+    {
+        return $this->hasMany(Company::className(), ['id' => 'comp_id']);
     }
 }

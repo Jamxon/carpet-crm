@@ -62,6 +62,7 @@ return [
                     ],
                 ],
                 'POST auth/login' => 'auth/login',
+                'GET attendance/findbyuserid' => 'attendance/findbyuserid',
             ],
         ]
     ],

@@ -4,14 +4,14 @@ namespace frontend\controllers;
 
 use frontend\models\Customer;
 use frontend\models\CustomerSearch;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * CustomerController implements the CRUD actions for Customer model.
  */
-class CustomerController extends MyController
+class CustomerController extends Controller
 {
     /**
      * @inheritDoc

@@ -24,6 +24,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'full_time')->input('number') ?>
 
+    <?= $form->field($model, 'status')->textInput() ?>
+
     <?= $form->field($model, 'daily_salary')->textInput() ?>
 
     <?= $form->field($model, 'comment')->textInput(['maxlength' => true]) ?>

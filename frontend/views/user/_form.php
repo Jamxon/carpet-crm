@@ -22,9 +22,18 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'phone')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'comp_id')->textInput() ?>
 
-    <?= $form->field($model, 'type_id')->textInput() ?>
+    <?php
+    //user select option
+    $user = \frontend\models\TypeEmployer::find()->all();
+    $listData = \yii\helpers\ArrayHelper::map($user, 'id', 'name');
+    echo $form->field($model, 'type_id')->dropDownList($listData, ['prompt' => 'Select...']);
+
+
+    ?>
 
     <?= $form->field($model, 'status')->textInput() ?>
 

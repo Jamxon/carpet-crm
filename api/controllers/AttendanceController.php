@@ -39,6 +39,16 @@ class AttendanceController extends MyController
             return "not found";
         }
     }
+    public function actionFindbyuserid($id)
+    {
+        $dataProvider = new ActiveDataProvider([
+            'query' => Attendance::find()->where(['user_id' => $id]),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
+        return $dataProvider;
+    }
     public function actionCreate($user_id, $come_time, $go_time, $full_time, $daily_salary, $comment)
     {
         $model = new Attendance();

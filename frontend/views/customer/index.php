@@ -1,14 +1,15 @@
 <?php
 
-use frontend\models\Customer;
-use yii\helpers\Html;
-use yii\helpers\Url;
-use yii\grid\ActionColumn;
-use yii\grid\GridView;
 
 /** @var yii\web\View $this */
 /** @var frontend\models\CustomerSearch $searchModel */
 /** @var yii\data\ActiveDataProvider $dataProvider */
+
+use frontend\models\Customer;
+use yii\bootstrap5\Html;
+use yii\grid\ActionColumn;
+use yii\grid\GridView;
+use yii\helpers\Url;
 
 $this->title = 'Customers';
 $this->params['breadcrumbs'][] = $this->title;
