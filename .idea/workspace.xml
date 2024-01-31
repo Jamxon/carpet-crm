@@ -4,33 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/api/models/Company.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/models/TypeEmployer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontend/assets2/AppAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AttendanceController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/MyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/MyController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/UserController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/LoginForm.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets2/AppAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/controllers/CustomerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/attendance/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/attendance/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/customer/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/customer/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/user/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/user/_form.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/views/user/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/views/user/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/assets/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/assets/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/css/site.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/index-test.php" beforeDir="false" afterPath="$PROJECT_DIR$/index-test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/web/robots.txt" beforeDir="false" afterPath="$PROJECT_DIR$/robots.txt" afterDir="false" />
-    </list>
+    <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -206,7 +180,7 @@
       <updated>1706090682952</updated>
       <workItem from="1706090689946" duration="5627000" />
       <workItem from="1706096455158" duration="14097000" />
-      <workItem from="1706275914970" duration="24079000" />
+      <workItem from="1706275914970" duration="24497000" />
     </task>
     <servers />
   </component>
