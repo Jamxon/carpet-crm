@@ -6,4 +6,4 @@
             RewriteRule . index.php
 
             # use index.php as index file
-            DirectoryIndex index.php
+            DirectoryIndex api\web\index.php
