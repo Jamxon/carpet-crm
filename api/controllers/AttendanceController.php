@@ -7,21 +7,41 @@ use yii\data\ActiveDataProvider;
 
 class AttendanceController extends MyController
 {
-    public function actionIndex($start_date, $end_date)
+    public function actionIndex()
     {
         return new ActiveDataProvider([
-            'query' => Attendance::find()->where(['>=', 'come_time', $start_date])
-                ->andWhere(['<=', 'go_time', $end_date]),
+            'query' => Attendance::find(),
             'pagination' => [
                 'pageSize' => 10,
-            ],
+            ]
         ]);
+    }
+    public function actionDate($start_date, $end_date)
+    {
+        if ($start_date === " " && $end_date === " "){
+            return new ActiveDataProvider([
+                'query' => Attendance::find(),
+                'pagination' => [
+                    'pageSize' => 10,
+                ]
+            ]);
+        }else{
+            return new ActiveDataProvider([
+                'query' => Attendance::find()->where(['>=', 'come_time', $start_date])
+                    ->andWhere(['<=', 'go_time', $end_date]),
+                'pagination' => [
+                    'pageSize' => 10,
+                ],
+            ]);
+        }
+
+
     }
     public function actionView($id, $start_date, $end_date)
     {
         $model = Attendance::find()->where(['id' => $id])
             ->andWhere(['>=', 'come_time', $start_date])
-            ->andWhere(['<=', 'go_time', $end_date])->one();
+            ->andWhere(['<=', 'go_time', $end_date]);
         if ($model) {
             return $model;
         } else {
@@ -88,14 +108,4 @@ class AttendanceController extends MyController
         return "delete success";
     }
 
-    public function findByDateRange($start_date, $end_date)
-    {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Attendance::find()->where(['between', 'date', $start_date, $end_date]),
-            'pagination' => [
-                'pageSize' => 10,
-            ],
-        ]);
-        return $dataProvider;
-    }
 }

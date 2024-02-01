@@ -18,6 +18,7 @@ use yii\web\IdentityInterface;
  * @property string $verification_token
  * @property string $email
  * @property string $auth_key
+ * @property string $phone
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
@@ -46,6 +47,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             TimestampBehavior::class,
+        ];
+    }
+    public function fields()
+    {
+        return [
+            'username',
+            'company',
+            'phone',
+            'type',
         ];
     }
 
