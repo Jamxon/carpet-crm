@@ -14,6 +14,7 @@ use Yii;
  * @property string|null $phone_1
  * @property string|null $phone_2
  * @property string|null $address
+ * @property string|null $date
  * @property string|null $source
  * @property string|null $level
  * @property string|null $comment
@@ -52,6 +53,7 @@ class Customer extends \yii\db\ActiveRecord
             'phone_1' => 'Phone 1',
             'phone_2' => 'Phone 2',
             'address' => 'Address',
+            'date' => 'Date',
             'source' => 'Source',
             'level' => 'Level',
             'comment' => 'Comment',
