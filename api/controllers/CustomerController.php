@@ -9,7 +9,7 @@ class CustomerController extends MyController
     public function actionSearchbyphone($phone)
     {
         return new ActiveDataProvider([
-            'query' => \common\models\Customer::find()->where(['phone_1' => $phone]),
+            'query' => \common\models\Customer::findBySql('SELECT * FROM customer WHERE phone_1 LIKE "%'.$phone.'%" OR phone_2 LIKE "%'.$phone.'%"'),
             'pagination' => [
                 'pageSize' => 10,
             ]

@@ -22,4 +22,12 @@ class AuthController extends Controller
             return "To'g'ri jo'nat krisa";
         }
     }
+    public function behaviors()
+    {
+        return [
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+            ],
+        ];
+    }
 }
