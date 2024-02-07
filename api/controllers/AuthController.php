@@ -19,7 +19,7 @@ class AuthController extends Controller
                 'type' => $type->name
             ];
         }else{
-            return "To'g'ri jo'nat krisa";
+            return $model->errors;
         }
     }
     public function behaviors()
