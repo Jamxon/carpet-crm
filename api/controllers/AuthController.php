@@ -19,7 +19,7 @@ class AuthController extends Controller
                 'type' => $type->name
             ];
         }else{
-            return \Yii::$app->response->statusCode = 400;
+            return \Yii::$app->response->statusCode = 401;
         }
     }
     public function behaviors()
