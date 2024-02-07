@@ -19,8 +19,10 @@ class AuthController extends Controller
                 'type' => $type->name
             ];
         }else{
-//            return \Yii::$app->response->statusCode = 401;
-            return "error";
+            \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+            return [
+                'status' => 'error'
+            ];
         }
     }
     public function behaviors()
