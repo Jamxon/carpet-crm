@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use common\models\CleanItem;
 use common\models\Order;
 use common\models\OrderItem;
 use yii\data\ActiveDataProvider;
@@ -22,7 +23,9 @@ class OrderController extends MyController
     public function actionCreate()
     {
         $model = new Order();
-        $orderItem = OrderItem::find()->all();
+        $orderItem = new OrderItem();
+        $cleanItem = new CleanItem();
+        $orderItems = OrderItem::find()->all();
         if (\Yii::$app->request->post()) {
             $model->load(\Yii::$app->request->post(), '');
             $model->customer_id = \Yii::$app->request->post('customer_id');
@@ -30,13 +33,17 @@ class OrderController extends MyController
             $model->status = \Yii::$app->request->post('status');
             $model->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
             $model->comment = \Yii::$app->request->post('comment');
-            if ($model->save()) {
+            $orderItem->clean_item_id = $cleanItem->id;
+            $orderItem->order_id = $model->id;
+            $orderItem->size = \Yii::$app->request->post('size');
+            $orderItem->count = \Yii::$app->request->post('count');
+            if ($model->save() && $orderItem->save()) {
                 return \Yii::$app->response->statusCode = 201;
             } else {
                 return $model->getErrors();
             }
         } else {
-            return $orderItem;
+            return $orderItems;
         }
     }
     public function actionUpdate()

@@ -42,7 +42,19 @@ class Order extends \yii\db\ActiveRecord
             [['customer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Customer::class, 'targetAttribute' => ['customer_id' => 'id']],
         ];
     }
-
+    public function fields()
+    {
+        return [
+            'id',
+            'customer',
+            'orderitems',
+            'record_id',
+            'date',
+            'status',
+            'finish_discount_price', // Add this line
+            'comment',
+        ];
+    }
     /**
      * {@inheritdoc}
      */

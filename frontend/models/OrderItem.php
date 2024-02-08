@@ -24,7 +24,15 @@ class OrderItem extends \yii\db\ActiveRecord
     {
         return 'order_item';
     }
-
+    public function fields()
+    {
+        return [
+            'clean_item',
+            'order',
+            'size',
+            'count',
+        ];
+    }
     /**
      * {@inheritdoc}
      */
