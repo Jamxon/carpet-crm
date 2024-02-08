@@ -20,9 +20,8 @@ class AuthController extends Controller
             ];
         }else{
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return [
-                'status' => 'error'
-            ];
+            //return error 401
+            return new \yii\web\UnauthorizedHttpException('Login yoki parol noto\'g\'ri.', 401);
         }
     }
     public function behaviors()
