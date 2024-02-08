@@ -14,6 +14,7 @@ use Yii;
  * @property int|null $record_id
  * @property string|null $date
  * @property string|null $status
+ * @property string|null $finish_discount_price
  * @property string|null $comment
  *
  * @property Customer $customer
@@ -35,7 +36,7 @@ class Order extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['customer_id', 'record_id'], 'integer'],
+            [['customer_id', 'record_id','finish_discount_price'], 'integer'],
             [['date'], 'safe'],
             [['status', 'comment'], 'string', 'max' => 255],
             [['customer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Customer::class, 'targetAttribute' => ['customer_id' => 'id']],
@@ -53,6 +54,7 @@ class Order extends \yii\db\ActiveRecord
             'record_id' => 'Record ID',
             'date' => 'Date',
             'status' => 'Status',
+            'finish_discount_price' => 'Finish Discount Price', // Add this line
             'comment' => 'Comment',
         ];
     }

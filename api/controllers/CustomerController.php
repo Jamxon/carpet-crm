@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 use yii\data\ActiveDataProvider;
+use yii\validators\DateValidator;
 
 class CustomerController extends MyController
 {
@@ -21,7 +22,7 @@ class CustomerController extends MyController
             'query' => \common\models\Customer::find(),
         ]);
     }
-    public function actionCreate($employer_id, $name, $phone_1, $phone_2, $address, $source, $level, $comment)
+    public function actionCreate($employer_id, $name, $phone_1, $phone_2, $address, $date, $source, $level, $comment)
     {
         $model = new \common\models\Customer();
         $model->employer_id = $employer_id;
@@ -29,13 +30,14 @@ class CustomerController extends MyController
         $model->phone_1 = $phone_1;
         $model->phone_2 = $phone_2;
         $model->address = $address;
+        $model->date = $date;
         $model->source = $source;
         $model->level = $level;
         $model->comment = $comment;
         $model->save();
         return $model;
     }
-    public function actionUpdate($id, $employer_id, $name, $phone_1, $phone_2, $address, $source, $level, $comment)
+    public function actionUpdate($id, $employer_id, $name, $phone_1, $phone_2, $address, $date, $source, $level, $comment)
     {
         $model = \common\models\Customer::findOne($id);
         $model->employer_id = $employer_id;
@@ -43,6 +45,7 @@ class CustomerController extends MyController
         $model->phone_1 = $phone_1;
         $model->phone_2 = $phone_2;
         $model->address = $address;
+        $model->date = $date;
         $model->source = $source;
         $model->level = $level;
         $model->comment = $comment;
