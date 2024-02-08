@@ -49,6 +49,7 @@ class OrderController extends MyController
     public function actionUpdate()
     {
         $model = new Order();
+        $orderItem = new OrderItem();
         if (\Yii::$app->request->post()) {
             $model->load(\Yii::$app->request->post(), '');
             $model->customer_id = \Yii::$app->request->post('customer_id');
@@ -56,7 +57,11 @@ class OrderController extends MyController
             $model->status = \Yii::$app->request->post('status');
             $model->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
             $model->comment = \Yii::$app->request->post('comment');
-            if ($model->save()) {
+            $orderItem->clean_item_id = \Yii::$app->request->post('clean_item_id');
+            $orderItem->order_id = \Yii::$app->request->post('order_id');
+            $orderItem->size = \Yii::$app->request->post('size');
+            $orderItem->count = \Yii::$app->request->post('count');
+            if ($model->save() && $orderItem->save()) {
                 return \Yii::$app->response->statusCode = 201;
             } else {
                 return $model->getErrors();

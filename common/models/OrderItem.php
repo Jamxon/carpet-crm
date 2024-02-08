@@ -38,6 +38,19 @@ class OrderItem extends \yii\db\ActiveRecord
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::class, 'targetAttribute' => ['order_id' => 'id']],
         ];
     }
+    public function fields()
+    {
+        return [
+            'cleanItem' => function () {
+                return $this->cleanItem;
+            },
+            'order' => function () {
+                return $this->order;
+            },
+            'size',
+            'count',
+        ];
+    }
 
     /**
      * {@inheritdoc}
