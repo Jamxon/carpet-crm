@@ -19,13 +19,12 @@ class AuthController extends Controller
                 'class' => \yii\filters\Cors::class,
                'cors' => [
                    'Origin' => ['*'],
-                  'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-                 'Access-Control-Request-Headers' => ['*'],
+                   'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
+                   'Access-Control-Request-Headers' => ['*'],
+                   'Access-Control-Allow-Credentials' => true,
+                   ],
              ],
-             ],
-             'authMethods' => [
-                \yii\filters\auth\HttpBearerAuth::class,
-             ],
+
         ];
         return $behaviors;
     }
