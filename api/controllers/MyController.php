@@ -26,6 +26,14 @@ class MyController extends Controller
                 HttpBearerAuth::class,
                 QueryParamAuth::class,
             ],
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+                'cors' => [
+                    'Access-Control-Allow-Origin' => ['*'],
+                    'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD'],
+                    'Access-Control-Request-Headers' => ['*'],
+                ],
+            ],
         ];
         return $behaviors;
     }

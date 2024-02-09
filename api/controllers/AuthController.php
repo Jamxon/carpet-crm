@@ -24,17 +24,4 @@ class AuthController extends Controller
             return \Yii::$app->response->statusCode = 401;
         }
     }
-    public function behaviors()
-    {
-        return [
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-//                'cors' => [
-//                    'Access-Control-Allow-Origin' => ['*'],
-//                    'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD'],
-//                    'Access-Control-Request-Headers' => ['*'],
-//                ],
-            ],
-        ];
-    }
 }
