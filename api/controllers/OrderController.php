@@ -10,14 +10,14 @@ use yii\rest\ActiveController;
 
 class OrderController extends MyController
 {
-    public function behaviors()
-    {
-        $behaviors = parent::behaviors();
-        $behaviors['corsFilter'] = [
-            'class' => CorsBehavior::class,
-        ];
-        return $behaviors;
-    }
+//    public function behaviors()
+//    {
+//        $behaviors = parent::behaviors();
+//        $behaviors['corsFilter'] = [
+//            'class' => CorsBehavior::class,
+//        ];
+//        return $behaviors;
+//    }
     public function actionIndex()
     {
         return new ActiveDataProvider([
