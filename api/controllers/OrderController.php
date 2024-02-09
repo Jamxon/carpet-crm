@@ -13,9 +13,8 @@ class OrderController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['corsFilter'] = [
-            'class' => CorsBehavior::class,
-        ];
+        // Bu bo'limni avvaldan yozgan bo'lsangiz, qayta yozmang
+        // Behaviors: authentification, cors, etc.
         return $behaviors;
     }
     public function actionIndex()
