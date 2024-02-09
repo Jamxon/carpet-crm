@@ -10,18 +10,10 @@ class AuthController extends Controller
 {
     public function behaviors()
     {
+        //cors errors
         $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-             'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-               'cors' => [
-                   'Origin' => ['*'],
-                   'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-                   'Access-Control-Request-Headers' => ['*'],
-                   'Access-Control-Allow-Credentials' => true,
-                   ],
-             ],
-
+        $behaviors['corsFilter' ] = [
+            'class' => \yii\filters\Cors::className(),
         ];
         return $behaviors;
     }
