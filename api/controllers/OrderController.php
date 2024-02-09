@@ -84,7 +84,6 @@ class OrderController extends MyController
     {
         $model = new ActiveDataProvider([
             'query' => Order::findBySql(
-                //search by id or name or phone or address , request from data
                 "SELECT * FROM `order` WHERE `id` LIKE '%" . \Yii::$app->request->get('id') . "%' OR `name` LIKE '%" . \Yii::$app->request->get('name') . "%' OR `phone` LIKE '%" . \Yii::$app->request->get('phone') . "%' OR `address` LIKE '%" . \Yii::$app->request->get('address') . "%'"
             ),
         ]);
