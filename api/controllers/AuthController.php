@@ -12,9 +12,6 @@ class AuthController extends Controller
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
-            'except' => ['login'],
-            'class' => \yii\filters\auth\HttpBearerAuth::class,
-
              'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
                'cors' => [
