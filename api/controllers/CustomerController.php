@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use common\models\Customer;
 use yii\data\ActiveDataProvider;
 use yii\validators\DateValidator;
 
@@ -10,7 +11,9 @@ class CustomerController extends MyController
     public function actionSearchbyphone($phone)
     {
         return new ActiveDataProvider([
-            'query' => \common\models\Customer::findBySql('SELECT * FROM customer WHERE phone_1 LIKE "%'.$phone.'%" OR phone_2 LIKE "%'.$phone.'%"'),
+            'query' => Customer::find()
+                ->where(['LIKE', 'phone_1', $phone])
+                ->orWhere(['LIKE', 'phone_2', $phone]),
             'pagination' => [
                 'pageSize' => 10,
             ]
@@ -20,6 +23,9 @@ class CustomerController extends MyController
     {
         return new ActiveDataProvider([
             'query' => \common\models\Customer::find(),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
         ]);
     }
     public function actionCreate($employer_id, $name, $phone_1, $phone_2, $address, $date, $source, $level, $comment)
