@@ -15,7 +15,7 @@ class AuthController extends Controller
         $behaviors['corsFilter' ] = [
             'class' => \yii\filters\Cors::className(),
             'cors' => [
-                'Origin' => ['*'],
+//                'Origin' => ['*'],
                 'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                 'Access-Control-Request-Headers' => ['*'],
                 'Access-Control-Allow-Credentials' => true,
