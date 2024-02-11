@@ -12,6 +12,21 @@ class OrderController extends MyController
     public function behaviors()
     {
         return [
+            'authenticator' => [
+                'class' => \yii\filters\auth\HttpBearerAuth::class,
+                'except' => ['login', 'logout'],
+            ],
+            'verbs' => [
+                'class' => \yii\filters\VerbFilter::class,
+                'actions' => [
+                    'index' => ['GET'],
+                    'view' => ['GET'],
+                    'create' => ['POST'],
+                    'update' => ['PUT'],
+                    'delete' => ['DELETE'],
+                    'search' => ['GET'],
+                ],
+            ],
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
 //                'cors' => [
