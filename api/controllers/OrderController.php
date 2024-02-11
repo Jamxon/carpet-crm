@@ -12,13 +12,12 @@ use yii\web\Response;
 
 class OrderController extends MyController
 {
-    public $modelClass = 'common\models\Order';
 
     public function behaviors()
     {
         return [
             'corsFilter' => [
-                'class' => \yii\filters\Cors::className(),
+                'class' => \yii\filters\Cors::class,
 //                'cors' => [
 //                    // restrict access to
 //                    'Origin' => ['http://yii.loc','https://darkorr.vercel.app','http://localhost:3000'],
@@ -36,12 +35,7 @@ class OrderController extends MyController
             ],
         ];
     }
-    public function actions()
-    {
-        $actions = parent::actions();
-        unset($actions['index']);
-        return $actions;
-    }
+
     public function actionIndex()
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
