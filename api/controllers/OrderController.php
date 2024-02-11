@@ -40,7 +40,7 @@ class OrderController extends ActiveController
     {
 //        \Yii::$app->response->format = Response::FORMAT_JSON;
         return new ActiveDataProvider([
-            'query' => Order::find()->with('orderitem')->asArray()->all(),
+            'query' => Order::find()->with('orderitem')->asArray(),
             'pagination' => [
                 'pageSize' => 20,
             ],
