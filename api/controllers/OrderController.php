@@ -37,6 +37,9 @@ class OrderController extends MyController
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return new ActiveDataProvider([
             'query' => Order::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
         ]);
     }
     public function actionView($id)
