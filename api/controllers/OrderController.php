@@ -40,9 +40,7 @@ class OrderController extends ActiveController
     public function actionIndex()
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
-        return [
-            'orders' => Order::find()->with('orderitem')->all(),
-        ];
+        return Order::find()->all();
     }
     public function actionView($id)
     {
