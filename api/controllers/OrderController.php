@@ -38,7 +38,7 @@ class OrderController extends ActiveController
     public function actionIndex()
     {
         return new ActiveDataProvider([
-            'query' => Order::find()->with('orderItem'),
+            'query' => Order::find()->with('orderitem'),
             'pagination' => [
                 'pageSize' => 20,
             ],
