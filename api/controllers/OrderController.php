@@ -11,42 +11,15 @@ class OrderController extends MyController
 {
     public function behaviors()
     {
-        return [
-            'authenticator' => [
-                'class' => \yii\filters\auth\HttpBearerAuth::class,
-                'except' => ['login', 'logout'],
-            ],
-            'verbs' => [
-                'class' => \yii\filters\VerbFilter::class,
-                'actions' => [
-                    'index' => ['GET'],
-                    'view' => ['GET'],
-                    'create' => ['POST'],
-                    'update' => ['PUT'],
-                    'delete' => ['DELETE'],
-                    'search' => ['GET'],
-                ],
-            ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-//                'cors' => [
-//                    // restrict access to
-//                    'Origin' => ['*'],
-//                    // Allow only POST and PUT methods
-//                    'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-//                    // Allow only headers 'X-Wsse'
-//                    'Access-Control-Request-Headers' => ['*'],
-//                    // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
-//                    'Access-Control-Allow-Credentials' => true,
-//                    // Allow OPTIONS caching
-//                    'Access-Control-Max-Age' => 3600,
-//                    // Allow the X-Pagination-Current-Page header to be exposed to the browser.
-//                    'Access-Control-Expose-Headers' => ['X-Pagination-Current-Page'],
-//                ],
+        $behaviors = parent::behaviors();
 
-            ],
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
         ];
+
+        return $behaviors;
     }
+
     public function actionIndex()
     {
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
