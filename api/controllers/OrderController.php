@@ -7,6 +7,7 @@ use common\models\Order;
 use common\models\OrderItem;
 use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
+use yii\web\Response;
 
 class OrderController extends ActiveController
 {
@@ -37,6 +38,7 @@ class OrderController extends ActiveController
 
     public function actionIndex()
     {
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         return new ActiveDataProvider([
             'query' => Order::find()->with('orderitem'),
             'pagination' => [
