@@ -15,11 +15,11 @@ class AuthController extends Controller
                 'class' => \yii\filters\Cors::class,
                 'cors' => [
                     // restrict access to
-                    'Origin' => ['http://localhost:3000'],
+                    'Origin' => ['*'],
                     // Allow only POST and PUT methods
                     'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     // Allow only headers 'X-Wsse'
-                    'Access-Control-Request-Headers' => ['X-Wsse'],
+                    'Access-Control-Request-Headers' => ['*'],
                     // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
                     'Access-Control-Allow-Credentials' => true,
                     // Allow OPTIONS caching
