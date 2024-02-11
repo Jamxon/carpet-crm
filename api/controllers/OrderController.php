@@ -34,6 +34,7 @@ class OrderController extends MyController
     }
     public function actionIndex()
     {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return new ActiveDataProvider([
             'query' => Order::find(),
         ]);
