@@ -16,7 +16,7 @@ class OrderController extends MyController
                 'class' => \yii\filters\Cors::class,
                 'cors' => [
                     // restrict access to
-                    'Origin' => ['https://darkorr.vercel.app/'],
+                    'Origin' => ['https://darkorr.vercel.app'],
                     // Allow only POST and PUT methods
                     'Access-Control-Request-Method' => ['POST', 'PUT'],
                     // Allow only headers 'X-Wsse'
