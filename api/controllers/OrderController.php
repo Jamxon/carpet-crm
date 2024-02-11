@@ -6,40 +6,17 @@ use common\models\CleanItem;
 use common\models\Order;
 use common\models\OrderItem;
 use yii\data\ActiveDataProvider;
+use yii\rest\ActiveController;
 
-class OrderController extends MyController
+class OrderController extends ActiveController
 {
+    public $modelClass = 'common\models\Order';
+
     public function behaviors()
     {
         return [
-            'authenticator' => [
-                'class' => \yii\filters\auth\HttpBearerAuth::class,
-                'except' => ['login', 'logout'],
-            ],
-            'verbs' => [
-                'class' => \yii\filters\VerbFilter::class,
-                'actions' => [
-                    'login' => ['POST'],
-                    'logout' => ['POST'],
-                ],
-            ],
             'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-//                'cors' => [
-//                    // restrict access to
-//                    'Origin' => ['*'],
-//                    // Allow only POST and PUT methods
-//                    'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-//                    // Allow only headers 'X-Wsse'
-//                    'Access-Control-Request-Headers' => ['*'],
-//                    // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
-//                    'Access-Control-Allow-Credentials' => true,
-//                    // Allow OPTIONS caching
-//                    'Access-Control-Max-Age' => 3600,
-//                    // Allow the X-Pagination-Current-Page header to be exposed to the browser.
-//                    'Access-Control-Expose-Headers' => ['X-Pagination-Current-Page'],
-//                ],
-
+                'class' => \yii\filters\Cors::className(),
             ],
         ];
     }
