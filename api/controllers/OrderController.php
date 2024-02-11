@@ -10,7 +10,7 @@ use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
-class OrderController extends ActiveController
+class OrderController extends MyController
 {
     public $modelClass = 'common\models\Order';
 
