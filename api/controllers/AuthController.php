@@ -10,23 +10,10 @@ class AuthController extends Controller
 {
     public function behaviors()
     {
-        $behaviors = parent::behaviors();
         $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::className(),
-//            'cors' => [
-//                // Tarmoqdan kelgan so'rovni qo'llab-quvvatlaydigan yoki rad etadigan domenlar
-//                'Origin' => ['*'],
-//                // Faqat kerakli metodlarni qo'llab-quvvatlash
-//                'Access-Control-Request-Method' => ['GET', 'POST', 'OPTIONS'],
-//                // Quyidagi xususiyatlarni qo'llab-quvvatlash
-//                'Access-Control-Allow-Credentials' => true,
-//                'Access-Control-Max-Age' => 3600,                 // 1 soat ichida qayta so'rovni bajarishga ruxsat beriladi
-//                'Access-Control-Allow-Headers' => ['Content-Type', 'X-Requested-With'],
-//                'Access-Control-Allow-Origin' => ['*'],
-//            ],
+            'class' => CorsBehavior::class,
         ];
-
-        return $behaviors;
+        return $this->behaviors;
     }
     public function actionLogin()
     {

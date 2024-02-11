@@ -24,7 +24,7 @@ class CorsBehavior extends Cors
             'class' => \yii\filters\Cors::className(),
             'cors' => [
                 // Tarmoqdan kelgan so'rovni qo'llab-quvvatlaydigan yoki rad etadigan domenlar
-                'Origin' => ['*'],
+                'Origin' => ['localhost:3000'],
                 // Faqat kerakli metodlarni qo'llab-quvvatlash
                 'Access-Control-Request-Method' => ['GET', 'POST', 'OPTIONS'],
                 // Quyidagi xususiyatlarni qo'llab-quvvatlash
