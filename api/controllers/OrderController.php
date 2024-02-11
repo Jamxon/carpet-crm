@@ -19,7 +19,7 @@ class OrderController extends ActiveController
                 'class' => \yii\filters\Cors::className(),
                 'cors' => [
                     // restrict access to
-                    'Origin' => ['http://yii.loc'],
+                    'Origin' => ['http://yii.loc','https://darkorr.vercel.app'],
                     // Allow only POST and PUT methods
                     'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     // Allow only headers 'X-Wsse'
@@ -37,7 +37,6 @@ class OrderController extends ActiveController
 
     public function actionIndex()
     {
-        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return new ActiveDataProvider([
             'query' => Order::find(),
             'pagination' => [
