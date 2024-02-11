@@ -5,6 +5,7 @@ namespace api\controllers;
 use common\models\CleanItem;
 use common\models\Order;
 use common\models\OrderItem;
+use Psy\Util\Json;
 use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
 use yii\web\Response;
@@ -38,13 +39,14 @@ class OrderController extends ActiveController
 
     public function actionIndex()
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
-        return new ActiveDataProvider([
+//        \Yii::$app->response->format = Response::FORMAT_JSON;
+        $rusult =  new ActiveDataProvider([
             'query' => Order::find(),
             'pagination' => [
                 'pageSize' => 20,
             ],
         ]);
+        return Json::encode($rusult);
     }
     public function actionView($id)
     {
