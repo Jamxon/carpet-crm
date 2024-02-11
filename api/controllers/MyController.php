@@ -26,9 +26,9 @@ class MyController extends Controller
                 HttpBearerAuth::class,
                 QueryParamAuth::class,
             ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
+        ];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
         ];
         return $behaviors;
     }
