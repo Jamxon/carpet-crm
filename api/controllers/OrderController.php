@@ -39,7 +39,7 @@ class OrderController extends ActiveController
 
     public function actionIndex()
     {
-//        \Yii::$app->response->format = Response::FORMAT_JSON;
+        \Yii::$app->response->format = Response::FORMAT_JSON;
         $rusult =  new ActiveDataProvider([
             'query' => Order::find(),
             'pagination' => [
