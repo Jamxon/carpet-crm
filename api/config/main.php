@@ -67,6 +67,7 @@ return [
                 'GET attendance/date' => 'attendance/date',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
+                'GET orders' => 'order/index',
             ],
         ]
     ],
