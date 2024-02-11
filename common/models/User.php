@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use api\models\AccessToken;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -83,7 +84,15 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        return static::findOne(['access_token' => $token, 'status' => self::STATUS_ACTIVE]);
+        $userToken = AccessToken::find()->where(['access_token' => $token])->one();
+        if($userToken){
+            if (time() > strtotime($userToken->expired_at)) {
+                return "Muddat tugagan krisa";
+            }else{
+                return static::findOne(['id' => $userToken->user_id, 'status' => self::STATUS_ACTIVE]);
+            }
+        }
+        return "Tog'ri jo'nat krisa";
     }
 
     /**

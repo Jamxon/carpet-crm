@@ -59,9 +59,13 @@ class LoginForm extends Model
     {
         if ($this->validate()) {
             $user = $this->getUser();
-            $user->access_token = Yii::$app->security->generateRandomString(32);
-            $model = ['access_token' => $user->access_token, 'type_id' => $user->type_id];
-            return $user->save() ? $model : null;
+            $access_token = Yii::$app->security->generateRandomString(32);
+            $userAccessToken = new AccessToken();
+            $userAccessToken->user_id = $user->id;
+            $userAccessToken->access_token = $access_token;
+            $userAccessToken->expired_at = date('Y-m-d H:i:s', strtotime('+1 day'));
+            $model = ['access_token' => $access_token, 'type_id' => $user->type_id];
+            return $userAccessToken->save() ? $model : null;
         }
         
         return false;
