@@ -3,7 +3,7 @@
 namespace common\models;
 
 use frontend\models\Customer;
-use frontend\models\OrderItem;
+use common\models\OrderItem;
 use Yii;
 
 /**
