@@ -44,7 +44,9 @@ class OrderController extends ActiveController
     }
     public function actionIndex()
     {
-        return Order::find()->all();
+        return new ActiveDataProvider([
+           'query' => Order::find()->with('orderitem'),
+        ]);
     }
     public function actionView($id)
     {
