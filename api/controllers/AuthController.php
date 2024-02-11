@@ -8,13 +8,6 @@ use yii\rest\Controller;
 
 class AuthController extends Controller
 {
-    public function behaviors()
-    {
-        $behaviors['corsFilter'] = [
-            'class' => CorsBehavior::class,
-        ];
-        return $this->behaviors;
-    }
     public function actionLogin()
     {
         $model =new LoginForm();
