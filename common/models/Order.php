@@ -47,7 +47,7 @@ class Order extends \yii\db\ActiveRecord
         return [
             'id',
             'customer',
-            'orderitem',
+            'orderItem',
             'record_id',
             'date',
             'status',
