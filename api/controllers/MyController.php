@@ -2,7 +2,7 @@
 
 namespace api\controllers;
 
-use api\models\User;
+
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\HttpBearerAuth;
@@ -25,6 +25,9 @@ class MyController extends Controller
                 HttpBasicAuth::class,
                 HttpBearerAuth::class,
                 QueryParamAuth::class,
+            ],
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
             ],
         ];
         return $behaviors;
