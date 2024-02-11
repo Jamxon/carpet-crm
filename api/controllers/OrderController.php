@@ -36,10 +36,14 @@ class OrderController extends ActiveController
             ],
         ];
     }
-
+    public function actions()
+    {
+        $actions = parent::actions();
+        unset($actions['index']);
+        return $actions;
+    }
     public function actionIndex()
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
         return Order::find()->all();
     }
     public function actionView($id)
