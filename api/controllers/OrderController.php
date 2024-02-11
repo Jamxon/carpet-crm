@@ -16,7 +16,7 @@ class OrderController extends MyController
                 'class' => \yii\filters\Cors::class,
                 'cors' => [
                     // restrict access to
-                    'Origin' => ['*'],
+                    'Origin' => ['http://localhost:3000'],
                     // Allow only POST and PUT methods
                     'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     // Allow only headers 'X-Wsse'
