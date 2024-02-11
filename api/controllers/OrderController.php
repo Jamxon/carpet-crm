@@ -18,7 +18,7 @@ class OrderController extends MyController
                     // restrict access to
                     'Origin' => ['https://darkorr.vercel.app'],
                     // Allow only POST and PUT methods
-                    'Access-Control-Request-Method' => ['POST', 'PUT'],
+                    'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     // Allow only headers 'X-Wsse'
                     'Access-Control-Request-Headers' => ['X-Wsse'],
                     // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
