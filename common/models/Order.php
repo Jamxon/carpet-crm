@@ -47,7 +47,7 @@ class Order extends \yii\db\ActiveRecord
         return [
             'id',
             'customer',
-            'orderitems',
+            'orderitem',
             'record_id',
             'date',
             'status',
@@ -86,7 +86,7 @@ class Order extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getOrderItems()
+    public function getOrderItem()
     {
         return $this->hasMany(OrderItem::class, ['order_id' => 'id']);
     }
