@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use api\models\AccessToken;
 use api\models\LoginForm;
 use common\models\TypeEmployer;
 use yii\rest\Controller;
@@ -58,9 +59,10 @@ class AuthController extends Controller
             return \Yii::$app->response->statusCode = 401;
         }
     }
-    public function actionLogout()
+    public function logout()
     {
-        \Yii::$app->user->logout();
+        $accessToken = AccessToken::find()->where(['access_token' => \Yii::$app->request->headers['Authorization']])->one();
+        $accessToken->delete();
         \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         return [
             'message' => 'Logout success'

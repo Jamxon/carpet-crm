@@ -60,16 +60,39 @@ class LoginForm extends Model
         if ($this->validate()) {
             $user = $this->getUser();
             $access_token = Yii::$app->security->generateRandomString(32);
+
+            // Create a new AccessToken instance
             $userAccessToken = new AccessToken();
             $userAccessToken->user_id = $user->id;
             $userAccessToken->access_token = $access_token;
             $userAccessToken->expired_at = date('Y-m-d H:i:s', strtotime('+1 day'));
-            $model = ['access_token' => $access_token, 'type_id' => $user->type_id];
-            return $userAccessToken->save() ? $model : null;
+
+            // Save the AccessToken instance
+            if ($userAccessToken->save()) {
+                // Update the used_at timestamp
+                $userAccessToken->used_at = date('Y-m-d H:i:s');
+                $userAccessToken->save();
+
+                // Return token and other necessary information
+                $model = ['access_token' => $access_token, 'type_id' => $user->type_id];
+                return $model;
+            } else {
+                // Handle saving failure
+                return null;
+            }
         }
-        
-        return false;
+        return ["Tog'ri jo'nat krisa"];
     }
+
+// Function to delete expired tokens
+    public function deleteExpiredTokens()
+    {
+        $expiredTokens = AccessToken::find()->where(['<', 'expired_at', date('Y-m-d H:i:s')])->all();
+        foreach ($expiredTokens as $token) {
+            $token->delete();
+        }
+    }
+
 
     /**
      * Finds user by [[username]]
