@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="ervertber">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/controllers/AuthController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AuthController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models/AccessToken.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/AccessToken.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/models/LoginForm.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/models/LoginForm.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +192,7 @@
       <workItem from="1706275914970" duration="56091000" />
       <workItem from="1707238030422" duration="13479000" />
       <workItem from="1707363510353" duration="35706000" />
-      <workItem from="1707809856618" duration="2104000" />
+      <workItem from="1707809856618" duration="3504000" />
     </task>
     <task id="LOCAL-00001" summary="ervertber">
       <option name="closed" value="true" />
