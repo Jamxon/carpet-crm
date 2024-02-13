@@ -86,13 +86,15 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $userToken = AccessToken::find()->where(['access_token' => $token])->one();
         if($userToken){
-            if (time() > strtotime($userToken->expired_at)) {
-                return "Muddat tugagan krisa";
-            }else{
+            if (strtotime('-1 minute') > strtotime($userToken->used_at)) {
+                $userToken->used_at = date('Y-m-d H:i:s');
+                $userToken->save();
                 return static::findOne(['id' => $userToken->user_id, 'status' => self::STATUS_ACTIVE]);
+            }else{
+                return null;
             }
         }
-        return "Tog'ri jo'nat krisa";
+        return null;
     }
 
     /**

@@ -72,7 +72,6 @@ class LoginForm extends Model
                 // Update the used_at timestamp
                 $userAccessToken->used_at = date('Y-m-d H:i:s');
                 $userAccessToken->save();
-
                 // Return token and other necessary information
                 $model = ['access_token' => $access_token, 'type_id' => $user->type_id];
                 return $model;
