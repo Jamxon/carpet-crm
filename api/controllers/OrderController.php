@@ -18,20 +18,6 @@ class OrderController extends MyController
         return [
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
-//                'cors' => [
-//                    // restrict access to
-//                    'Origin' => ['http://yii.loc','https://darkorr.vercel.app','http://localhost:3000'],
-//                    // Allow only POST and PUT methods
-//                    'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
-//                    // Allow only headers 'X-Wsse'
-//                    'Access-Control-Request-Headers' => ['*'],
-//                    // Allow credentials (cookies, authorization headers, etc.) to be exposed to the browser
-//                    'Access-Control-Allow-Credentials' => true,
-//                    // Allow OPTIONS caching
-//                    'Access-Control-Max-Age' => 3600,
-//                    // Allow the X-Pagination-Current-Page header to be exposed to the browser.
-//                    'Access-Control-Expose-Headers' => ['X-Pagination-Current-Page'],
-//                ],
             ],
         ];
     }
@@ -73,10 +59,10 @@ class OrderController extends MyController
             return $orderItems;
         }
     }
-    public function actionUpdate()
+    public function actionUpdate($id)
     {
-        $model = new Order();
-        $orderItem = new OrderItem();
+        $model =Order::findOne($id);
+        $orderItem =OrderItem::find()->where(['order_id' => $model->id]);
         if (\Yii::$app->request->post()) {
             $model->load(\Yii::$app->request->post(), '');
             $model->customer_id = \Yii::$app->request->post('customer_id');
@@ -85,7 +71,7 @@ class OrderController extends MyController
             $model->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
             $model->comment = \Yii::$app->request->post('comment');
             $orderItem->clean_item_id = \Yii::$app->request->post('clean_item_id');
-            $orderItem->order_id = \Yii::$app->request->post('order_id');
+//            $orderItem->order_id = \Yii::$app->request->post('order_id');
             $orderItem->size = \Yii::$app->request->post('size');
             $orderItem->count = \Yii::$app->request->post('count');
             if ($model->save() && $orderItem->save()) {

@@ -24,7 +24,11 @@ class Company extends \common\models\Company
     public function fields()
     {
         return [
-            'name'
+            'name',
+            'image',
+            'address',
+            'phone',
+            'status'
         ];
     }
 }
