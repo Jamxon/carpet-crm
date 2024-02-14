@@ -48,7 +48,7 @@ class OrderController extends MyController
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
         return new ActiveDataProvider([
-           'query' => Order::find()->with('orderitem'),
+           'query' => Order::find(),
         ]);
     }
     public function actionView($id)
