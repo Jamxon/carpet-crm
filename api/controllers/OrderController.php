@@ -29,7 +29,7 @@ class OrderController extends MyController
                     'Access-Control-Request-Headers' => ['*'],
                     'Access-Control-Allow-Credentials' => true,
                     'Access-Control-Max-Age' => 86400,
-                    'Access-Control-Expose-Headers' => ['*'],
+                    'Access-Control-Expose-Headers' => [],
                 ],
             ],
         ];
