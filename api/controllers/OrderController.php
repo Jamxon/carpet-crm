@@ -15,6 +15,21 @@ class OrderController extends MyController
 
     public function behaviors() {
         return [
+            'class' => \yii\filters\ContentNegotiator::class,
+            'only' => ['index', 'view', 'create', 'update', 'delete'],
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+            ],
+            'verbs' => [
+                'class' => \yii\filters\VerbFilter::class,
+                'actions' => [
+                    'index' => ['GET'],
+                    'view' => ['GET'],
+                    'create' => ['POST'],
+                    'update' => ['PUT'],
+                    'delete' => ['DELETE'],
+                ],
+            ],
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
             ],
