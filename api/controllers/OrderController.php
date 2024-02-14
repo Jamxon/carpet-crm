@@ -24,7 +24,7 @@ class OrderController extends MyController
         $behaviors['corsFilter'] = [
             'class' => '\yii\filters\Cors',
             'cors' => [
-                'Origin' => ['*'],
+                'Origin' => ['https://darkorr.vercel.app'],
                 'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                 'Access-Control-Request-Headers' => ['*'],
             ],
