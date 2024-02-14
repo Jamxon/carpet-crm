@@ -25,7 +25,6 @@ class MyController extends Controller
                 HttpBearerAuth::class,
                 QueryParamAuth::class,
             ],
-            'except' => ['options'],
         ];
         return $behaviors;
     }
