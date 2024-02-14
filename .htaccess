@@ -6,7 +6,7 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-    Header set Access-Control-Allow-Origin "https://darkorr.vercel.app/"
+    Header set Access-Control-Allow-Origin "https://darkorr.vercel.app"
     Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
     Header set Access-Control-Allow-Headers "*"
     Header always set Access-Control-Max-Age "86400"
