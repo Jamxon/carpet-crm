@@ -13,28 +13,28 @@ use yii\web\Response;
 class OrderController extends MyController
 {
 
-    public function behaviors()
-    {
-        return [
-            'authenticator' => [
-                'class' => \yii\filters\auth\HttpBearerAuth::class,
-            ],
-            'verbs' => [
-                'class' => \yii\filters\VerbFilter::class,
-                'actions' => [
-                    'index' => ['GET'],
-                    'view' => ['GET'],
-                    'create' => ['POST'],
-                    'update' => ['PUT'],
-                    'delete' => ['DELETE'],
-                    'search' => ['GET'],
-                ],
-            ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
+//    public function behaviors()
+//    {
+//        return [
+//            'authenticator' => [
+//                'class' => \yii\filters\auth\HttpBearerAuth::class,
+//            ],
+//            'verbs' => [
+//                'class' => \yii\filters\VerbFilter::class,
+//                'actions' => [
+//                    'index' => ['GET'],
+//                    'view' => ['GET'],
+//                    'create' => ['POST'],
+//                    'update' => ['PUT'],
+//                    'delete' => ['DELETE'],
+//                    'search' => ['GET'],
+//                ],
+//            ],
+//            'corsFilter' => [
+//                'class' => \yii\filters\Cors::class,
+//            ],
+//        ];
+//    }
 
     public function actionIndex()
     {
