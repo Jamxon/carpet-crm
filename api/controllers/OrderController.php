@@ -24,7 +24,7 @@ class OrderController extends MyController
             'cors' => [
                 'class' => \yii\filters\Cors::class,
                 'cors' => [
-                    'Origin' => ['http://yii.loc', 'https://darkorr.vercel.app'],
+                    'Origin' => ['*'],
                     'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     'Access-Control-Request-Headers' => ['*'],
                     'Access-Control-Allow-Credentials' => true,
