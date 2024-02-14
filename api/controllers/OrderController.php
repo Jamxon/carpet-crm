@@ -18,19 +18,9 @@ class OrderController extends MyController
             'formats' => [
                 'application/json' => Response::FORMAT_JSON,
             ],
-            'verbs' => [
-                'class' => \yii\filters\VerbFilter::class,
-                'actions' => [
-                    'index' => ['GET'],
-                    'view' => ['GET'],
-                    'create' => ['POST'],
-                    'update' => ['PUT'],
-                    'delete' => ['DELETE'],
-                ],
-            ],
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
-            ],
+            ]
         ];
     }
     public function actionIndex()
