@@ -30,9 +30,9 @@ class OrderController extends MyController
                     'delete' => ['DELETE'],
                 ],
             ],
-//            'corsFilter' => [
-//                'class' => \yii\filters\Cors::class,
-//            ],
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+            ],
         ];
     }
     public function actionIndex()
