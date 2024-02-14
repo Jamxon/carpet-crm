@@ -16,21 +16,25 @@ class OrderController extends MyController
     public function behaviors() {
         return [
             'formats' => [
-                'application/json' => Response::FORMAT_JSON,
+                'class' => 'yii\filters\ContentNegotiator',
+                'formats' => [
+                    'application/json' => Response::FORMAT_JSON,
+                ],
             ],
             'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
+                'class' => 'yii\filters\Cors',
                 'cors' => [
-                    'Origin' => ['http://yii.loc','https://darkorr.vercel.app'],
+                    'Origin' => ['http://yii.loc', 'https://darkorr.vercel.app/operator/mijozlar'],
                     'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD', 'OPTIONS'],
                     'Access-Control-Request-Headers' => ['*'],
                     'Access-Control-Allow-Credentials' => true,
                     'Access-Control-Max-Age' => 86400,
                     'Access-Control-Expose-Headers' => ['*'],
                 ],
-                ]
+            ]
         ];
     }
+
     public function actionIndex()
     {
         return new ActiveDataProvider([
