@@ -1,9 +1,16 @@
-            RewriteEngine on
-            # If a directory or a file exists, use the request directly
-            RewriteCond %{REQUEST_FILENAME} !-f
-            RewriteCond %{REQUEST_FILENAME} !-d
-            # Otherwise forward the request to index.php
-            RewriteRule . index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine on
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . index.php [L]
+</IfModule>
+
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, POST, PUT, DELETE, OPTIONS"
+    Header set Access-Control-Allow-Headers "*"
+    Header always set Access-Control-Max-Age "86400"
+</IfModule>
 
             # use index.php as index file
             DirectoryIndex index.php
