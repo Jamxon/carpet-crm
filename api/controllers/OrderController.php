@@ -15,8 +15,6 @@ class OrderController extends MyController
 
     public function behaviors() {
         return [
-            'class' => \yii\filters\ContentNegotiator::class,
-            'only' => ['index', 'view', 'create', 'update', 'delete'],
             'formats' => [
                 'application/json' => Response::FORMAT_JSON,
             ],
