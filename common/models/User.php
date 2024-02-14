@@ -93,8 +93,10 @@ class User extends ActiveRecord implements IdentityInterface
 //            }else{
 //                return null;
 //            }
+        }else {
+            return null;
         }
-        return null;
+
     }
 
     /**
