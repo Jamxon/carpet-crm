@@ -8,6 +8,14 @@ use yii\validators\DateValidator;
 
 class CustomerController extends MyController
 {
+    public function behaviors()
+    {
+        return [
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+            ],
+        ];
+    }
     public function actionSearchbyphone($phone)
     {
         return new ActiveDataProvider([
