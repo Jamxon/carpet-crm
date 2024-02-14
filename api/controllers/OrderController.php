@@ -18,7 +18,6 @@ class OrderController extends MyController
         return [
             'authenticator' => [
                 'class' => \yii\filters\auth\HttpBearerAuth::class,
-                'except' => ['login', 'logout'],
             ],
             'verbs' => [
                 'class' => \yii\filters\VerbFilter::class,
