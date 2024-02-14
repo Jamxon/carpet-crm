@@ -20,8 +20,6 @@ class OrderController extends MyController
             ],
         ];
     }
-
-
     public function actionIndex()
     {
         \Yii::$app->response->format = Response::FORMAT_JSON;
