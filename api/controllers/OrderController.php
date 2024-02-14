@@ -30,14 +30,13 @@ class OrderController extends MyController
                     'delete' => ['DELETE'],
                 ],
             ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
+//            'corsFilter' => [
+//                'class' => \yii\filters\Cors::class,
+//            ],
         ];
     }
     public function actionIndex()
     {
-        \Yii::$app->response->format = Response::FORMAT_JSON;
         return new ActiveDataProvider([
            'query' => Order::find(),
         ]);
