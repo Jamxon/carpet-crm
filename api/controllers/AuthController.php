@@ -7,7 +7,7 @@ use api\models\LoginForm;
 use common\models\TypeEmployer;
 use yii\rest\Controller;
 
-class AuthController extends Controller
+class AuthController extends MyController
 {
     public function behaviors()
     {
