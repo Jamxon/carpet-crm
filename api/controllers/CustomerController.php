@@ -4,7 +4,6 @@ namespace api\controllers;
 
 use common\models\Customer;
 use yii\data\ActiveDataProvider;
-use yii\validators\DateValidator;
 use yii\web\Response;
 
 class CustomerController extends MyController
@@ -36,7 +35,7 @@ class CustomerController extends MyController
                 ->where(['LIKE', 'phone_1', $phone])
                 ->orWhere(['LIKE', 'phone_2', $phone]),
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 100,
             ]
         ]);
     }
