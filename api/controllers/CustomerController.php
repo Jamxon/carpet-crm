@@ -2,7 +2,8 @@
 
 namespace api\controllers;
 
-use common\models\Customer;
+
+
 use yii\data\ActiveDataProvider;
 use yii\web\Response;
 
@@ -31,7 +32,7 @@ class CustomerController extends MyController
     public function actionSearchbyphone($phone)
     {
         return new ActiveDataProvider([
-            'query' => Customer::find()
+            'query' => \common\models\Customer::find()
                 ->where(['LIKE', 'phone_1', $phone])
                 ->orWhere(['LIKE', 'phone_2', $phone]),
             'pagination' => [
@@ -86,6 +87,6 @@ class CustomerController extends MyController
     }
     public function actionView($id)
     {
-        return \common\models\Customer::findOne($id);
+        return \api\models\Customer::findOne($id);
     }
 }
