@@ -35,7 +35,7 @@ class CustomerController extends MyController
                 ->where(['LIKE', 'phone_1', $phone])
                 ->orWhere(['LIKE', 'phone_2', $phone]),
             'pagination' => [
-                'pageSize' => 100,
+                'pageSize' => 10,
             ]
         ]);
     }
@@ -44,7 +44,7 @@ class CustomerController extends MyController
         return new ActiveDataProvider([
             'query' => \common\models\Customer::find(),
             'pagination' => [
-                'pageSize' => 10,
+                'pageSize' => 100,
             ]
         ]);
     }
