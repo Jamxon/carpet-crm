@@ -91,19 +91,27 @@ class CustomerController extends MyController
         $model->save();
         return $model;
     }
-    public function actionUpdate($id, $employer_id, $name, $phone_1, $phone_2, $address, $date, $source, $level, $comment)
+    public function actionUpdate($id)
     {
         $model = \common\models\Customer::findOne($id);
-        $model->employer_id = $employer_id;
-        $model->name = $name;
-        $model->phone_1 = $phone_1;
-        $model->phone_2 = $phone_2;
-        $model->address = $address;
-        $model->date = $date;
-        $model->source = $source;
-        $model->level = $level;
-        $model->comment = $comment;
-        $model->save();
+        if (\Yii::$app->request->post())
+        {
+
+            $model->employer_id = \Yii::$app->request->post('employer_id');
+            $model->name = \Yii::$app->request->post('name');
+            $model->phone_1 = \Yii::$app->request->post('phone_1');
+            $model->phone_2 = \Yii::$app->request->post('phone_2');
+            $model->address = \Yii::$app->request->post('address');
+            $model->date = \Yii::$app->request->post('date');
+            $model->source = \Yii::$app->request->post('source');
+            $model->level = \Yii::$app->request->post('level');
+            $model->comment = \Yii::$app->request->post('comment');
+            if ($model->save()){
+                return ["Success"];
+            }else {
+                return $model->getErrors();
+            }
+        }
         return $model;
     }
     public function actionDelete($id)
