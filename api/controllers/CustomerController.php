@@ -96,7 +96,6 @@ class CustomerController extends MyController
         $model = \common\models\Customer::findOne($id);
         if (\Yii::$app->request->post())
         {
-
             $model->employer_id = \Yii::$app->request->post('employer_id');
             $model->name = \Yii::$app->request->post('name');
             $model->phone_1 = \Yii::$app->request->post('phone_1');

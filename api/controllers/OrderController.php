@@ -61,7 +61,7 @@ class OrderController extends MyController
             $orderItem->size = \Yii::$app->request->post('size');
             $orderItem->count = \Yii::$app->request->post('count');
             if ($model->save() && $orderItem->save()) {
-                return \Yii::$app->response->statusCode = 201;
+                return ["Success" => "Order saved successfully"];
             } else {
                 return $model->getErrors();
             }
