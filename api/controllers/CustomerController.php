@@ -11,10 +11,6 @@ class CustomerController extends MyController
 {
     public function behaviors() {
         return [
-            'authenticator' => [
-                'class' => \yii\filters\auth\HttpBearerAuth::class,
-                'except' => ['options'],
-            ],
             'formats' => [
                 'class' => 'yii\filters\ContentNegotiator',
                 'formats' => [
