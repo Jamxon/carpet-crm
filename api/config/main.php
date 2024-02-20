@@ -68,6 +68,12 @@ return [
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
+                'GET order/bringing' => 'order/bringing',
+                'GET order/cleaning' => 'order/cleaning',
+                'GET order/drying' => 'order/drying',
+                'GET order/packaging' => 'order/packaging',
+                'GET order/delivering' => 'order/delivering',
+                'GET order/complete' => 'order/complete',
             ],
         ]
     ],

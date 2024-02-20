@@ -111,4 +111,58 @@ class OrderController extends MyController
             ),
         ]);
     }
+    public function actionBringing()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Olib kelishda']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionCleaning()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Yuvishda']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionDrying()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Quritishda']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionPackaging()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Qadoqlashda']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionDelivering()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Yetkazib berishda']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionComplete()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Yakunlandi']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
 }
