@@ -13,7 +13,7 @@ class CustomerController extends MyController
         return [
             'authenticator' => [
                 'class' => \yii\filters\auth\HttpBearerAuth::class,
-                'except' => ['options', 'searchbyphone', 'searchbyname'],
+                'except' => ['options'],
             ],
             'formats' => [
                 'class' => 'yii\filters\ContentNegotiator',
