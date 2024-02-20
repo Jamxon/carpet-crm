@@ -18,21 +18,21 @@ class AttendanceController extends MyController
     }
     public function actionDate($start_date, $end_date)
     {
-        if ($start_date === null && $end_date === null){
+        if ($start_date == null && $end_date == null){
             return new ActiveDataProvider([
                 'query' => Attendance::find(),
                 'pagination' => [
                     'pageSize' => 10,
                 ]
             ]);
-        } elseif ($start_date === null && $end_date !== null){
+        } elseif ($start_date == null && $end_date != null){
             return new ActiveDataProvider([
                 'query' => Attendance::find()->where(['<=', 'go_time', $end_date]),
                 'pagination' => [
                     'pageSize' => 10,
                 ],
             ]);
-        } elseif ($start_date !== null && $end_date === null){
+        } elseif ($start_date != null && $end_date == null){
             return new ActiveDataProvider([
                 'query' => Attendance::find()->where(['>=', 'come_time', $start_date]),
                 'pagination' => [
