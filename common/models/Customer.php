@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $source
  * @property string|null $level
  * @property string|null $comment
+ * @property string|null $created_at
  * @property Order[] $orders
  */
 class Customer extends \yii\db\ActiveRecord

@@ -2,6 +2,7 @@
 
 namespace api\controllers;
 
+use api\models\Customer;
 use common\models\CleanItem;
 use common\models\Order;
 use common\models\OrderItem;
@@ -164,6 +165,15 @@ class OrderController extends MyController
     {
         return new ActiveDataProvider([
             'query' => Order::find()->where(['status' => 'Yakunlandi']),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionCancelled()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['status' => 'Bekor qilindi']),
             'pagination' => [
                 'pageSize' => 10,
             ]

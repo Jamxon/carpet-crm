@@ -18,7 +18,7 @@ class AttendanceController extends MyController
     }
     public function actionDate($start_date, $end_date)
     {
-        if ($start_date === null && $end_date === null){
+        if ($start_date == null && $end_date == null){
             return new ActiveDataProvider([
                 'query' => Attendance::find(),
                 'pagination' => [

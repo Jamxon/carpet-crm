@@ -16,6 +16,7 @@ use Yii;
  * @property string|null $status
  * @property string|null $finish_discount_price
  * @property string|null $comment
+ * @property string|null $created_at
  *
  * @property Customer $customer
  * @property OrderItem[] $orderItems
