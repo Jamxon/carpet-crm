@@ -29,6 +29,8 @@ class MainController extends MyController
         $bringing = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')),'status' => 'Olib kelishda'])->all());
         $cancelled = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Bekor qilindi' ])->all());
 //        $register = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
+        //olingan orderlar
+        $registered_order = Order::find()->join('LEFT JOIN', 'order_item', 'order_item.order_id = order.id')->where(['order.created_at' => date(\Yii::$app->request->get('date'))])->all();
         $cleaned = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Yakunlandi'])->all());
@@ -41,6 +43,7 @@ class MainController extends MyController
             'cleaned' => $cleaned,
             'packaged' => $packaged,
             'completed' => $completed,
+            'registered_order' => $registered_order
         ];
     }
 }
