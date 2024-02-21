@@ -59,6 +59,7 @@ return [
                         'order',
                         'orderitem',
                         'typeemployer',
+                        'main',
                     ],
                 ],
                 'POST auth/login' => 'auth/login',
