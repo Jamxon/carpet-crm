@@ -11,6 +11,12 @@ class MainController extends MyController
     public function behaviors()
     {
         return [
+            'format' => [
+                'class' => \yii\filters\ContentNegotiator::class,
+                'formats' => [
+                    'application/json' => \yii\web\Response::FORMAT_JSON,
+                ],
+            ],
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
             ],
