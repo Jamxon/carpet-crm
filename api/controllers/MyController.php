@@ -7,6 +7,7 @@ use yii\filters\auth\HttpBasicAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\filters\auth\QueryParamAuth;
 use yii\rest\Controller;
+use yii\web\Response;
 
 class MyController extends Controller
 {
@@ -21,11 +22,17 @@ class MyController extends Controller
         $behaviors['authenticator'] = [
             'class' => CompositeAuth::class,
             'authMethods' => [
-                HttpBasicAuth::class,
+//                HttpBasicAuth::class,
                 HttpBearerAuth::class,
-                QueryParamAuth::class,
+//                QueryParamAuth::class,
             ],
             'except' => ['options'],
+        ];
+        $behaviors['contentNegotiator'] = [
+            'class' => 'yii\filters\ContentNegotiator',
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
+            ],
         ];
         return $behaviors;
     }
