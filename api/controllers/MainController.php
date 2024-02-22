@@ -22,6 +22,12 @@ class MainController extends MyController
             ],
         ];
     }
+    public function actionOptions(){
+        $header = \Yii::$app->response->headers;
+        $header->add('Access-Control-Allow-Origin', '*');
+        $header->add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
+        $header->add('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    }
     public function actionIndex()
     {
         $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
