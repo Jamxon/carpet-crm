@@ -8,14 +8,6 @@ use yii\web\IdentityInterface;
 
 class TypeemployerController  extends MyController
 {
-    public function behaviors()
-    {
-        return [
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
     public function actionIndex()
     {
         return new ActiveDataProvider([

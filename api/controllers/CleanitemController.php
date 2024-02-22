@@ -7,14 +7,6 @@ use yii\data\ActiveDataProvider;
 
 class CleanitemController extends MyController
 {
-    public function behaviors()
-    {
-        return [
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
     public function actionIndex()
     {
         return new ActiveDataProvider([

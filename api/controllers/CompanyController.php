@@ -12,14 +12,6 @@ use function Symfony\Component\VarDumper\Dumper\esc;
 
 class CompanyController extends MyController
 {
-    public function behaviors()
-    {
-        return [
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
     public function actionIndex()
     {
         return new ActiveDataProvider([

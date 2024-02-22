@@ -6,14 +6,6 @@ use yii\data\ActiveDataProvider;
 
 class OrderitemController extends MyController
 {
-    public function behaviors()
-    {
-        return [
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
     public function actionIndx()
     {
         return new ActiveDataProvider([

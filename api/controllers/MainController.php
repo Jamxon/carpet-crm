@@ -8,26 +8,6 @@ use common\models\OrderItem;
 
 class MainController extends MyController
 {
-    public function behaviors()
-    {
-        return [
-            'format' => [
-                'class' => \yii\filters\ContentNegotiator::class,
-                'formats' => [
-                    'application/json' => \yii\web\Response::FORMAT_JSON,
-                ],
-            ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
-    public function actionOptions(){
-        $header = \Yii::$app->response->headers;
-        $header->add('Access-Control-Allow-Origin', '*');
-        $header->add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-        $header->add('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    }
     public function actionIndex()
     {
         $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
