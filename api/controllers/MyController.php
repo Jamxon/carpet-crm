@@ -34,6 +34,9 @@ class MyController extends Controller
                 'application/json' => Response::FORMAT_JSON,
             ],
         ];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::class,
+        ];
         return $behaviors;
     }
 }
