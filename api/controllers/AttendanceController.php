@@ -8,26 +8,6 @@ use yii\web\Response;
 
 class AttendanceController extends MyController
 {
-    public function behaviors() {
-        return [
-            'formats' => [
-                'class' => 'yii\filters\ContentNegotiator',
-                'formats' => [
-                    'application/json' => Response::FORMAT_JSON,
-                ],
-            ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-            ],
-        ];
-    }
-
-    public function actionOptions(){
-        $header = \Yii::$app->response->headers;
-        $header->add('Access-Control-Allow-Origin', '*');
-        $header->add('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT, DELETE');
-        $header->add('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-    }
     public function actionIndex()
     {
         return new ActiveDataProvider([
