@@ -37,33 +37,33 @@ class AttendanceController extends MyController
             ]
         ]);
     }
-    public function actionDate($start_date, $end_date)
+    public function actionDate()
     {
-        if ($start_date == '' && $end_date == ''){
+        if (\Yii::$app->request->post('start_date') == '' && \Yii::$app->request->post('end_date') == ''){
             return new ActiveDataProvider([
                 'query' => Attendance::find(),
                 'pagination' => [
                     'pageSize' => 10,
                 ]
             ]);
-        } elseif ($start_date == '' && $end_date != ''){
+        } elseif (\Yii::$app->request->post('start_date') == '' && \Yii::$app->request->post('end_date') != ''){
             return new ActiveDataProvider([
-                'query' => Attendance::find()->where(['<=', 'go_time', $end_date]),
+                'query' => Attendance::find()->where(['<=', 'go_time', \Yii::$app->request->post('end_date')]),
                 'pagination' => [
                     'pageSize' => 10,
                 ],
             ]);
-        } elseif ($start_date != '' && $end_date == ''){
+        } elseif (\Yii::$app->request->post('start_date') != '' && \Yii::$app->request->post('end_date') == ''){
             return new ActiveDataProvider([
-                'query' => Attendance::find()->where(['>=', 'come_time', $start_date]),
+                'query' => Attendance::find()->where(['>=', 'come_time', \Yii::$app->request->post('start_date')]),
                 'pagination' => [
                     'pageSize' => 10,
                 ],
             ]);
         } else {
             return new ActiveDataProvider([
-                'query' => Attendance::find()->where(['>=', 'come_time', $start_date])
-                    ->andWhere(['<=', 'go_time', $end_date]),
+                'query' => Attendance::find()->where(['>=', 'come_time', \Yii::$app->request->post('start_date')])
+                    ->andWhere(['<=', 'go_time', \Yii::$app->request->post('end_date')]),
                 'pagination' => [
                     'pageSize' => 10,
                 ],
