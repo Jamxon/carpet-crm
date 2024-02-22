@@ -66,6 +66,7 @@ return [
                 'GET attendance/findbyuserid' => 'attendance/findbyuserid',
                 'GET attendance/find' => 'attendance/find',
                 'POST attendance/date' => 'attendance/date',
+                'GET attendance/options' => 'attendance/options',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
