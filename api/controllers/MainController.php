@@ -8,6 +8,17 @@ use common\models\OrderItem;
 
 class MainController extends MyController
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['except'] = ['options'];
+        return $behaviors;
+    }
+
+    public function actionOptions()
+    {
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
     public function actionIndex()
     {
         $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());

@@ -6,6 +6,17 @@ use yii\data\ActiveDataProvider;
 
 class OrderitemController extends MyController
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['except'] = ['options'];
+        return $behaviors;
+    }
+
+    public function actionOptions()
+    {
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
     public function actionIndx()
     {
         return new ActiveDataProvider([

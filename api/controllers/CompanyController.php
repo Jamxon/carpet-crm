@@ -12,6 +12,17 @@ use function Symfony\Component\VarDumper\Dumper\esc;
 
 class CompanyController extends MyController
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['except'] = ['options'];
+        return $behaviors;
+    }
+
+    public function actionOptions()
+    {
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
     public function actionIndex()
     {
         return new ActiveDataProvider([
