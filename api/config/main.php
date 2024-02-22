@@ -65,7 +65,7 @@ return [
                 'POST auth/login' => 'auth/login',
                 'GET attendance/findbyuserid' => 'attendance/findbyuserid',
                 'GET attendance/find' => 'attendance/find',
-                'GET attendance/date' => 'attendance/date',
+                'POST attendance/date' => 'attendance/date',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
