@@ -41,7 +41,7 @@ class MainController extends MyController
             'packaged' => $packaged,
             'completed' => $completed,
 //            'registered_order' => $registered_order,
-        'date' => \Yii::$app->request->post('date')
+        'date' => \Yii::$app->request->get('date')
         ];
     }
 }
