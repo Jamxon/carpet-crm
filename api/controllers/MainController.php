@@ -32,7 +32,7 @@ class MainController extends MyController
         $packaged = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Yakunlandi'])->all());
         return [
-            'registered' => $registered,
+//            'registered' => $registered,
             'order' => $order,
             'bringing' => $bringing,
             'cancelled' => $cancelled,
