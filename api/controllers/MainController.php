@@ -30,7 +30,8 @@ class MainController extends MyController
         $registered_order_item = OrderItem::find()
             ->select('size')
             ->leftJoin('order', 'order.id = order_item.order_id')
-            ->where(['created_at' => \Yii::$app->request->get('date')]);
+            ->where(['created_at' => \Yii::$app->request->get('date')])
+            ->all();
         $cleaned = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->count();
         $packaged = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->count();
         $completed = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->count();
