@@ -4,8 +4,6 @@ namespace api\controllers;
 
 use api\models\Customer;
 use common\models\Order;
-use common\models\OrderItem;
-use yii\db\Query;
 
 class MainController extends MyController
 {
