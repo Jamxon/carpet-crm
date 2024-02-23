@@ -31,10 +31,7 @@ class MainController extends MyController
         $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
-        $yuvildi = Query()->select(['order_id', 'SUM(quantity) AS quantity'])
-        ->from(self::tableName())
-        ->groupBy('order_id')
-        ->all();
+        $yuvildi = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yuvildi'])->all());
         return [
             'registered' => $registered,
             'order' => $order,
