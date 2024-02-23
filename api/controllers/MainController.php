@@ -5,6 +5,7 @@ namespace api\controllers;
 use api\models\Customer;
 use common\models\Order;
 use common\models\OrderItem;
+use yii\data\ActiveDataProvider;
 
 class MainController extends MyController
 {
@@ -45,5 +46,61 @@ class MainController extends MyController
             'packaged' => $packaged,
             'completed' => $completed,
         ];
+    }
+    public function actionRegistered_customer()
+    {
+        return new ActiveDataProvider([
+            'query' => Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])
+        ]);
+    }
+    public function actionRegistered_order()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date')])
+        ]);
+    }
+    public function actionReceive_order()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])
+        ]);
+    }
+    public function actionBringing()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])
+        ]);
+    }
+    public function actionCancelled()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])
+        ]);
+    }
+    public function actionRegistered_order_item()
+    {
+        return new ActiveDataProvider([
+            'query' => OrderItem::find()
+                ->leftJoin('order', 'order.id = order_item.order_id')
+                ->where(['created_at' => \Yii::$app->request->get('date')])
+        ]);
+    }
+    public function actionCleaned()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])
+        ]);
+    }
+    public function actionPackaged()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])
+        ]);
+    }
+    public function actionCompleted()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])
+        ]);
     }
 }
