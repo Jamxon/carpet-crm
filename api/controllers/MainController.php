@@ -5,6 +5,7 @@ namespace api\controllers;
 use api\models\Customer;
 use common\models\Order;
 use common\models\OrderItem;
+use yii\db\Query;
 
 class MainController extends MyController
 {
@@ -30,7 +31,10 @@ class MainController extends MyController
         $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
-        $yuvildi = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all();
+        $yuvildi = Query()->select(['order_id', 'SUM(quantity) AS quantity'])
+        ->from(self::tableName())
+        ->groupBy('order_id')
+        ->all();
         return [
             'registered' => $registered,
             'order' => $order,
