@@ -20,26 +20,25 @@ class MainController extends MyController
     }
     public function actionIndex()
     {
-        $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
-        $order = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date')])->all());
+        $registered_customer = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
+        $registered_order = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date')])->all());
+        $receive_order = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])->all());
         $bringing = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->all());
         $cancelled = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->all());
-        $register = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
-        $registered_order = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])->all());
+        $registered_order_item = count(Order::find()->leftJoin('orderitem', 'orderitem.order_id = order.id')->where(['created_at' => \Yii::$app->request->get('date')])->all());
         $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
 
         return [
-            'registered' => $registered,
-            'order' => $order,
+            'registered_customer' => $registered_customer,
+            'registered_order' => $registered_order,
+            'receive_order' => $receive_order,
             'bringing' => $bringing,
             'cancelled' => $cancelled,
-            'register' => $register,
             'cleaned' => $cleaned,
             'packaged' => $packaged,
             'completed' => $completed,
-            'registered_order' => $registered_order,
         ];
     }
 }
