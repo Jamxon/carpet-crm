@@ -22,15 +22,15 @@ class MainController extends MyController
     public function actionIndex()
     {
 //        $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
-        $order = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
-        $bringing = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')),'status' => 'Olib kelishda'])->all());
-        $cancelled = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Bekor qilindi' ])->all());
+        $order = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date')])->all());
+        $bringing = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->all());
+        $cancelled = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->all());
 //        $register = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
         //olingan orderlar
         $registered_order = OrderItem::find()->join('LEFT JOIN', 'order', 'order.id = order_item.order_id')->where(['order.created_at' => date(\Yii::$app->request->get('date'))])->all();
-        $cleaned = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Quritishda'])->all());
-        $packaged = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Yetkazib berishda'])->all());
-        $completed = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Yakunlandi'])->all());
+        $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
+        $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
+        $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
         return [
 //            'registered' => $registered,
             'order' => $order,
