@@ -21,7 +21,7 @@ class MainController extends MyController
     }
     public function actionIndex()
     {
-        $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
+//        $registered = count(Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
         $order = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->all());
         $bringing = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')),'status' => 'Olib kelishda'])->all());
         $cancelled = count(Order::find()->where(['created_at' => date(\Yii::$app->request->get('date')), 'status' => 'Bekor qilindi' ])->all());
