@@ -34,6 +34,7 @@ class MainController extends MyController
             ->select('order.id')
             ->leftJoin('order_item', 'order_item.order_id = order.id')
             ->where(['created_at' => $date])
+            ->andWhere(['order_item.status', 'Quritishda'])
             ->all());
         return [
             'registered' => $registered,
