@@ -31,6 +31,8 @@ class MainController extends MyController
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
         $date = \Yii::$app->request->get('date');
         $yuvildi = Order::find()
+            ->select('order.orderitem')
+            ->join('LEFT JOIN', 'orderitem', 'orderitem.order_id = order.id')
             ->where(['created_at' => $date])
             ->all();
         return [
@@ -43,7 +45,7 @@ class MainController extends MyController
             'packaged' => $packaged,
             'completed' => $completed,
             'registered_order' => $registered_order,
-            'yuvildi' => $yuvildi['orderitem'],
+            'yuvildi' => $yuvildi,
         ];
     }
 }
