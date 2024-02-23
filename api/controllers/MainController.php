@@ -32,7 +32,7 @@ class MainController extends MyController
         $date = \Yii::$app->request->get('date');
         $yuvildi = Order::find()
             ->select('order.id')
-            ->join('LEFT JOIN', 'orderitem', 'orderitem.order_id = order.id')
+            ->leftJoin('order_item', 'order_item.order_id = order.id')
             ->where(['created_at' => $date])
             ->all();
         return [
