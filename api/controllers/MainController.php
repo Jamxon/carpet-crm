@@ -25,7 +25,10 @@ class MainController extends MyController
         $receive_order = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])->all());
         $bringing = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->all());
         $cancelled = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->all());
-        $registered_order_item = count(Order::find()->leftJoin('orderitem', 'orderitem.order_id = order.id')->where(['created_at' => \Yii::$app->request->get('date')])->all());
+        $registered_order_item = Order::find()
+            ->leftJoin('order_item', 'order_item.order_id = order.id')
+            ->where(['created_at' => \Yii::$app->request->get('date')])
+            ->count();
         $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
