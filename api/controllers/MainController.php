@@ -29,7 +29,7 @@ class MainController extends MyController
         $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
-        $yuvildi = Order::findBySql("SELECT order_item FROM `order` WHERE `created_at` = '".\Yii::$app->request->get('date')."' AND `status` = Yakunlandi ")->all();
+        $yuvildi = Order::findBySql("SELECT * FROM `order` WHERE `created_at` = '".\Yii::$app->request->get('date')."' AND `status` = Yakunlandi ")->all();
         return [
             'registered' => $registered,
             'order' => $order,
