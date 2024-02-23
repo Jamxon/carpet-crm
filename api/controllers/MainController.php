@@ -31,7 +31,7 @@ class MainController extends MyController
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
         $date = \Yii::$app->request->get('date');
         $yuvildi = Order::find()
-            ->select('order.orderitem')
+            ->select('order.id')
             ->join('LEFT JOIN', 'orderitem', 'orderitem.order_id = order.id')
             ->where(['created_at' => $date])
             ->all();
