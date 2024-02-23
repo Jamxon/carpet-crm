@@ -4,6 +4,7 @@ namespace api\controllers;
 
 use api\models\Customer;
 use common\models\Order;
+use common\models\OrderItem;
 
 class MainController extends MyController
 {
@@ -25,8 +26,8 @@ class MainController extends MyController
         $receive_order = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])->count();
         $bringing = Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->count();
         $cancelled = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->count();
-        $registered_order_item = Order::find()
-            ->leftJoin('order_item', 'order_item.order_id = order.id')
+        $registered_order_item = OrderItem::find()
+            ->leftJoin('order', 'order.id = order_item.order_id')
             ->where(['created_at' => \Yii::$app->request->get('date')])
             ->count();
         $cleaned = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->count();
