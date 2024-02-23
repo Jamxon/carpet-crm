@@ -43,7 +43,7 @@ class MainController extends MyController
             'packaged' => $packaged,
             'completed' => $completed,
             'registered_order' => $registered_order,
-            'yuvildi' => $yuvildi
+            'yuvildi' => $yuvildi->orderitem,
         ];
     }
 }
