@@ -40,7 +40,7 @@ class MainController extends MyController
             'cleaned' => $cleaned,
             'packaged' => $packaged,
             'completed' => $completed,
-            'registered_order' => $registered_order
+//            'registered_order' => $registered_order
         ];
     }
 }
