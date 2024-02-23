@@ -28,7 +28,7 @@ class MainController extends MyController
         $bringing = Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->count();
         $cancelled = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->count();
         $registered_order_item = OrderItem::find()
-            ->select('order_item.clean_item_id.name, order_item.order_id, order_item.size, order_item.count')
+            ->select('order_item.clean_item_id, order_item.order_id, order_item.size, order_item.count')
             ->leftJoin('clean_item', 'clean_item.id = order_item.clean_item_id')
             ->leftJoin('order', 'order.id = order_item.order_id')
             ->where(['created_at' => \Yii::$app->request->get('date')])
