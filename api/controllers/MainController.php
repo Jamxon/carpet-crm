@@ -37,6 +37,7 @@ class MainController extends MyController
             'bringing' => $bringing,
             'cancelled' => $cancelled,
             'cleaned' => $cleaned,
+            'registered_order_item' => $registered_order_item,
             'packaged' => $packaged,
             'completed' => $completed,
         ];
