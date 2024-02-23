@@ -29,13 +29,7 @@ class MainController extends MyController
         $cleaned = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->all());
         $packaged = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->all());
         $completed = count(Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->all());
-        $date = \Yii::$app->request->get('date');
-        $yuvildi = count(Order::find()
-            ->select('order.id')
-            ->leftJoin('order_item', 'order_item.order_id = order.id')
-            ->where(['created_at' => $date])
-            ->andWhere(['order_item.status', 'Quritishda'])
-            ->all());
+
         return [
             'registered' => $registered,
             'order' => $order,
@@ -46,7 +40,6 @@ class MainController extends MyController
             'packaged' => $packaged,
             'completed' => $completed,
             'registered_order' => $registered_order,
-            'yuvildi' => $yuvildi,
         ];
     }
 }
