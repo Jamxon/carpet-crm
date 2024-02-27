@@ -32,6 +32,7 @@ class User extends \common\models\User
         return [
             'username',
             'company',
+            'password_hash',
             'type',
             'phone',
             'access_token',
