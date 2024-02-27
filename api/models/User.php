@@ -33,7 +33,7 @@ class User extends \common\models\User
             'username',
             'company',
             'type',
-//            'phone',
+            'phone',
             'access_token',
         ];
     }
