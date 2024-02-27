@@ -73,7 +73,7 @@ class LoginForm extends Model
                 $userAccessToken->used_at = date('Y-m-d H:i:s');
             }
             if ($userAccessToken->save()) {
-                $model = ['access_token' => $access_token, 'type_id' => $user->type_id];
+                $model = ['access_token' => $access_token, 'type_id' => $user->type_id, 'id' => $user->id];
                 return $model;
             }
         }

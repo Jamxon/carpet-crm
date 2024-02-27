@@ -35,6 +35,7 @@ class AuthController extends Controller
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             $type = TypeEmployer::find()->where(['id' => $token['type_id']])->one();
             return [
+                'id' => $token['id'],
                 'access_token' => $token['access_token'],
                 'type' => $type->name
             ];
