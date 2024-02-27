@@ -2,6 +2,7 @@
 namespace api\controllers;
 
 use api\models\User;
+use yii\data\ActiveDataProvider;
 
 class UserController extends MyController
 {
@@ -18,7 +19,12 @@ class UserController extends MyController
     }
     public function actionIndex()
     {
-        return User::find()->all();
+        return new ActiveDataProvider([
+            'query' => User::find(),
+            'pagination' => [
+                'pageSize' => 20,
+            ],
+        ]);
     }
     public function actionCreate()
     {
