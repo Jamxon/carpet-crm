@@ -36,6 +36,8 @@ class User extends \common\models\User
             'company',
             'password_hash',
             'type',
+            'comp_id',
+            'type_id',
             'phone',
             'access_token',
         ];
