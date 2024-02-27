@@ -37,6 +37,7 @@ class User extends \common\models\User
             'password_hash',
             'type',
             'phone',
+            'email',
             'access_token',
         ];
     }
