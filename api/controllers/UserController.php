@@ -30,6 +30,7 @@ class UserController extends MyController
     {
        $user = new User();
 
+         $user->name = \Yii::$app->request->post('name');
          $user->username = \Yii::$app->request->post('username');
          $user->auth_key = \Yii::$app->security->generateRandomString();
             $user->password_hash = \Yii::$app->security->generatePasswordHash(\Yii::$app->request->post('password'));
@@ -50,6 +51,7 @@ class UserController extends MyController
     {
         $user = User::findOne($id);
         if (\Yii::$app->request->post()){
+            $user->name = \Yii::$app->request->post('name');
             $user->username = \Yii::$app->request->post('username');
             $user->auth_key = \Yii::$app->security->generateRandomString();
             if (\Yii::$app->request->post('password') != null)

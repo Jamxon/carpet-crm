@@ -13,6 +13,7 @@ use yii\web\IdentityInterface;
  * User model
  *
  * @property integer $id
+ * @property integer $name
  * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
@@ -30,6 +31,7 @@ class User extends \common\models\User
     public function fields()
     {
         return [
+            'name',
             'username',
             'company',
             'password_hash',
