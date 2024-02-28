@@ -28,7 +28,7 @@ class AttendanceController extends MyController
             ]
         ]);
     }
-    public function actionDate($start_date, $end_date)
+    public function actionDate($start_date, $end_date): ActiveDataProvider
     {
         if ($start_date == '' && $end_date == ''){
             return new ActiveDataProvider([
