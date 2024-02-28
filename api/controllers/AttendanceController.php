@@ -30,7 +30,8 @@ class AttendanceController extends MyController
     }
     public function actionDate(): ActiveDataProvider
     {
-        return \Yii::$app->request->post('start_date');
+        $start_date = \Yii::$app->request->post('start_date');
+        return $start_date;
 //        if (\Yii::$app->request->post('start_date') == '' && \Yii::$app->request->post('end_date') == ''){
 //            return new ActiveDataProvider([
 //                'query' => Attendance::find(),
