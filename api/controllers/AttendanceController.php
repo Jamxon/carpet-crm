@@ -12,17 +12,6 @@ class AttendanceController extends MyController
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator']['except'] = ['options'];
-        //date funtion is not working returned cors error
-        $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
-        //cors error
-        $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::className(),
-            'cors' => [
-                'Origin' => ['*'],
-                'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-                'Access-Control-Request-Headers' => ['*'],
-            ],
-        ];
         return $behaviors;
     }
 
