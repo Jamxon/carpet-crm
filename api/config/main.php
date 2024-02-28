@@ -66,7 +66,7 @@ return [
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/findbyuserid' => 'attendance/findbyuserid',
                 'GET attendance/find' => 'attendance/find',
-                'GET attendance/date?<start_date:\d{4}-\d{2}-\d{2}>/<end_date:\d{4}-\d{2}-\d{2}>' => 'attendance/date',
+                'GET attendance/date?<start_date:\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}>/<end_date:\d{4}-\d{2}-\d{2} \d{2}:\d{2}:\d{2}>' => 'attendance/date',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
