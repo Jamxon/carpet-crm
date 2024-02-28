@@ -22,7 +22,7 @@ class AttendanceController extends MyController
     public function actionIndex()
     {
         return new ActiveDataProvider([
-            'query' => Attendance::find(),
+            'query' => Attendance::find()->select("id, user_id, come_time, go_time, full_time, daily_salary, comment"),
             'pagination' => [
                 'pageSize' => 10,
             ]
