@@ -34,8 +34,8 @@ class AttendanceController extends MyController
     }
     public function actionIndex()
     {
-        $startDate = \Yii::$app->request->post('start_date');
-        $endDate = \Yii::$app->request->post('end_date');
+        $startDate = \Yii::$app->request->params['start_date'];
+        $endDate = \Yii::$app->request->params['end_date'];
 
         $query = Attendance::find();
 
