@@ -4,25 +4,45 @@ namespace api\controllers;
 
 use api\models\Attendance;
 use yii\data\ActiveDataProvider;
+use yii\filters\auth\HttpBearerAuth;
+use yii\filters\ContentNegotiator;
+use yii\filters\VerbFilter;
 use yii\web\Response;
 
 class AttendanceController extends MyController
 {
     public function behaviors()
     {
-        $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options'];
-        $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::class,
-            'cors' => [
-                'Origin' => ['*'],
-                'Access-Control-Request-Method' => ['POST'],
-                'Access-Control-Request-Headers' => ['*'],
+        return [
+            'authenticator' => [
+                'class' => HttpBearerAuth::className(),
+                'except' => ['options'],
+            ],
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+                'cors' => [
+                    'Origin' => ['*'],
+                    'Access-Control-Request-Method' => ['POST'],
+                    'Access-Control-Request-Headers' => ['*'],
+                ],
+            ],
+            'contentNegotiator' => [
+                'class' => ContentNegotiator::className(),
+                'formats' => [
+                    'application/json' => Response::FORMAT_JSON,
+                ],
+                'only' => ['date'],
+                'except' => ['options'],
+            ],
+            'verbFilter' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'date' => ['post'],
+                ],
             ],
         ];
-
-        return $behaviors;
     }
+
 
     public function actionOptions()
     {
