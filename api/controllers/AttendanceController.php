@@ -14,29 +14,14 @@ class AttendanceController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => HttpBearerAuth::class,
-            'except' => ['options'],
-        ];
-        $behaviors['contentNegotiator'] = [
-            'class' => ContentNegotiator::class,
-            'formats' => [
-                'application/json' => Response::FORMAT_JSON,
-            ],
-        ];
-        $behaviors['verbs'] = [
-            'class' => VerbFilter::class,
-            'actions' => [
-                'index' => ['GET'],
-                'view' => ['GET'],
-                'create' => ['POST'],
-                'update' => ['PUT'],
-                'delete' => ['DELETE'],
-            ],
-        ];
+        $behaviors['authenticator']['except'] = ['options'];
         return $behaviors;
     }
 
+    public function actionOptions()
+    {
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
