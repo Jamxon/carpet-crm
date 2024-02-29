@@ -31,7 +31,7 @@ class AttendanceController extends MyController
     public function actionIndex()
     {
         return new ActiveDataProvider([
-            'query' => Attendance::find()->select("id, go_time, full_time, daily_salary, comment"),
+            'query' => Attendance::find(),
             'pagination' => [
                 'pageSize' => 10,
             ]
