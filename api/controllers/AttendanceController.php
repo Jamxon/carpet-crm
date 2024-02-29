@@ -37,6 +37,9 @@ class AttendanceController extends MyController
                 'delete' => ['DELETE'],
                 'options' => ['OPTIONS'],
             ],
+            $behaviors['corsFilter'] = [
+                'class' => \yii\filters\Cors::class,
+            ],
         ];
         return $behaviors;
     }
