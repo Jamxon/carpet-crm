@@ -5,8 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="ervertber">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/main.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/controllers/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AttendanceController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +204,7 @@
       <workItem from="1709002313298" duration="285000" />
       <workItem from="1709002622707" duration="4892000" />
       <workItem from="1709053712034" duration="2606000" />
-      <workItem from="1709095501320" duration="15943000" />
+      <workItem from="1709095501320" duration="16144000" />
     </task>
     <task id="LOCAL-00001" summary="ervertber">
       <option name="closed" value="true" />

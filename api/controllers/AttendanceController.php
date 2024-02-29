@@ -8,6 +8,19 @@ use yii\data\ActiveDataProvider;
 
 class AttendanceController extends MyController
 {
+    public function behaviors()
+    {
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator']['except'] = ['options', 'index', 'date'];
+        return $behaviors;
+    }
+
+    public function actionOptions()
+    {
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
+
+
     public function actionIndex()
     {
         return \api\models\Attendance::find()->all();
@@ -15,8 +28,13 @@ class AttendanceController extends MyController
 
     public function actionDate()
     {
-        $startDate = \Yii::$app->request->post('start_date');
-        $endDate = \Yii::$app->request->post('end_date');
+        //Get the start date and end date from the request where in params
+
+        $startDate = \Yii::$app->request->get('start_date');
+        $endDate = \Yii::$app->request->get('end_date');
+
+//        $startDate = \Yii::$app->request->post('start_date');
+//        $endDate = \Yii::$app->request->post('end_date');
 
         $query = Attendance::find();
 
