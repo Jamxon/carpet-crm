@@ -12,6 +12,9 @@ class AttendanceController extends MyController
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator']['except'] = ['options'];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::class,
+        ];
         return $behaviors;
     }
 
