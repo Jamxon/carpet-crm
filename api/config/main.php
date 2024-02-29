@@ -98,6 +98,7 @@ return [
                 'POST auth/login' => 'auth/login',
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/findbyuserid' => 'attendance/findbyuserid',
+                'POST attendance/date' => 'attendance/date',
                 'GET attendance/find' => 'attendance/find',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
