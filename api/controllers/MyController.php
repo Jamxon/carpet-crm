@@ -39,4 +39,8 @@ class MyController extends Controller
         ];
         return $behaviors;
     }
+    public function actionOptions()
+    {
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
 }
