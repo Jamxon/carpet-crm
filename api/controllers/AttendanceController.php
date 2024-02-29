@@ -16,7 +16,7 @@ class AttendanceController extends MyController
         $behaviors = parent::behaviors();
         $behaviors['authenticator'] = [
             'class' => HttpBearerAuth::class,
-            'except' => ['options'],
+            'except' => ['options','date'],
         ];
         $behaviors['contentNegotiator'] = [
             'class' => ContentNegotiator::class,
