@@ -28,13 +28,8 @@ class AttendanceController extends MyController
 
     public function actionDate()
     {
-        //Get the start date and end date from the request where in params
-
-        $startDate = \Yii::$app->request->get('start_date');
-        $endDate = \Yii::$app->request->get('end_date');
-
-//        $startDate = \Yii::$app->request->post('start_date');
-//        $endDate = \Yii::$app->request->post('end_date');
+        $startDate = \Yii::$app->request->post('start_date');
+        $endDate = \Yii::$app->request->post('end_date');
 
         $query = Attendance::find();
 
