@@ -19,6 +19,16 @@ return [
                 'application/json' => 'yii\web\JsonParser',
             ]
         ],
+        'response' => [
+            // ...
+            'formatters' => [
+                'json' => [
+                    'class' => 'yii\web\JsonResponseFormatter',
+                    'prettyPrint' => YII_DEBUG,
+                    'encodeOptions' => JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE,
+                ],
+            ],
+        ],
         'user' => [
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
@@ -61,12 +71,33 @@ return [
                         'typeemployer',
                         'main',
                     ],
+                    'extraPatterns' => [
+                        'GET options' => 'options',
+                        'GET date' => 'date',
+                        'GET view' => 'view',
+                        'GET search' => 'search',
+                        'GET searchbyphone' => 'searchbyphone',
+                        'GET searchbyname' => 'searchbyname',
+                        'GET bringing' => 'bringing',
+                        'GET cleaning' => 'cleaning',
+                        'GET drying' => 'drying',
+                        'GET packaging' => 'packaging',
+                        'GET delivering' => 'delivering',
+                        'GET complete' => 'complete',
+                        'GET registered_customer' => 'registered_customer',
+                        'GET registered_order' => 'registered_order',
+                        'GET receive_order' => 'receive_order',
+                        'GET cancelled' => 'cancelled',
+                        'GET cleaned' => 'cleaned',
+                        'GET registered_order_item' => 'registered_order_item',
+                        'GET packaged' => 'packaged',
+                        'GET completed' => 'completed',
+                    ]
                 ],
                 'POST auth/login' => 'auth/login',
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/findbyuserid' => 'attendance/findbyuserid',
                 'GET attendance/find' => 'attendance/find',
-                'POST attendance/date' => 'attendance/date',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
