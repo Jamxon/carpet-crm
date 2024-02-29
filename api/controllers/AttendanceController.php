@@ -34,11 +34,25 @@ class AttendanceController extends MyController
     }
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Attendance::find(),
-        ]);
+        $startDate = \Yii::$app->request->post('start_date');
+        $endDate = \Yii::$app->request->post('end_date');
 
-        return $dataProvider;
+        $query = Attendance::find();
+
+        if (!empty($startDate)) {
+            $query->andWhere(['>=', 'come_time', $startDate]);
+        }
+
+        if (!empty($endDate)) {
+            $query->andWhere(['<=', 'go_time', $endDate]);
+        }
+
+        return new ActiveDataProvider([
+            'query' => $query,
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+        ]);
     }
 
     public function actionCreate()
