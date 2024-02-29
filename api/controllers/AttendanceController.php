@@ -13,34 +13,32 @@ class AttendanceController extends MyController
 {
     public function behaviors()
     {
-        return [
-            'authenticator' => [
-                'class' => HttpBearerAuth::className(),
-                'except' => ['options'],
-            ],
-            'corsFilter' => [
-                'class' => \yii\filters\Cors::class,
-                'cors' => [
-                    'Origin' => ['*'],
-                    'Access-Control-Request-Method' => ['POST'],
-                    'Access-Control-Request-Headers' => ['*'],
-                ],
-            ],
-            'contentNegotiator' => [
-                'class' => ContentNegotiator::className(),
-                'formats' => [
-                    'application/json' => Response::FORMAT_JSON,
-                ],
-                'only' => ['date'],
-                'except' => ['options'],
-            ],
-            'verbFilter' => [
-                'class' => VerbFilter::className(),
-                'actions' => [
-                    'date' => ['post'],
-                ],
+        $behaviors = parent::behaviors();
+        $behaviors['authenticator'] = [
+            'class' => HttpBearerAuth::class,
+            'except' => ['options'],
+        ];
+        $behaviors['contentNegotiator'] = [
+            'class' => ContentNegotiator::class,
+            'formats' => [
+                'application/json' => Response::FORMAT_JSON,
             ],
         ];
+        $behaviors['verbs'] = [
+            'class' => VerbFilter::class,
+            'actions' => [
+                'index' => ['GET'],
+                'date' => ['POST'],
+                'view' => ['GET'],
+                'find' => ['GET'],
+                'findbyuserid' => ['GET'],
+                'create' => ['POST'],
+                'update' => ['PUT'],
+                'delete' => ['DELETE'],
+                'options' => ['OPTIONS'],
+            ],
+        ];
+        return $behaviors;
     }
 
 
