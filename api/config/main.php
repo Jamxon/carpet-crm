@@ -75,7 +75,7 @@ return [
                 'POST auth/login' => 'auth/login',
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/index' => 'attendance/index',
-                ' attendance/date' => 'attendance/date',
+                'POST attendance/date' => 'attendance/date',
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
