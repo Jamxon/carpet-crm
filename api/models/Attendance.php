@@ -13,6 +13,7 @@ use Yii;
  * @property string|null $go_time
  * @property int|null $full_time
  * @property int|null $daily_salary
+ * @property int|null $status
  * @property string|null $comment
  */
 class Attendance extends \common\models\Attendance
@@ -33,6 +34,7 @@ class Attendance extends \common\models\Attendance
             'go_time',
             'full_time',
             'daily_salary',
+            'status',
             'comment',
         ];
     }
