@@ -74,7 +74,6 @@ return [
                     'extraPatterns' => [
                         'GET options' => 'options',
                         'POST date' => 'date',
-                        'GET date' => 'date',
                         'GET view' => 'view',
                         'GET search' => 'search',
                         'GET searchbyphone' => 'searchbyphone',
