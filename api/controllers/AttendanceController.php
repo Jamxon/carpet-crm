@@ -14,13 +14,23 @@ class AttendanceController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
+        $auth = $behaviors['authenticator'];
+        unset($behaviors['authenticator']);
+
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::class,
+        ];
+        $behaviors['authenticator'] = $auth;
         $behaviors['authenticator']['except'] = ['options'];
+
         return $behaviors;
     }
 
     public function actionOptions()
     {
-        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+        $header = \Yii::$app->response->getHeaders();
+        $header->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+        return $header;
     }
     public function actionIndex()
     {
