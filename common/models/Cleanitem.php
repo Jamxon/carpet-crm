@@ -15,7 +15,7 @@ use Yii;
  *
  * @property OrderItem[] $orderItems
  */
-class CleanItem extends \yii\db\ActiveRecord
+class Cleanitem extends \yii\db\ActiveRecord
 {
     /**
      * {@inheritdoc}

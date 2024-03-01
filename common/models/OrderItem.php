@@ -14,7 +14,7 @@ use Yii;
  * @property int|null $size
  * @property int|null $count
  *
- * @property CleanItem $cleanItem
+ * @property Cleanitem $cleanItem
  * @property Order $order
  */
 class OrderItem extends \yii\db\ActiveRecord
@@ -72,7 +72,7 @@ class OrderItem extends \yii\db\ActiveRecord
      */
     public function getCleanItem()
     {
-        return $this->hasOne(CleanItem::class, ['id' => 'clean_item_id']);
+        return $this->hasOne(\common\models\Cleanitem::class, ['id' => 'clean_item_id']);
     }
 
     /**

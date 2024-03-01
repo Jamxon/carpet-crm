@@ -3,7 +3,7 @@
 namespace api\controllers;
 
 use api\models\Customer;
-use common\models\CleanItem;
+use common\models\Cleanitem;
 use common\models\Order;
 use common\models\OrderItem;
 use Psy\Util\Json;
@@ -38,7 +38,7 @@ class OrderController extends MyController
     {
         $model = new Order();
         $orderItem = new OrderItem();
-        $cleanItem = new CleanItem();
+        $cleanItem = new Cleanitem();
         $orderItems = OrderItem::find()->all();
         if (\Yii::$app->request->post()) {
             $model->load(\Yii::$app->request->post(), '');
