@@ -39,7 +39,7 @@ class OrderController extends MyController
     {
         $customer = new Customer();
         $order = new Order();
-        if (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_customer') == 1) {
+        if (\Yii::$app->request->post('add_new_customer') == 1) {
             $customer->load(\Yii::$app->request->post(), '');
             $customer->employer_id = \Yii::$app->request->post('employer_id');
             $customer->name = \Yii::$app->request->post('name');
@@ -70,7 +70,7 @@ class OrderController extends MyController
                 return $customer->getErrors();
             }
         }
-        elseif (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_order') == 1) {
+        elseif (\Yii::$app->request->post('add_new_order') == 1) {
             $order->load(\Yii::$app->request->post(), '');
             $order->customer_id = \Yii::$app->request->post('customer_id');
             $order->date = \Yii::$app->request->post('date_order');
