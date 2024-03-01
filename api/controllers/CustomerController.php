@@ -66,20 +66,27 @@ class CustomerController extends MyController
             ]
         ]);
     }
-    public function actionCreate($employer_id, $name, $phone_1, $phone_2, $address, $date, $source, $level, $comment)
+    public function actionCreate()
     {
-        $model = new \common\models\Customer();
-        $model->employer_id = $employer_id;
-        $model->name = $name;
-        $model->phone_1 = $phone_1;
-        $model->phone_2 = $phone_2;
-        $model->address = $address;
-        $model->date = $date;
-        $model->source = $source;
-        $model->level = $level;
-        $model->comment = $comment;
-        $model->save();
-        return $model;
+        $customer = new \common\models\Customer();
+       if (\Yii::$app->request->post()){
+           $customer->load(\Yii::$app->request->post(), '');
+           $customer->employer_id = \Yii::$app->request->post('employer_id');
+           $customer->name = \Yii::$app->request->post('name');
+           $customer->phone_1 = \Yii::$app->request->post('phone_1');
+           $customer->phone_2 = \Yii::$app->request->post('phone_2');
+           $customer->address = \Yii::$app->request->post('address');
+           $customer->date = \Yii::$app->request->post('date_call');
+           $customer->source = \Yii::$app->request->post('source');
+           $customer->level = \Yii::$app->request->post('level');
+           $customer->comment = \Yii::$app->request->post('comment_call');
+           if ($customer->save()){
+               return ["Success"];
+              }else {
+                return $customer->getErrors();
+           }
+       }
+       return $customer;
     }
     public function actionUpdate($id)
     {

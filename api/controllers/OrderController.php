@@ -39,7 +39,7 @@ class OrderController extends MyController
     {
         $customer = new Customer();
         $order = new Order();
-        if (\Yii::$app->request->post()) {
+        if (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_customer') == 1) {
             $customer->load(\Yii::$app->request->post(), '');
             $customer->employer_id = \Yii::$app->request->post('employer_id');
             $customer->name = \Yii::$app->request->post('name');
@@ -50,7 +50,7 @@ class OrderController extends MyController
             $customer->source = \Yii::$app->request->post('source');
             $customer->level = \Yii::$app->request->post('level');
             $customer->comment = \Yii::$app->request->post('comment_call');
-            if ($customer->save()) {
+            if ($customer->save() && \Yii::$app->request->post('add_new_order') == 1) {
                 $order->load(\Yii::$app->request->post(), '');
                 $order->customer_id = $customer->id;
                 $order->date = \Yii::$app->request->post('date_order');
@@ -68,6 +68,23 @@ class OrderController extends MyController
                 }
             } else {
                 return $customer->getErrors();
+            }
+        }
+        elseif (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_order') == 1) {
+            $order->load(\Yii::$app->request->post(), '');
+            $order->customer_id = \Yii::$app->request->post('customer_id');
+            $order->date = \Yii::$app->request->post('date_order');
+            $order->status = "Olib kelishda";
+            $order->discount_type = \Yii::$app->request->post('discount_type');
+            $order->discount_item = \Yii::$app->request->post('discount_item');
+            $order->discount_amount = \Yii::$app->request->post('discount_amount');
+            $order->driver_id = \Yii::$app->request->post('driver_id');
+            $order->finish_discount_price = null;
+            $order->comment = \Yii::$app->request->post('comment_order');
+            if ($order->save()) {
+                return \Yii::$app->response->statusCode = 201;
+            } else {
+                return $order->getErrors();
             }
         }
         else {
