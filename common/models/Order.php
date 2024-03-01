@@ -18,6 +18,7 @@ use Yii;
  * @property string|null $discount_item
  * @property string|null $discount_amount
  * @property string|null $finish_discount_price
+ * @property string|null $driver_id
  * @property string|null $comment
  * @property string|null $created_at
  *

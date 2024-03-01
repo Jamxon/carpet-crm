@@ -46,18 +46,19 @@ class OrderController extends MyController
             $customer->phone_1 = \Yii::$app->request->post('phone_1');
             $customer->phone_2 = \Yii::$app->request->post('phone_2');
             $customer->address = \Yii::$app->request->post('address');
-            $customer->date = \Yii::$app->request->post('date');
+            $customer->date = \Yii::$app->request->post('date_call');
             $customer->source = \Yii::$app->request->post('source');
             $customer->level = \Yii::$app->request->post('level');
             $customer->comment = \Yii::$app->request->post('comment_call');
             if ($customer->save()) {
                 $order->load(\Yii::$app->request->post(), '');
                 $order->customer_id = $customer->id;
-                $order->date = \Yii::$app->request->post('date');
+                $order->date = \Yii::$app->request->post('date_order');
                 $order->status = "Olib kelishda";
                 $order->discount_type = \Yii::$app->request->post('discount_type');
                 $order->discount_item = \Yii::$app->request->post('discount_item');
                 $order->discount_amount = \Yii::$app->request->post('discount_amount');
+                $order->driver_id = \Yii::$app->request->post('driver_id');
                 $order->finish_discount_price = null;
                 $order->comment = \Yii::$app->request->post('comment_order');
                 if ($order->save()) {
