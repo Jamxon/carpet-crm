@@ -82,7 +82,7 @@ class OrderController extends MyController
             $order->finish_discount_price = null;
             $order->comment = \Yii::$app->request->post('comment_order');
             if ($order->save()) {
-                return \Yii::$app->response->statusCode = 201;
+                return ['Success'];
             } else {
                 return $order->getErrors();
             }
