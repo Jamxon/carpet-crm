@@ -8,6 +8,7 @@ use common\models\Order;
 use common\models\OrderItem;
 use Psy\Util\Json;
 use yii\data\ActiveDataProvider;
+use yii\debug\models\search\User;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
@@ -36,28 +37,40 @@ class OrderController extends MyController
     }
     public function actionCreate()
     {
-        $model = new Order();
-        $orderItem = new OrderItem();
-        $cleanItem = new Cleanitem();
-        $orderItems = OrderItem::find()->all();
+        $customer = new Customer();
+        $order = new Order();
         if (\Yii::$app->request->post()) {
-            $model->load(\Yii::$app->request->post(), '');
-            $model->customer_id = \Yii::$app->request->post('customer_id');
-            $model->date = \Yii::$app->request->post('date');
-            $model->status = \Yii::$app->request->post('status');
-            $model->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
-            $model->comment = \Yii::$app->request->post('comment');
-            $orderItem->clean_item_id = $cleanItem->id;
-            $orderItem->order_id = $model->id;
-            $orderItem->size = \Yii::$app->request->post('size');
-            $orderItem->count = \Yii::$app->request->post('count');
-            if ($model->save() && $orderItem->save()) {
-                return ["Success" => "Order saved successfully"];
+            $customer->load(\Yii::$app->request->post(), '');
+            $customer->employer_id = \Yii::$app->request->post('employer_id');
+            $customer->name = \Yii::$app->request->post('name');
+            $customer->phone_1 = \Yii::$app->request->post('phone_1');
+            $customer->phone_2 = \Yii::$app->request->post('phone_2');
+            $customer->address = \Yii::$app->request->post('address');
+            $customer->date = \Yii::$app->request->post('date');
+            $customer->source = \Yii::$app->request->post('source');
+            $customer->level = \Yii::$app->request->post('level');
+            $customer->comment = \Yii::$app->request->post('comment');
+            if ($customer->save()) {
+                $order->load(\Yii::$app->request->post(), '');
+                $order->customer_id = $customer->id;
+                $order->date = \Yii::$app->request->post('date');
+                $order->status = "Olib kelishda";
+                $order->discount_type = \Yii::$app->request->post('discount_type');
+                $order->discount_item = \Yii::$app->request->post('discount_item');
+                $order->discount_amount = \Yii::$app->request->post('discount_amount');
+                $order->finish_discount_price = null;
+                $order->comment = \Yii::$app->request->post('comment');
+                if ($order->save()) {
+                    return \Yii::$app->response->statusCode = 201;
+                } else {
+                    return $order->getErrors();
+                }
             } else {
-                return $model->getErrors();
+                return $customer->getErrors();
             }
-        } else {
-            return $orderItems;
+        }
+        else {
+            return "To'g'ri jo'nat krisa";
         }
     }
     public function actionUpdate($id)

@@ -14,6 +14,9 @@ use Yii;
  * @property int|null $record_id
  * @property string|null $date
  * @property string|null $status
+ * @property string|null $discount_type
+ * @property string|null $discount_item
+ * @property string|null $discount_amount
  * @property string|null $finish_discount_price
  * @property string|null $comment
  * @property string|null $created_at
