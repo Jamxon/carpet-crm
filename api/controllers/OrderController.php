@@ -49,7 +49,7 @@ class OrderController extends MyController
             $customer->date = \Yii::$app->request->post('date');
             $customer->source = \Yii::$app->request->post('source');
             $customer->level = \Yii::$app->request->post('level');
-            $customer->comment = \Yii::$app->request->post('comment');
+            $customer->comment = \Yii::$app->request->post('comment_call');
             if ($customer->save()) {
                 $order->load(\Yii::$app->request->post(), '');
                 $order->customer_id = $customer->id;
@@ -59,7 +59,7 @@ class OrderController extends MyController
                 $order->discount_item = \Yii::$app->request->post('discount_item');
                 $order->discount_amount = \Yii::$app->request->post('discount_amount');
                 $order->finish_discount_price = null;
-                $order->comment = \Yii::$app->request->post('comment');
+                $order->comment = \Yii::$app->request->post('comment_order');
                 if ($order->save()) {
                     return \Yii::$app->response->statusCode = 201;
                 } else {
