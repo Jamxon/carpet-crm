@@ -74,6 +74,7 @@ return [
                 ],
                 'POST auth/login' => 'auth/login',
                 'GET user/getdriver' => 'user/getdriver',
+                'GET user/options' => 'user/options',
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/index' => 'attendance/index',
                 'POST attendance/date' => 'attendance/date',
