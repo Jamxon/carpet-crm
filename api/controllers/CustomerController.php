@@ -11,7 +11,7 @@ class CustomerController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options'];
+        $behaviors['authenticator']['except'] = ['options','searchbyphone'];
         return $behaviors;
     }
 
