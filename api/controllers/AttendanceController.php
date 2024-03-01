@@ -52,7 +52,4 @@ class AttendanceController extends MyController
             throw new \yii\web\MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
         }
     }
-
-
-
 }
