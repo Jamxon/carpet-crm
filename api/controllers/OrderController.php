@@ -39,7 +39,7 @@ class OrderController extends MyController
     {
         $customer = new Customer();
         $order = new Order();
-        return \Yii::$app->request->post('name');
+        return \Yii::$app->request->post('discount_type');
 //        if (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_customer') == 1  && \Yii::$app->request->post('add_new_order') == 1) {
 //            $customer->load(\Yii::$app->request->post(), '');
 //            $customer->employer_id = \Yii::$app->request->post('employer_id');
