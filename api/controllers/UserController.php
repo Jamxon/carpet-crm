@@ -9,7 +9,7 @@ class UserController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options', 'index', 'create', 'update', 'view', 'delete'];
+        $behaviors['authenticator']['except'] = ['options', 'index', 'create', 'update', 'view', 'delete', 'getdriver'];
         return $behaviors;
     }
 
