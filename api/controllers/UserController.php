@@ -82,7 +82,7 @@ class UserController extends MyController
         $user->delete();
         return $user;
     }
-    public function Getdriver()
+    public function actionGetdriver()
     {
         return new ActiveDataProvider([
             'query' => User::find()->where(['type_id' => 4]),
