@@ -39,7 +39,7 @@ class OrderController extends MyController
     {
         $customer = new Customer();
         $order = new Order();
-        if (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_customer') == 1) {
+        if (\Yii::$app->request->post() && \Yii::$app->request->post('add_new_customer') == 1  && \Yii::$app->request->post('add_new_order') == 1) {
             $customer->load(\Yii::$app->request->post(), '');
             $customer->employer_id = \Yii::$app->request->post('employer_id');
             $customer->name = \Yii::$app->request->post('name');
@@ -50,7 +50,7 @@ class OrderController extends MyController
             $customer->source = \Yii::$app->request->post('source');
             $customer->level = \Yii::$app->request->post('level');
             $customer->comment = \Yii::$app->request->post('comment_call');
-            if ($customer->save() && \Yii::$app->request->post('add_new_order') == 1) {
+            if ($customer->save()) {
                 $order->load(\Yii::$app->request->post(), '');
                 $order->customer_id = $customer->id;
                 $order->date = \Yii::$app->request->post('date_order');
@@ -88,7 +88,7 @@ class OrderController extends MyController
             }
         }
         else {
-            return "To'g'ri jo'nat krisa";
+            return $order->getErrors();
         }
     }
     public function actionUpdate($id)
