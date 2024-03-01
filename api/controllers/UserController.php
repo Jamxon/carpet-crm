@@ -99,5 +99,4 @@ class UserController extends MyController
             ->all();
         return $users;
     }
-
 }
