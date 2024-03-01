@@ -51,6 +51,6 @@ class CleanitemController extends MyController
     }
     public function actionDelete($id)
     {
-        return \common\models\Cleanitem::deleteAll(['id' => $id]);
+        return (new \common\models\Cleanitem)->delete(['id' => $id]);
     }
 }

@@ -12,6 +12,7 @@ use Yii;
  * @property string|null $name
  * @property string|null $size
  * @property int|null $price
+ * @property int|null $min_price
  *
  * @property OrderItem[] $orderItems
  */
