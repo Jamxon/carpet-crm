@@ -9,7 +9,10 @@ class UserController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options', 'index', 'create', 'update', 'view', 'delete', 'getdriver'];
+        $behaviors['authenticator']['except'] = ['options', 'index', 'create', 'update', 'view', 'delete'];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::class,
+        ];
         return $behaviors;
     }
 
