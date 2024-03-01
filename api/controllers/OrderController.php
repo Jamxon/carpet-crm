@@ -102,14 +102,7 @@ class OrderController extends MyController
             ),
         ]);
     }
-    public function actionSearchbyphone()
-    {
-        $model = new ActiveDataProvider([
-            'query' => Order::findBySql(
-                "SELECT id FROM `order` WHERE `phone` LIKE '%" . \Yii::$app->request->get('phone') . "%'"
-            ),
-        ]);
-    }
+
     public function actionBringing()
     {
         return new ActiveDataProvider([
