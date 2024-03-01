@@ -31,15 +31,14 @@ class User extends \common\models\User
     public function fields()
     {
         return [
+            'id',
             'name',
             'username',
             'company',
-            'password_hash',
             'type',
             'comp_id',
             'type_id',
             'phone',
-            'access_token',
         ];
     }
     public function getType()
