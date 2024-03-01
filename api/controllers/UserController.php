@@ -90,6 +90,7 @@ class UserController extends MyController
     }
     public function actionGetdriver()
     {
+        \Yii::$app->response->getHeaders()->set('Access-Control-Allow-Origin', '*');
         return new ActiveDataProvider([
             'query' => User::find()->where(['type_id' => 4]),
         ]);
