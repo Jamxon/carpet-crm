@@ -17,6 +17,12 @@ class UserController extends MyController
     {
         \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
     }
+    public function actions()
+    {
+        $actions = parent::actions();
+        unset($actions['index'], $actions['create'], $actions['update'], $actions['view'], $actions['delete']);
+        return $actions;
+    }
     public function actionIndex()
     {
         return new ActiveDataProvider([
