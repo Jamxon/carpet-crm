@@ -17,7 +17,7 @@ class OrderController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options'];
+        $behaviors['authenticator']['except'] = ['options','bringing','cleaning','drying','packaging','delivering','complete','cancelled'];
         return $behaviors;
     }
 
