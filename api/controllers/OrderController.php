@@ -26,7 +26,6 @@ class OrderController extends MyController
             ],
             'except' => ['options'],
             'optional' => ['index', 'view', 'search', 'bringing', 'cleaning', 'drying', 'packaging', 'delivering', 'complete', 'cancelled'],
-            'checkAccess' => 'checkAccess',
         ];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['corsFilter'] = [
