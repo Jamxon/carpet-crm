@@ -61,7 +61,7 @@ class User extends ActiveRecord implements IdentityInterface
     }
     public function getCompany()
     {
-        return $this->hasOne(Company::class, ['user_id' => 'id']);
+        return $this->hasOne(Company::class, ['id' => 'comp_id']);
     }
     /**
      * {@inheritdoc}
