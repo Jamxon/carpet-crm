@@ -18,6 +18,7 @@ class OrderController extends MyController
     {
         $behaviors = parent::behaviors();
         $behaviors['authenticator']['except'] = ['options','bringing','cleaning','drying','packaging','delivering','complete','cancelled'];
+        $behaviors['authenticator']['class'] = \yii\filters\auth\HttpBearerAuth::class;
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::class,
