@@ -57,6 +57,7 @@ class Order extends \yii\db\ActiveRecord
             'date',
             'status',
             'finish_discount_price', // Add this line
+            'driver_id',
             'comment',
         ];
     }
