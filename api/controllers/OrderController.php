@@ -9,6 +9,8 @@ use common\models\OrderItem;
 use Psy\Util\Json;
 use yii\data\ActiveDataProvider;
 use yii\debug\models\search\User;
+use yii\filters\auth\CompositeAuth;
+use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
 use yii\web\Response;
 
@@ -17,8 +19,15 @@ class OrderController extends MyController
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options','bringing','cleaning','drying','packaging','delivering','complete','cancelled'];
-        $behaviors['authenticator']['class'] = \yii\filters\auth\HttpBearerAuth::class;
+        $behaviors['authenticator'] = [
+            'class' => CompositeAuth::class,
+            'authMethods' => [
+//                HttpBasicAuth::class,
+                HttpBearerAuth::class,
+//                QueryParamAuth::class,
+            ],
+            'except' => ['options'],
+        ];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::class,
