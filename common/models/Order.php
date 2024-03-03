@@ -98,6 +98,10 @@ class Order extends \yii\db\ActiveRecord
     }
     public function getDriver()
     {
-        return $this->hasOne(User::class, ['id' => 'driver_id']);
+        if ($this->driver_id == 0){
+            return $this->driver_id;
+        }else{
+            return $this->hasOne(User::class, ['id' => 'driver_id']);
+        }
     }
 }
