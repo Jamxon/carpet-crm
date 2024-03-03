@@ -24,7 +24,7 @@ class OrderController extends MyController
             'authMethods' => [
                 HttpBearerAuth::class,
             ],
-            'except' => ['options'],
+            'except' => ['options', 'index', 'view', 'search', 'bringing', 'cleaning', 'drying', 'packaging', 'delivering', 'complete', 'cancelled'],
             'optional' => ['index', 'view', 'search', 'bringing', 'cleaning', 'drying', 'packaging', 'delivering', 'complete', 'cancelled'],
         ];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
