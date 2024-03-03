@@ -52,4 +52,14 @@ class AttendanceController extends MyController
             throw new \yii\web\MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
         }
     }
+    public function actionCreate()
+    {
+        $model = new Attendance();
+        $model->load(\Yii::$app->request->post(), '');
+        if ($model->save()) {
+            return $model;
+        } else {
+            return $model->getErrors();
+        }
+    }
 }
