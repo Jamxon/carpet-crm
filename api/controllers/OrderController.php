@@ -22,11 +22,11 @@ class OrderController extends MyController
         $behaviors['authenticator'] = [
             'class' => CompositeAuth::class,
             'authMethods' => [
-//                HttpBasicAuth::class,
                 HttpBearerAuth::class,
-//                QueryParamAuth::class,
             ],
             'except' => ['options'],
+            'optional' => ['index', 'view', 'search', 'bringing', 'cleaning', 'drying', 'packaging', 'delivering', 'complete', 'cancelled'],
+            'checkAccess' => 'checkAccess',
         ];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['corsFilter'] = [
