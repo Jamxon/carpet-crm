@@ -87,6 +87,7 @@ return [
                 'GET order/packaging' => 'order/packaging',
                 'GET order/delivering' => 'order/delivering',
                 'GET order/complete' => 'order/complete',
+                'GET order/cancelled' => 'order/cancelled',
                 'GET main/options' => 'main/options',
                 'GET main/index' => 'main/index',
                 'GET main/registered_customer' => 'main/registered_customer',
