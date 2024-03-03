@@ -56,7 +56,7 @@ class Order extends \yii\db\ActiveRecord
             'record_id',
             'date',
             'status',
-            'finish_discount_price', // Add this line
+            'finish_discount_price',
             'driver',
             'comment',
         ];
