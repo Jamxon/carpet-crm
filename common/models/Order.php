@@ -57,7 +57,7 @@ class Order extends \yii\db\ActiveRecord
             'date',
             'status',
             'finish_discount_price', // Add this line
-            'driver_id',
+            'driver',
             'comment',
         ];
     }
@@ -95,5 +95,9 @@ class Order extends \yii\db\ActiveRecord
     public function getOrderitem()
     {
         return $this->hasMany(OrderItem::class, ['order_id' => 'id']);
+    }
+    public function getDriver()
+    {
+        return $this->hasOne(User::class, ['id' => 'driver_id']);
     }
 }
