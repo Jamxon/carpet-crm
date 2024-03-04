@@ -104,28 +104,25 @@ class OrderController extends MyController
     }
     public function actionUpdate($id)
     {
-        $model =Order::findOne($id);
-        $orderItem =OrderItem::find()->where(['order_id' => $model->id]);
-        if (\Yii::$app->request->post()) {
-            $model->load(\Yii::$app->request->post(), '');
-            $model->customer_id = \Yii::$app->request->post('customer_id');
-            $model->date = \Yii::$app->request->post('date');
-            $model->status = \Yii::$app->request->post('status');
-            $model->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
-            $model->comment = \Yii::$app->request->post('comment');
-            $orderItem->clean_item_id = \Yii::$app->request->post('clean_item_id');
-//            $orderItem->order_id = \Yii::$app->request->post('order_id');
-            $orderItem->size = \Yii::$app->request->post('size');
-            $orderItem->count = \Yii::$app->request->post('count');
-            if ($model->save() && $orderItem->save()) {
-                return \Yii::$app->response->statusCode = 201;
+        $order = Order::findOne($id);
+        if (\Yii::$app->request->post('update') == 1){
+            $order->customer_id = \Yii::$app->request->post('customer_id');
+            $order->record_id = \Yii::$app->request->post('record_id');
+            $order->date = \Yii::$app->request->post('date');
+            $order->status = \Yii::$app->request->post('status');
+            $order->discount_type = \Yii::$app->request->post('discount_type');
+            $order->discount_item = \Yii::$app->request->post('discount_item');
+            $order->discount_amount = \Yii::$app->request->post('discount_amount');
+            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
+            $order->driver_id = \Yii::$app->request->post('driver_id');
+            $order->comment = \Yii::$app->request->post('comment');
+            if ($order->save()) {
+                return ['Success'];
             } else {
-                return $model->getErrors();
+                return $order->getErrors();
             }
         }
-        else {
-            return "To'g'ri jo'nat krisa";
-        }
+        return $order;
     }
     public function actionDelete($id)
     {
