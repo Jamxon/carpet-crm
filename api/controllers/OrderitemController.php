@@ -17,7 +17,7 @@ class OrderitemController extends MyController
     {
         \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
     }
-    public function actionIndx()
+    public function actionIndex()
     {
         return new ActiveDataProvider([
             'query' => \common\models\OrderItem::find(),
