@@ -115,6 +115,8 @@ class AttendanceController extends MyController
                 $kpi->comment = "Kunlik maoshi";
                 if ($kpi->save()) {
                     return $model;
+                } else {
+                    return $kpi->getErrors();
                 }
             } else {
                 return $model->getErrors();
