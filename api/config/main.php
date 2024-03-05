@@ -70,6 +70,8 @@ return [
                         'orderitem',
                         'typeemployer',
                         'main',
+                        'salary',
+                        'kpi',
                     ],
                 ],
                 'POST auth/login' => 'auth/login',
