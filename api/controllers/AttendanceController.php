@@ -112,7 +112,7 @@ class AttendanceController extends MyController
                 $salary = Salary::find()->where(['user_id' => $model->user_id])->one();
                 $kpi->user_id = $model->user_id;
                 $kpi->order_id = 0;
-                $kpi->salary_id = $salary;
+                $kpi->salary_id = $salary->salary;
                 $kpi->date = date('Y-m-d');
                 $kpi->comment = "Kunlik maosh";
                 if ($kpi->save()) {
