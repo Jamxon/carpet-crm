@@ -108,7 +108,7 @@ class AttendanceController extends MyController
             $model->status = "Ketdi";
             if ($model->save()) {
                 $kpi = new Kpi();
-                $salary = $kpi->salary->salary;
+                $salary = $kpi->salary;
                 $kpi->user_id = $model->user_id;
                 $kpi->salary_id = $salary;
                 $kpi->date = date('Y-m-d');
