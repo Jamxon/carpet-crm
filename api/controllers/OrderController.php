@@ -184,4 +184,10 @@ class OrderController extends MyController
             'query' => Order::find()->where(['status' => 'Bekor qilindi']),
         ]);
     }
+    public function actionReclean()
+    {
+        return new ActiveDataProvider([
+            'query' => Order::find()->where(['is_reclean' => 1]),
+        ]);
+    }
 }

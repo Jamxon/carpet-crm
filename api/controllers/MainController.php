@@ -36,7 +36,7 @@ class MainController extends MyController
         $cleaned = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->count();
         $packaged = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->count();
         $completed = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->count();
-
+        $is_reclean = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'is_reclean' => 1])->count();
         return [
             'registered_customer' => $registered_customer,
             'registered_order' => $registered_order,
@@ -47,6 +47,7 @@ class MainController extends MyController
             'registered_order_item' => $registered_order_item,
             'packaged' => $packaged,
             'completed' => $completed,
+            'is_reclean' => $is_reclean
         ];
     }
     public function actionRegistered_customer()
