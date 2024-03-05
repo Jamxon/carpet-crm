@@ -107,18 +107,17 @@ class AttendanceController extends MyController
             $model->go_time = date('Y-m-d H:i:s');
             $model->status = "Ketdi";
             if ($model->save()) {
-
                 $kpi = new Kpi();
-                return  $kpi->user;
-//                $kpi->user_id = $model->user_id;
-//                $kpi->salary_id = $salary;
-//                $kpi->date = date('Y-m-d');
-//                $kpi->comment = "Kunlik maoshi";
-//                if ($kpi->save()) {
-//                    return $model;
-//                } else {
-//                    return $kpi->getErrors();
-//                }
+                $kpi->user_id = $model->user_id;
+                $kpi->order_id = 0;
+                $kpi->salary_id = 0;
+                $kpi->date = date('Y-m-d');
+                $kpi->comment = "Kunlik maush";
+                if ($kpi->save()) {
+                    return $model;
+                } else {
+                    return $kpi->getErrors();
+                }
             } else {
                 return $model->getErrors();
             }
