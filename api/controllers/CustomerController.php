@@ -3,6 +3,8 @@
 namespace api\controllers;
 
 
+use common\models\Kpi;
+use common\models\Salary;
 use yii\data\ActiveDataProvider;
 use yii\web\Response;
 
@@ -81,6 +83,17 @@ class CustomerController extends MyController
            $customer->level = \Yii::$app->request->post('level');
            $customer->comment = \Yii::$app->request->post('comment_call');
            if ($customer->save()){
+               $kpi = new Kpi();
+               $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
+               $kpi->user_id = \Yii::$app->request->post('employer_id');
+               $kpi->order_id = 0;
+               $kpi->customer_id = $customer->id;
+               $kpi->salary_id = $salary->salary;
+               $kpi->date = date('Y-m-d');
+               $kpi->comment = "Olingan mijoz uchun kpi";
+               if (!$kpi->save()){
+                   return $kpi->getErrors();
+               }
                return ["Success"];
               }else {
                 return $customer->getErrors();

@@ -66,19 +66,7 @@ class OrderController extends MyController
             $customer->level = \Yii::$app->request->post('level');
             $customer->comment = \Yii::$app->request->post('comment_call');
 
-                    $kpi = new Kpi();
-                    $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
-                    $kpi->user_id = \Yii::$app->request->post('employer_id');
-                    $kpi->order_id = 0;
-                    $kpi->customer_id = $customer->id;
-                    $kpi->salary_id = $salary->salary;
-                    $kpi->date = date('Y-m-d');
-                    $kpi->comment = "Olingan mijoz uchun kpi";
-                    if (!$kpi->save()){
-                        return $kpi->getErrors();
-                    }
-
-            if ($customer->save() && $kpi->save()) {
+            if ($customer->save()) {
                 $order->customer_id = $customer->id;
                 $order->date = \Yii::$app->request->post('date_order');
                 $order->status = "Olib kelishda";
@@ -89,6 +77,17 @@ class OrderController extends MyController
                 $order->finish_discount_price = null;
                 $order->comment = \Yii::$app->request->post('comment_order');
                 if ($order->save()) {
+                    $kpi = new Kpi();
+                    $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
+                    $kpi->user_id = \Yii::$app->request->post('employer_id');
+                    $kpi->order_id = $order->id;
+                    $kpi->customer_id = $customer->id;
+                    $kpi->salary_id = $salary->salary;
+                    $kpi->date = date('Y-m-d');
+                    $kpi->comment = "Olingan mijoz va buyurtma uchun kpi";
+                    if (!$kpi->save()){
+                        return $kpi->getErrors();
+                    }
                     return ['Success ikkalasiyam'];
                 } else {
                     return $order->getErrors();
