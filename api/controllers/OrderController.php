@@ -115,7 +115,7 @@ class OrderController extends MyController
                     $kpi->customer_id = \Yii::$app->request->post('customer_id');
                     $kpi->salary_id = $salary->salary;
                     $kpi->date = date('Y-m-d');
-                    $kpi->comment = "Olingan mijoz uchun kpi";
+                    $kpi->comment = "Olingan buyurtma uchun kpi";
                     if (!$kpi->save()){
                         return $kpi->getErrors();
                     }
