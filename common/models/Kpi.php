@@ -26,9 +26,8 @@ class Kpi extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'order_id', 'salary_id', 'date', 'comment'], 'integer'],
-            [['user_id', 'order_id', 'salary_id', 'date', 'comment'], 'required'],
-            [['user_id', 'order_id', 'salary_id', 'date', 'comment'], 'safe'],
+            [['user_id', 'order_id', 'salary_id',], 'integer'],
+            [['user_id','salary_id', 'date', 'comment'], 'required'],
         ];
     }
 
