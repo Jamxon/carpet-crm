@@ -4,6 +4,7 @@ namespace api\controllers;
 
 
 use api\models\Attendance;
+use common\models\Kpi;
 use yii\data\ActiveDataProvider;
 
 class AttendanceController extends MyController
@@ -60,6 +61,64 @@ class AttendanceController extends MyController
             return $model;
         } else {
             return $model->getErrors();
+        }
+    }
+
+    public function actionUpdate($id)
+    {
+        $model = Attendance::findOne($id);
+        if ($model) {
+            $model->load(\Yii::$app->request->post(), '');
+            if ($model->save()) {
+                return $model;
+            } else {
+                return $model->getErrors();
+            }
+        } else {
+            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
+        }
+    }
+
+    public function actionDelete($id)
+    {
+        $model = Attendance::findOne($id);
+        if ($model) {
+            $model->delete();
+            \Yii::$app->response->setStatusCode(204);
+        } else {
+            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
+        }
+    }
+
+    public function actionView($id)
+    {
+        $model = Attendance::findOne($id);
+        if ($model) {
+            return $model;
+        } else {
+            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
+        }
+    }
+
+    public function actionGo($id)
+    {
+        $model = Attendance::findOne($id);
+        if ($model) {
+            $model->go_time = date('Y-m-d H:i:s');
+            $model->status = "Ketdi";
+            if ($model->save()) {
+                $kpi = new Kpi();
+                $salary = $kpi->salary->salary;
+                $kpi->user_id = $model->user_id;
+                $kpi->salary_id = $salary;
+                $kpi->date = date('Y-m-d');
+                $kpi->comment = "Kunlik maoshi";
+                return $model;
+            } else {
+                return $model->getErrors();
+            }
+        } else {
+            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
         }
     }
 }
