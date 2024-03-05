@@ -5,6 +5,7 @@ namespace api\controllers;
 
 use api\models\Attendance;
 use common\models\Kpi;
+use common\models\Salary;
 use yii\data\ActiveDataProvider;
 
 class AttendanceController extends MyController
@@ -108,11 +109,12 @@ class AttendanceController extends MyController
             $model->status = "Ketdi";
             if ($model->save()) {
                 $kpi = new Kpi();
+                $salary = Salary::find()->where(['user_id' => $model->user_id])->one();
                 $kpi->user_id = $model->user_id;
                 $kpi->order_id = 0;
-                $kpi->salary_id = 0;
+                $kpi->salary_id = $salary;
                 $kpi->date = date('Y-m-d');
-                $kpi->comment = "Kunlik maush";
+                $kpi->comment = "Kunlik maosh";
                 if ($kpi->save()) {
                     return $model;
                 } else {
