@@ -4,8 +4,10 @@ namespace api\controllers;
 
 use api\models\Customer;
 use common\models\Cleanitem;
+use common\models\Kpi;
 use common\models\Order;
 use common\models\OrderItem;
+use common\models\Salary;
 use Psy\Util\Json;
 use yii\data\ActiveDataProvider;
 use yii\debug\models\search\User;
@@ -63,7 +65,20 @@ class OrderController extends MyController
             $customer->source = \Yii::$app->request->post('source');
             $customer->level = \Yii::$app->request->post('level');
             $customer->comment = \Yii::$app->request->post('comment_call');
-            if ($customer->save()) {
+
+                    $kpi = new Kpi();
+                    $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
+                    $kpi->user_id = \Yii::$app->request->post('employer_id');
+                    $kpi->order_id = 0;
+                    $kpi->customer_id = $customer->id;
+                    $kpi->salary_id = $salary->salary;
+                    $kpi->date = date('Y-m-d');
+                    $kpi->comment = "Olingan mijoz uchun kpi";
+                    if (!$kpi->save()){
+                        return $kpi->getErrors();
+                    }
+
+            if ($customer->save() && $kpi->save()) {
                 $order->customer_id = $customer->id;
                 $order->date = \Yii::$app->request->post('date_order');
                 $order->status = "Olib kelishda";
@@ -92,7 +107,19 @@ class OrderController extends MyController
             $order->driver_id = \Yii::$app->request->post('driver_id');
             $order->finish_discount_price = null;
             $order->comment = \Yii::$app->request->post('comment_order');
-            if ($order->save()) {
+
+                    $kpi = new Kpi();
+                    $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
+                    $kpi->user_id = \Yii::$app->request->post('employer_id');
+                    $kpi->order_id = $order->id;
+                    $kpi->customer_id = \Yii::$app->request->post('customer_id');
+                    $kpi->salary_id = $salary->salary;
+                    $kpi->date = date('Y-m-d');
+                    $kpi->comment = "Olingan mijoz uchun kpi";
+                    if (!$kpi->save()){
+                        return $kpi->getErrors();
+                    }
+            if ($order->save() && $kpi->save()) {
                 return ['Success'];
             } else {
                 return $order->getErrors();

@@ -10,6 +10,7 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property int $user_id
  * @property int $order_id
+ * @property int $customer_id
  * @property int $salary_id
  * @property int $date
  * @property int $comment
@@ -26,7 +27,7 @@ class Kpi extends ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'order_id', 'salary_id',], 'integer'],
+            [['user_id', 'order_id', 'salary_id','customer_id'], 'integer'],
             [['user_id','salary_id', 'date', 'comment'], 'required'],
             [['comment'], 'string', 'max' => 255],
         ];
@@ -38,6 +39,7 @@ class Kpi extends ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'order_id' => 'Order ID',
+            'customer_id' => 'Customer ID',
             'salary_id' => 'Salary ID',
             'date' => 'Date',
             'comment' => 'Comment',
@@ -54,5 +56,9 @@ class Kpi extends ActiveRecord
     public function getSalary()
     {
         return $this->hasOne(Salary::class, ['id' => 'salary_id']);
+    }
+    public function getCustomer()
+    {
+        return $this->hasOne(Customer::class, ['id' => 'customer_id']);
     }
 }
