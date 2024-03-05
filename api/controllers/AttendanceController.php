@@ -105,21 +105,25 @@ class AttendanceController extends MyController
     {
         $model = Attendance::findOne($id);
         if ($model) {
+            $model->full_time = \Yii::$app->request->get('full_time');
             $model->go_time = date('Y-m-d H:i:s');
             $model->status = "Ketdi";
             if ($model->save()) {
-                $kpi = new Kpi();
-                $salary = Salary::find()->where(['user_id' => $model->user_id])->one();
-                $kpi->user_id = $model->user_id;
-                $kpi->order_id = 0;
-                $kpi->salary_id = $salary->salary;
-                $kpi->date = date('Y-m-d');
-                $kpi->comment = "Kunlik maosh";
-                if ($kpi->save()) {
-                    return $model;
-                } else {
-                    return $kpi->getErrors();
+                if ($model->user->type->name != "Operator") {
+                    $kpi = new Kpi();
+                    $salary = Salary::find()->where(['user_id' => $model->user_id])->one();
+                    $kpi->user_id = $model->user_id;
+                    $kpi->order_id = 0;
+                    $kpi->salary_id = $salary->salary;
+                    $kpi->date = date('Y-m-d');
+                    $kpi->comment = "Kunlik maosh";
+                    if ($kpi->save()) {
+                        return $model;
+                    } else {
+                        return $kpi->getErrors();
+                    }
                 }
+                return $model;
             } else {
                 return $model->getErrors();
             }
