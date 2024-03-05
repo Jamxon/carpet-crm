@@ -89,7 +89,7 @@ class CustomerController extends MyController
                $kpi->order_id = 0;
                $kpi->customer_id = $customer->id;
                $kpi->salary_id = $salary->salary;
-               $kpi->date = date('Y-m-d');
+               $kpi->date = date('Y-m-d H:i:s');
                $kpi->comment = "Olingan mijoz uchun kpi";
                if (!$kpi->save()){
                    return $kpi->getErrors();

@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="ervertber">
+      <change afterPath="$PROJECT_DIR$/api/controllers/KpiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AttendanceController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/CustomerController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/OrderController.php" afterDir="false" />
     </list>
@@ -209,7 +212,7 @@
       <workItem from="1709482725458" duration="313000" />
       <workItem from="1709533053893" duration="4180000" />
       <workItem from="1709624300479" duration="50000" />
-      <workItem from="1709624376655" duration="6891000" />
+      <workItem from="1709624376655" duration="8395000" />
     </task>
     <task id="LOCAL-00001" summary="ervertber">
       <option name="closed" value="true" />

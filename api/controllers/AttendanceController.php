@@ -116,7 +116,7 @@ class AttendanceController extends MyController
                     $kpi->order_id = 0;
                     $kpi->customer_id = 0;
                     $kpi->salary_id = $salary->salary;
-                    $kpi->date = date('Y-m-d');
+                    $kpi->date = date('Y-m-d h:i:s');
                     $kpi->comment = "Kunlik maosh";
                     if ($kpi->save()) {
                         return $model;
