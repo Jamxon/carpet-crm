@@ -109,7 +109,7 @@ class AttendanceController extends MyController
             if ($model->save()) {
 
                 $kpi = new Kpi();
-             return  $kpi->salary;
+                return  $kpi->user;
 //                $kpi->user_id = $model->user_id;
 //                $kpi->salary_id = $salary;
 //                $kpi->date = date('Y-m-d');
