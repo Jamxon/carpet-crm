@@ -28,6 +28,7 @@ class Kpi extends ActiveRecord
         return [
             [['user_id', 'order_id', 'salary_id',], 'integer'],
             [['user_id','salary_id', 'date', 'comment'], 'required'],
+            [['comment'], 'string', 'max' => 255],
         ];
     }
 
