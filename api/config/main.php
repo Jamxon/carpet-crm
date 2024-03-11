@@ -72,6 +72,7 @@ return [
                         'main',
                         'salary',
                         'kpi',
+                        'chiqim'
                     ],
                 ],
                 'POST auth/login' => 'auth/login',
