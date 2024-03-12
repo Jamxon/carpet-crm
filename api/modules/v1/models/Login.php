@@ -8,7 +8,7 @@ use yii\base\Model;
 
 class Login extends Model
 {
-public $phone;
+    public $phone;
     public $password;
 
     private $_user = false;
@@ -29,7 +29,7 @@ public $phone;
             $access_token = \Yii::$app->security->generateRandomString(32);
             $accessToken = new Customer_token();
             $accessToken->user_id = $user->id;
-            $accessToken->access_token = $access_token;
+            $accessToken->access_token1 = $access_token;
             if ($accessToken->save()) {
                 return [
                     'id' => $user->id,
