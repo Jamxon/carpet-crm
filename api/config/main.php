@@ -10,7 +10,11 @@ return [
     'id' => 'api-frontend',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'v1' => [
+            'class' => 'api\modules\v1\Module',
+        ],
+    ],
     'controllerNamespace' => 'api\controllers',
     'components' => [
         'request' => [
@@ -73,7 +77,7 @@ return [
                         'salary',
                         'kpi',
                         'chiqim',
-                        'chiqimtype',
+                        'chiqimtype', // module v1
                     ],
                 ],
                 'POST auth/login' => 'auth/login',

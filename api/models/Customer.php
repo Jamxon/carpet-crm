@@ -13,6 +13,7 @@ use Yii;
  * @property string|null $name
  * @property string|null $phone_1
  * @property string|null $phone_2
+ * @property string|null $password
  * @property string|null $address
  * @property string|null $date
  * @property string|null $source
@@ -74,6 +75,11 @@ class Customer extends \common\models\Customer
             'comment',
             'orders'
         ];
+    }
+
+    public function findByPhone($phone)
+    {
+        return static::findOne(['phone_1' => $phone]);
     }
     /**
      * Gets query for [[Orders]].
