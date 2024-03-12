@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="ervertber">
-      <change afterPath="$PROJECT_DIR$/api/controllers/ChiqimtypeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/ChiqimtypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/ChiqimtypeController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -218,7 +217,7 @@
       <workItem from="1709624376655" duration="13368000" />
       <workItem from="1709983352086" duration="95000" />
       <workItem from="1709983490636" duration="689000" />
-      <workItem from="1710173246336" duration="2418000" />
+      <workItem from="1710173246336" duration="3233000" />
     </task>
     <task id="LOCAL-00001" summary="ervertber">
       <option name="closed" value="true" />
@@ -276,7 +275,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710229253007</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="ervertber">
+      <option name="closed" value="true" />
+      <created>1710229855492</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1710229855492</updated>
+    </task>
+    <task id="LOCAL-00009" summary="ervertber">
+      <option name="closed" value="true" />
+      <created>1710230371714</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1710230371714</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

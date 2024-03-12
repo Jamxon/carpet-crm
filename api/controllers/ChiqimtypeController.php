@@ -13,7 +13,6 @@ class ChiqimtypeController extends MyController
         ]);
     }
 
-    //method is create update post
     public function actionCreate()
     {
         $model = new \common\models\Chiqimtype();
