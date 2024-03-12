@@ -80,6 +80,7 @@ return [
                         'chiqimtype', // module v1
                     ],
                 ],
+                'POST v1/auth/login' => 'v1/auth/login',
                 'POST auth/login' => 'auth/login',
                 'GET user/getdriver' => 'user/getdriver',
                 'GET user/options' => 'user/options',
