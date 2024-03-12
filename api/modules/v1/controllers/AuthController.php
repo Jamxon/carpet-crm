@@ -13,10 +13,7 @@ class AuthController extends Controller
         $model = new Login();
         if ($model->load(\Yii::$app->request->post(), '') && ($token = $model->login()) ){
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
-            return [
-                'id' => $token['id'],
-                'access_token' => $token['access_token'],
-            ];
+            return $token;
         }else{
             \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
             //return error 401
