@@ -11,6 +11,8 @@ class Login extends Model
 public $phone;
     public $password;
 
+    private $_user = false;
+
     public function rules()
     {
         return [
