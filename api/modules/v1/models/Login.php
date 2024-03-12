@@ -29,7 +29,7 @@ class Login extends Model
             $access_token = \Yii::$app->security->generateRandomString(32);
             $accessToken = new Customer_token();
             $accessToken->user_id = $user->id;
-            $accessToken->access_token1 = $access_token;
+            $accessToken->access_token = $access_token;
             if ($accessToken->save()) {
                 return [
                     'id' => $user->id,
