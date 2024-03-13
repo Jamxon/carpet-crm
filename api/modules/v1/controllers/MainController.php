@@ -17,6 +17,13 @@ class MainController extends Controller
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
             ],
+            //json
+            'contentNegotiator' => [
+                'class' => \yii\filters\ContentNegotiator::class,
+                'formats' => [
+                    'application/json' => \yii\web\Response::FORMAT_JSON,
+                ],
+            ],
         ];
     }
     public function actionIndex()
