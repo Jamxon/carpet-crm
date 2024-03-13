@@ -77,7 +77,8 @@ return [
                         'salary',
                         'kpi',
                         'chiqim',
-                        'chiqimtype', // module v1
+                        'chiqimtype',
+                        'main',
                     ],
                 ],
                 'POST v1/auth/login' => 'v1/auth/login',
