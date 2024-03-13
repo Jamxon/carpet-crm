@@ -6,14 +6,18 @@ namespace api\controllers;
 use common\models\Kpi;
 use common\models\Salary;
 use yii\data\ActiveDataProvider;
+use yii\rest\Controller;
 use yii\web\Response;
 
-class CustomerController extends MyController
+class CustomerController extends Controller
 {
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options','searchbyphone', 'index', 'create', 'update', 'delete', 'view'];
+        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
+           ];
         return $behaviors;
     }
 
