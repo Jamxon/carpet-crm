@@ -11,9 +11,17 @@ class AuthController extends Controller
 {
     public function behaviors()
     {
-        return  [
+        return [
             'authenticator' => [
                 'class' => \yii\filters\auth\HttpBearerAuth::class,
+                'except' => ['login', 'logout'],
+            ],
+            'verbs' => [
+                'class' => \yii\filters\VerbFilter::class,
+                'actions' => [
+                    'login' => ['POST'],
+                    'logout' => ['POST'],
+                ],
             ],
             'corsFilter' => [
                 'class' => \yii\filters\Cors::class,
