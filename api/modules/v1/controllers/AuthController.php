@@ -4,10 +4,22 @@ namespace api\modules\v1\controllers;
 
 use api\models\Customer;
 use api\modules\v1\models\Login;
+use yii\base\Behavior;
 use yii\rest\Controller;
 
 class AuthController extends Controller
 {
+    public function behaviors()
+    {
+        return  [
+            'authenticator' => [
+                'class' => \yii\filters\auth\HttpBearerAuth::class,
+            ],
+            'corsFilter' => [
+                'class' => \yii\filters\Cors::class,
+            ],
+        ];
+    }
     public function actionLogin()
     {
         $model = new Login();
