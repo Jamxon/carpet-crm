@@ -5,7 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="ervertber">
-      <change beforePath="$PROJECT_DIR$/api/controllers/CustomerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/CustomerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/copilot/chatSessions/00000000000.xd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/AttendanceController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/AttendanceController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/ChiqimController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/ChiqimController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/ChiqimtypeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/ChiqimtypeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/CleanitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/CleanitemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/CompanyController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/CompanyController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/KpiController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/KpiController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/MainController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/MainController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/OrderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/OrderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/OrderitemController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/OrderitemController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/SalaryController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/SalaryController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/TypeemployerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/TypeemployerController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,7 +232,9 @@
       <workItem from="1709983490636" duration="689000" />
       <workItem from="1710173246336" duration="8171000" />
       <workItem from="1710306923441" duration="256000" />
-      <workItem from="1710345439914" duration="1542000" />
+      <workItem from="1710345439914" duration="2621000" />
+      <workItem from="1710353939114" duration="154000" />
+      <workItem from="1710390248095" duration="454000" />
     </task>
     <task id="LOCAL-00001" summary="ervertber">
       <option name="closed" value="true" />
@@ -429,7 +444,23 @@
       <option name="project" value="LOCAL" />
       <updated>1710348494436</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="ervertber">
+      <option name="closed" value="true" />
+      <created>1710348750491</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1710348750491</updated>
+    </task>
+    <task id="LOCAL-00028" summary="ervertber">
+      <option name="closed" value="true" />
+      <created>1710348844619</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1710348844619</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

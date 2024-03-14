@@ -7,13 +7,26 @@ use api\models\Attendance;
 use common\models\Kpi;
 use common\models\Salary;
 use yii\data\ActiveDataProvider;
+use yii\rest\Controller;
+use yii\web\Response;
 
-class AttendanceController extends MyController
+class AttendanceController extends Controller
 {
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options', 'index', 'date'];
+        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+            'except' => ['options']
+        ];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
+        ];
         return $behaviors;
     }
 

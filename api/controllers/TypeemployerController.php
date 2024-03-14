@@ -4,14 +4,27 @@ namespace api\controllers;
 
 use api\models\TypeEmployer;
 use yii\data\ActiveDataProvider;
+use yii\rest\Controller;
 use yii\web\IdentityInterface;
+use yii\web\Response;
 
-class TypeemployerController  extends MyController
+class TypeemployerController  extends Controller
 {
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options'];
+        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+            'except' => ['options']
+        ];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
+        ];
         return $behaviors;
     }
 

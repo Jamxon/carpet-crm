@@ -3,15 +3,25 @@ namespace api\controllers;
 
 use api\models\User;
 use yii\data\ActiveDataProvider;
+use yii\rest\Controller;
+use yii\web\Response;
 
-class UserController extends MyController
+class UserController extends Controller
 {
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options', 'index', 'create', 'update', 'view', 'delete', 'getdriver'];
+        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+            'except' => ['options']
+        ];
         $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::class,
+            'class' => \yii\filters\Cors::className(),
         ];
         return $behaviors;
     }

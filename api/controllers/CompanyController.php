@@ -6,16 +6,29 @@ use api\models\Company;
 use api\models\UploadForm;
 use yii\data\ActiveDataProvider;
 use yii\rest\ActiveController;
+use yii\rest\Controller;
 use yii\web\IdentityInterface;
+use yii\web\Response;
 use yii\web\UploadedFile;
 use function Symfony\Component\VarDumper\Dumper\esc;
 
-class CompanyController extends MyController
+class CompanyController extends Controller
 {
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator']['except'] = ['options'];
+        $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+            'except' => ['options']
+        ];
+        $behaviors['corsFilter'] = [
+            'class' => \yii\filters\Cors::className(),
+        ];
         return $behaviors;
     }
 

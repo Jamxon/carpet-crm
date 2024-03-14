@@ -14,24 +14,25 @@ use yii\debug\models\search\User;
 use yii\filters\auth\CompositeAuth;
 use yii\filters\auth\HttpBearerAuth;
 use yii\rest\ActiveController;
+use yii\rest\Controller;
 use yii\web\Response;
 
-class OrderController extends MyController
+class OrderController extends Controller
 {
+    public $serializer = [
+        'class' => 'yii\rest\Serializer',
+        'collectionEnvelope' => 'items',
+    ];
     public function behaviors()
     {
         $behaviors = parent::behaviors();
-        $behaviors['authenticator'] = [
-            'class' => CompositeAuth::class,
-            'authMethods' => [
-                HttpBearerAuth::class,
-            ],
-            'except' => ['options', 'index', 'view', 'search', 'bringing', 'cleaning', 'drying', 'packaging', 'delivering', 'complete', 'cancelled'],
-            'optional' => ['index', 'view', 'search', 'bringing', 'cleaning', 'drying', 'packaging', 'delivering', 'complete', 'cancelled'],
-        ];
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
+        $behaviors['authenticator'] = [
+            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+            'except' => ['options']
+        ];
         $behaviors['corsFilter'] = [
-            'class' => \yii\filters\Cors::class,
+            'class' => \yii\filters\Cors::className(),
         ];
         return $behaviors;
     }
