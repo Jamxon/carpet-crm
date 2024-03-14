@@ -95,6 +95,7 @@ return [
                 'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET order/search' => 'order/search',
                 'GET customer/searchbyname' => 'customer/searchbyname',
+                'GET customer/search' => 'customer/search',
                 'GET order/bringing' => 'order/bringing',
                 'GET order/cleaning' => 'order/cleaning',
                 'GET order/drying' => 'order/drying',
