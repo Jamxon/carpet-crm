@@ -76,7 +76,7 @@ class CustomerController extends Controller
         return new ActiveDataProvider([
             'query' => \common\models\Customer::find(),
             'pagination' => [
-                'pageSize' => 100,
+                'pageSize' => 10,
             ]
         ]);
     }
