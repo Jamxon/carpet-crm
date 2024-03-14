@@ -145,4 +145,17 @@ class CustomerController extends Controller
     {
         return \api\models\Customer::findOne($id);
     }
+    public function actionSearch($data)
+    {
+        return new ActiveDataProvider([
+            'query' => \common\models\Customer::find()
+                ->where(['LIKE', 'name', $data])
+                ->orWhere(['LIKE', 'phone_1', $data])
+                ->orWhere(['LIKE', 'phone_2', $data])
+                ->orwhere(['LIKE', 'address', $data]),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
 }
