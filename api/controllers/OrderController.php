@@ -160,7 +160,7 @@ class OrderController extends Controller
 //                    $orderItem->save();
 //                }
         }
-        return count(\Yii::$app->request->post('orderitem'));
+        return \Yii::$app->request->post('orderitem');
     }
     public function actionDelete($id)
     {
