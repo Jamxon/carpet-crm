@@ -140,7 +140,7 @@ class OrderController extends Controller
     {
         $order = Order::findOne($id);
         $orderItem = new OrderItem();
-        if (\Yii::$app->request->post('update') == 1){
+//        if (\Yii::$app->request->post('update') == 1){
 //            $order->customer_id = \Yii::$app->request->post('customer_id');
 //            $order->record_id = \Yii::$app->request->post('record_id');
 //            $order->date = \Yii::$app->request->post('date');
@@ -158,12 +158,12 @@ class OrderController extends Controller
 //                    $orderItem->count = $item['count'];
 //                    $orderItem->size = $item['size'];
 //                }
-            if ($orderItem->save()) {
-                return ['Success'];
-            } else {
-                return $order->getErrors();
-            }
-        }
+//            if ($orderItem->save()) {
+//                return ['Success'];
+//            } else {
+//                return $order->getErrors();
+//            }
+//        }
         return \Yii::$app->request->post('orderitem');
     }
     public function actionDelete($id)
