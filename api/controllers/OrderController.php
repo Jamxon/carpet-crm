@@ -152,10 +152,12 @@ class OrderController extends Controller
 //            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
 //            $order->driver_id = \Yii::$app->request->post('driver_id');
 //            $order->comment = \Yii::$app->request->post('comment');
-            $orderItem->clean_item_id = \Yii::$app->request->post('clean_item_id');
-            $orderItem->order_id = $order->id;
-            $orderItem->size = \Yii::$app->request->post('size');
-            $orderItem->count = \Yii::$app->request->post('count');
+                foreach (\Yii::$app->request->post('orderitem') as $item){
+                    $orderItem->order_id = $id;
+                    $orderItem->clean_item_id = $item['clean_item_id'];
+                    $orderItem->count = $item['count'];
+                    $orderItem->size = $item['size'];
+                }
             if ($orderItem->save()) {
                 return ['Success'];
             } else {
