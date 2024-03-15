@@ -88,6 +88,8 @@ return [
                 'POST auth/login' => 'auth/login',
                 'GET user/getdriver' => 'user/getdriver',
                 'GET user/options' => 'user/options',
+                'GET user/index' => 'user/index',
+                'POST user/create' => 'user/create',
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/index' => 'attendance/index',
                 'POST attendance/date' => 'attendance/date',
