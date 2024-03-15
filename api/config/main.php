@@ -81,6 +81,7 @@ return [
                         'v1/auth',
                         'v1/main',
                     ],
+                    'pluralize' => false,
                 ],
                 'POST v1/auth/login' => 'v1/auth/login',
                 'POST v1/auth/register' => 'v1/auth/register',

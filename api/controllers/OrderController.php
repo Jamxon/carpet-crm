@@ -139,23 +139,23 @@ class OrderController extends Controller
     public function actionUpdate($id)
     {
         $order = Order::findOne($id);
-        if (\Yii::$app->request->post('update') == 1){
-            $order->customer_id = \Yii::$app->request->post('customer_id');
-            $order->record_id = \Yii::$app->request->post('record_id');
-            $order->date = \Yii::$app->request->post('date');
-            $order->status = \Yii::$app->request->post('status');
-            $order->discount_type = \Yii::$app->request->post('discount_type');
-            $order->discount_item = \Yii::$app->request->post('discount_item');
-            $order->discount_amount = \Yii::$app->request->post('discount_amount');
-            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
-            $order->driver_id = \Yii::$app->request->post('driver_id');
-            $order->comment = \Yii::$app->request->post('comment');
-            if ($order->save()) {
-                return ['Success'];
-            } else {
-                return $order->getErrors();
-            }
-        }
+//        if (\Yii::$app->request->post('update') == 1){
+//            $order->customer_id = \Yii::$app->request->post('customer_id');
+//            $order->record_id = \Yii::$app->request->post('record_id');
+//            $order->date = \Yii::$app->request->post('date');
+//            $order->status = \Yii::$app->request->post('status');
+//            $order->discount_type = \Yii::$app->request->post('discount_type');
+//            $order->discount_item = \Yii::$app->request->post('discount_item');
+//            $order->discount_amount = \Yii::$app->request->post('discount_amount');
+//            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
+//            $order->driver_id = \Yii::$app->request->post('driver_id');
+//            $order->comment = \Yii::$app->request->post('comment');
+//            if ($order->save()) {
+//                return ['Success'];
+//            } else {
+//                return $order->getErrors();
+//            }
+//        }
         return $order;
     }
     public function actionDelete($id)
