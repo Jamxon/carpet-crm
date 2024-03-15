@@ -13,6 +13,7 @@ use Yii;
  * @property int|null $customer_id
  * @property int|null $record_id
  * @property string|null $date
+ * @property string|null $submit_date
  * @property string|null $status
  * @property string|null $discount_type
  * @property string|null $discount_item

@@ -139,10 +139,12 @@ class OrderController extends Controller
     public function actionUpdate($id)
     {
         $order = Order::findOne($id);
-//        if (\Yii::$app->request->post('update') == 1){
+        $orderItem = new OrderItem();
+        if (\Yii::$app->request->post('update') == 1){
 //            $order->customer_id = \Yii::$app->request->post('customer_id');
 //            $order->record_id = \Yii::$app->request->post('record_id');
 //            $order->date = \Yii::$app->request->post('date');
+//            $order->submit_date = \Yii::$app->request->post('submit_date');
 //            $order->status = \Yii::$app->request->post('status');
 //            $order->discount_type = \Yii::$app->request->post('discount_type');
 //            $order->discount_item = \Yii::$app->request->post('discount_item');
@@ -150,12 +152,16 @@ class OrderController extends Controller
 //            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
 //            $order->driver_id = \Yii::$app->request->post('driver_id');
 //            $order->comment = \Yii::$app->request->post('comment');
-//            if ($order->save()) {
-//                return ['Success'];
-//            } else {
-//                return $order->getErrors();
-//            }
-//        }
+            $orderItem->clean_item_id = \Yii::$app->request->post('clean_item_id');
+            $orderItem->order_id = $order->id;
+            $orderItem->size = \Yii::$app->request->post('size');
+            $orderItem->count = \Yii::$app->request->post('count');
+            if ($orderItem->save()) {
+                return ['Success'];
+            } else {
+                return $order->getErrors();
+            }
+        }
         return $order;
     }
     public function actionDelete($id)
