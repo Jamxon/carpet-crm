@@ -29,7 +29,7 @@ class OrderController extends Controller
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['authenticator'] = [
             'class' => \yii\filters\auth\HttpBearerAuth::className(),
-            'except' => ['options','bringing']
+            'except' => ['options','bringing','cleaning','drying','packaging','delivering','complete','cancelled','reclean','search',],
         ];
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
@@ -40,6 +40,13 @@ class OrderController extends Controller
     public function actionOptions()
     {
         \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+    }
+
+    public function actions()
+    {
+        $actions = parent::actions();
+        unset($actions['index'], $actions['view'], $actions['create'], $actions['update'], $actions['delete']);
+        return $actions;
     }
     public function actionIndex()
     {
@@ -163,9 +170,7 @@ class OrderController extends Controller
     public function actionSearch()
     {
         $model = new ActiveDataProvider([
-            'query' => Order::findBySql(
-                "SELECT * FROM `order` WHERE `id` LIKE '%" . \Yii::$app->request->get('id') . "%' "
-            ),
+            'query' => Order::find()->where(['like', 'id', \Yii::$app->request->get('id')]),
         ]);
     }
 
