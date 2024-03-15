@@ -159,11 +159,6 @@ class OrderController extends Controller
                     $orderItem->size = $item['size'];
                     $orderItem->save();
                 }
-            if ($orderItem->save()) {
-                return ['Success'];
-            } else {
-                return $order->getErrors();
-            }
         }
         return $order;
     }
