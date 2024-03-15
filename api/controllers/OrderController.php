@@ -3,7 +3,7 @@
 namespace api\controllers;
 
 use api\models\Customer;
-use app\models\OrderLocation;
+use common\models\OrderLocation;
 use common\models\Cleanitem;
 use common\models\Kpi;
 use common\models\Order;
