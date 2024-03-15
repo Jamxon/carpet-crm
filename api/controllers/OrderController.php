@@ -157,6 +157,7 @@ class OrderController extends Controller
                     $orderItem->clean_item_id = $item['clean_item_id'];
                     $orderItem->count = $item['count'];
                     $orderItem->size = $item['size'];
+                    $orderItem->save();
                 }
             if ($orderItem->save()) {
                 return ['Success'];
