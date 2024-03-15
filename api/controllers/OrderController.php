@@ -139,7 +139,6 @@ class OrderController extends Controller
     public function actionUpdate($id)
     {
         $order = Order::findOne($id);
-        $orderItem = new OrderItem();
         if (\Yii::$app->request->post('update') == 1){
 //            $order->customer_id = \Yii::$app->request->post('customer_id');
 //            $order->record_id = \Yii::$app->request->post('record_id');
@@ -153,6 +152,7 @@ class OrderController extends Controller
 //            $order->driver_id = \Yii::$app->request->post('driver_id');
 //            $order->comment = \Yii::$app->request->post('comment');
                 foreach (\Yii::$app->request->post('orderitem') as $item){
+                    $orderItem = new OrderItem();
                     $orderItem->order_id = $id;
                     $orderItem->clean_item_id = $item['clean_item_id'];
                     $orderItem->count = $item['count'];
