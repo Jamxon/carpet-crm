@@ -140,17 +140,17 @@ class OrderController extends Controller
     {
         $order = Order::findOne($id);
         if (\Yii::$app->request->post('update') == 1){
-//            $order->customer_id = \Yii::$app->request->post('customer_id');
-//            $order->record_id = \Yii::$app->request->post('record_id');
-//            $order->date = \Yii::$app->request->post('date');
-//            $order->submit_date = \Yii::$app->request->post('submit_date');
-//            $order->status = \Yii::$app->request->post('status');
-//            $order->discount_type = \Yii::$app->request->post('discount_type');
-//            $order->discount_item = \Yii::$app->request->post('discount_item');
-//            $order->discount_amount = \Yii::$app->request->post('discount_amount');
-//            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
-//            $order->driver_id = \Yii::$app->request->post('driver_id');
-//            $order->comment = \Yii::$app->request->post('comment');
+            $order->customer_id = \Yii::$app->request->post('customer_id');
+            $order->record_id = \Yii::$app->request->post('record_id');
+            $order->date = \Yii::$app->request->post('date');
+            $order->submit_date = \Yii::$app->request->post('submit_date');
+            $order->status = \Yii::$app->request->post('status');
+            $order->discount_type = \Yii::$app->request->post('discount_type');
+            $order->discount_item = \Yii::$app->request->post('discount_item');
+            $order->discount_amount = \Yii::$app->request->post('discount_amount');
+            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
+            $order->driver_id = \Yii::$app->request->post('driver_id');
+            $order->comment = \Yii::$app->request->post('comment');
                 foreach (\Yii::$app->request->post('orderitem') as $item){
                     $orderItem = new OrderItem();
                     $orderItem->order_id = $id;
@@ -162,7 +162,7 @@ class OrderController extends Controller
                     }
                 }
         }
-        return \Yii::$app->request->post('orderitem');
+        return $order;
     }
     public function actionDelete($id)
     {
