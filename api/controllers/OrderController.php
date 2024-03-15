@@ -3,6 +3,7 @@
 namespace api\controllers;
 
 use api\models\Customer;
+use app\models\OrderLocation;
 use common\models\Cleanitem;
 use common\models\Kpi;
 use common\models\Order;
@@ -139,6 +140,7 @@ class OrderController extends Controller
     public function actionUpdate($id)
     {
         $order = Order::findOne($id);
+        $orderLocation = new OrderLocation();
         if (\Yii::$app->request->post('update') == 1){
             $order->customer_id = \Yii::$app->request->post('customer_id');
             $order->record_id = \Yii::$app->request->post('record_id');
@@ -151,6 +153,7 @@ class OrderController extends Controller
             $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
             $order->driver_id = \Yii::$app->request->post('driver_id');
             $order->comment = \Yii::$app->request->post('comment');
+            if ($order->save()){
                 foreach (\Yii::$app->request->post('orderitem') as $item){
                     $orderItem = new OrderItem();
                     $orderItem->order_id = $id;
@@ -161,6 +164,16 @@ class OrderController extends Controller
                         return $orderItem->getErrors();
                     }
                 }
+                $orderLocation->order_id = $id;
+                $orderLocation->latitude = \Yii::$app->request->post('latitude');
+                $orderLocation->longitude = \Yii::$app->request->post('longitude');
+                $orderLocation->address = \Yii::$app->request->post('address');
+                if ($orderLocation->save()){
+                    return ['Success'];
+                } else {
+                    return $orderLocation->getErrors();
+                }
+            }
         }
         return $order;
     }
