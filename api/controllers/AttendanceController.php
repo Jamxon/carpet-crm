@@ -22,7 +22,7 @@ class AttendanceController extends Controller
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['authenticator'] = [
             'class' => \yii\filters\auth\HttpBearerAuth::className(),
-            'except' => ['options']
+            'except' => ['options', 'index', 'date', 'create', 'update', 'delete', 'view', 'go']
         ];
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
