@@ -21,7 +21,7 @@ class CustomerController extends Controller
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['authenticator'] = [
             'class' => \yii\filters\auth\HttpBearerAuth::className(),
-            'except' => ['options']
+            'except' => ['options','index', 'create', 'update', 'view', 'delete', 'search']
         ];
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
