@@ -72,7 +72,6 @@ class UserController extends Controller
     public function actionGetblockedusers()
     {
         $users = User::find()
-            ->select(['id', 'name', 'phone_1','phone_2'])
             ->where(['status' != 10])
             ->all();
         return $users;
