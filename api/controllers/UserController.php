@@ -62,11 +62,10 @@ class UserController extends Controller
 
     public function actionBlockuser($id)
     {
-        return $id;
-//        $user = User::findOne($id);
-//        $user->status = 0;
-//        $user->save();
-//        return $user;
+        $user = User::findOne($id);
+        $user->status = 0;
+        $user->save();
+        return $user;
     }
 
     public function actionGetblockedusers()
