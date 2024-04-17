@@ -58,8 +58,26 @@ class UserController extends Controller
             $user->verification_token = \Yii::$app->security->generateRandomString() . '_' . time();
             $user->save();
             return $user;
-
     }
+
+    public function actionBlockuser($id)
+    {
+        $user = User::findOne($id);
+        $user->status = 0;
+        $user->save();
+        return $user;
+    }
+
+    public function actionGetblockedusers()
+    {
+        $users = User::find()
+            ->select(['id', 'name', 'phone_1','phone_2'])
+            ->with('type')
+            ->where(['status' != 10])
+            ->all();
+        return $users;
+    }
+
     public function actionUpdate($id)
     {
         $user = User::findOne($id);
