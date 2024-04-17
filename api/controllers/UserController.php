@@ -72,7 +72,7 @@ class UserController extends Controller
     public function actionGetblockedusers()
     {
         $users = User::find()
-            ->where(['status' != 10])
+            ->where(['status' == 10])
             ->all();
         return $users;
     }
