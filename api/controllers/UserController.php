@@ -73,7 +73,6 @@ class UserController extends Controller
     {
         $users = User::find()
             ->select(['id', 'name', 'phone_1','phone_2'])
-            ->with('type')
             ->where(['status' != 10])
             ->all();
         return $users;
