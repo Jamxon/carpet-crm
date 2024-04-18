@@ -18,6 +18,7 @@ class TypeEmployer extends \common\models\TypeEmployer
     public function fields()
     {
         return [
+            'id',
             'name'
         ];
     }
