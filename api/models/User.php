@@ -39,6 +39,7 @@ class User extends \common\models\User
             'comp_id',
             'type_id',
             'phone',
+            'status'
         ];
     }
     public function getType()

@@ -65,7 +65,7 @@ class UserController extends Controller
         $user = User::findOne($id);
         $user->status = 0;
         $user->save();
-        return $user;
+        return ['status' => 'Blocklandi'];
     }
 
     public function actionGetblockedusers()
