@@ -60,7 +60,7 @@ class UserController extends Controller
             return $user;
     }
 
-    public function actionBlockuser($id)
+    public function actionBlock($id)
     {
         $user = User::findOne($id);
         $user->status = 0;
