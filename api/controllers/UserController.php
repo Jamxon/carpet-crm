@@ -18,7 +18,7 @@ class UserController extends Controller
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['authenticator'] = [
             'class' => \yii\filters\auth\HttpBearerAuth::className(),
-            'except' => ['options', 'index', 'create', 'update', 'delete', 'view', 'getdriver']
+            'except' => ['options', 'index', 'create', 'update', 'delete', 'view', 'getdriver','blockuser','getblockedusers']
         ];
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
