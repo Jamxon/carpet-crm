@@ -16,10 +16,10 @@ class UserController extends Controller
     {
         $behaviors = parent::behaviors();
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
-        $behaviors['authenticator'] = [
-            'class' => \yii\filters\auth\HttpBearerAuth::className(),
-            'except' => ['options', 'index', 'create', 'update', 'delete', 'view', 'getdriver','blockuser','getblockedusers']
-        ];
+//        $behaviors['authenticator'] = [
+//            'class' => \yii\filters\auth\HttpBearerAuth::className(),
+//            'except' => ['options', 'index', 'create', 'update', 'delete', 'view', 'getdriver','blockuser','getblockedusers']
+//        ];
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
         ];
@@ -64,8 +64,11 @@ class UserController extends Controller
     {
         $user = User::findOne($id);
         $user->status = 0;
-        $user->save();
-        return ['status' => 'Blocklandi'];
+        if ($user->save()){
+            return ['status' => 'Blocklandi'];
+        }else{
+            return $user->getErrors();
+        }
     }
 
     public function actionGetblockedusers()
