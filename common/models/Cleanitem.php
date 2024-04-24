@@ -32,7 +32,7 @@ class Cleanitem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['price'], 'integer'],
+            [['price','operator_min_price','status'], 'integer'],
             [['name', 'size'], 'string', 'max' => 255],
         ];
     }
@@ -47,6 +47,8 @@ class Cleanitem extends \yii\db\ActiveRecord
             'name' => 'Name',
             'size' => 'Size',
             'price' => 'Price',
+            'operator_min_price' => 'Min price for Operator',
+            'status' => 'Status',
         ];
     }
 
