@@ -128,7 +128,7 @@ class CustomerController extends Controller
             ]
         ]);
     }
-    public function actionSeatchbyphone($phone)
+    public function actionSearchbyphone($phone)
     {
         return new ActiveDataProvider([
             'query' => \common\models\Customer::find()
