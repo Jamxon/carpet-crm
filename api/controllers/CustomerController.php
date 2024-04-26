@@ -65,14 +65,16 @@ class CustomerController extends Controller
            if ($customer->save()){
                $kpi = new Kpi();
                $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
-               $kpi->user_id = \Yii::$app->request->post('employer_id');
-               $kpi->order_id = 0;
-               $kpi->customer_id = $customer->id;
-               $kpi->salary_id = $salary->salary;
-               $kpi->date = date('Y-m-d H:i:s');
-               $kpi->comment = "Olingan mijoz uchun kpi";
-               if (!$kpi->save()){
-                   return $kpi->getErrors();
+               if ($salary->type == "Kpi"){
+                   $kpi->user_id = \Yii::$app->request->post('employer_id');
+                   $kpi->order_id = 0;
+                   $kpi->customer_id = $customer->id;
+                   $kpi->salary_id = $salary->salary;
+                   $kpi->date = date('Y-m-d H:i:s');
+                   $kpi->comment = "Olingan mijoz ($customer->name) uchun kpi";
+                   if (!$kpi->save()){
+                       return $kpi->getErrors();
+                   }
                }
                return ["Success"];
               }else {
@@ -121,6 +123,17 @@ class CustomerController extends Controller
                 ->orWhere(['LIKE', 'phone_1', $data])
                 ->orWhere(['LIKE', 'phone_2', $data])
                 ->orwhere(['LIKE', 'address', $data]),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
+    }
+    public function actionSeatchbyphone($phone)
+    {
+        return new ActiveDataProvider([
+            'query' => \common\models\Customer::find()
+                ->where(['LIKE', 'phone_1', $phone])
+                ->orWhere(['LIKE', 'phone_2', $phone]),
             'pagination' => [
                 'pageSize' => 10,
             ]

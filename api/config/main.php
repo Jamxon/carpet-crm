@@ -97,6 +97,7 @@ return [
                 'POST attendance/create' => 'attendance/create',
                 'GET attendance/go' => 'attendance/go',
                 'GET customer/search' => 'customer/search',
+                'GET customer/searchbyphone' => 'customer/searchbyphone',
                 'GET customer/options' => 'customer/options',
                 'GET customer/index' => 'customer/index',
                 'POST customer/create' => 'customer/create',

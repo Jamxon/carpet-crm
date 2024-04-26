@@ -2,6 +2,7 @@
 namespace api\controllers;
 
 use api\models\User;
+use common\models\Salary;
 use yii\data\ActiveDataProvider;
 use yii\rest\Controller;
 use yii\web\Response;
@@ -56,7 +57,13 @@ class UserController extends Controller
             $user->created_at = time();
             $user->updated_at = time();
             $user->verification_token = \Yii::$app->security->generateRandomString() . '_' . time();
-            $user->save();
+            if ($user->save()){
+                $salary = new Salary();
+                $salary->user_id = $user->id;
+                $salary->salary = \Yii::$app->request->post('salary');
+                $salary->type = \Yii::$app->request->post('type');
+                $salary->save();
+            }
             return $user;
     }
 
