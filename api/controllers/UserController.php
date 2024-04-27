@@ -62,7 +62,9 @@ class UserController extends Controller
                 $salary->user_id = $user->id;
                 $salary->salary = \Yii::$app->request->post('salary');
                 $salary->type = \Yii::$app->request->post('type');
-                $salary->save();
+                if (!$salary->save()){
+                    return $salary->getErrors();
+                }
             }
             return $user;
     }
