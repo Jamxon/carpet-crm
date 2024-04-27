@@ -91,6 +91,7 @@ return [
                 'POST user/create' => 'user/create',
                 'GET user/getblockedusers' => 'user/getblockedusers',
                 'PUT user/blockuser/<id:\d+>' => 'user/block',
+                'PUT user/unblockuser/<id:\d+>' => 'user/unblock',
                 'GET attendance/options' => 'attendance/options',
                 'GET attendance/index' => 'attendance/index',
                 'POST attendance/date' => 'attendance/date',

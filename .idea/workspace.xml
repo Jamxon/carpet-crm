@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="bf18b389-ab7a-4977-81eb-e7368ab575c1" name="Changes" comment="ervertber">
-      <change beforePath="$PROJECT_DIR$/common/models/Salary.php" beforeDir="false" afterPath="$PROJECT_DIR$/common/models/Salary.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/config/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/main.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/controllers/UserController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/controllers/UserController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +246,7 @@
       <workItem from="1713542246857" duration="15000" />
       <workItem from="1713930973045" duration="2232000" />
       <workItem from="1714153130288" duration="1833000" />
-      <workItem from="1714201956342" duration="2719000" />
+      <workItem from="1714201956342" duration="3798000" />
     </task>
     <task id="LOCAL-00014" summary="ervertber">
       <option name="closed" value="true" />
