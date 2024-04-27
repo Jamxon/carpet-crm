@@ -68,7 +68,9 @@ class UserController extends Controller
 
     public function actionBlockuser()
     {
-        $userId = \Yii::$app->request->post('id');
+        $request_body = Yii::$app->request->getRawBody();
+        $data = json_decode($request_body, true);
+        $userId = $data['id'];
         $user = User::findOne($userId);
 
         if ($user !== null) {
