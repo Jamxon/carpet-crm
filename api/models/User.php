@@ -3,6 +3,7 @@
 namespace api\models;
 
 use api\models\TypeEmployer;
+use common\models\Salary;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
@@ -39,7 +40,8 @@ class User extends \common\models\User
             'comp_id',
             'type_id',
             'phone',
-            'status'
+            'status',
+            'salary'
         ];
     }
     public function getType()
@@ -49,5 +51,9 @@ class User extends \common\models\User
     public function getCompany()
     {
         return $this->hasMany(Company::className(), ['id' => 'comp_id']);
+    }
+    public function getSalary()
+    {
+        return $this->hasMany(Salary::className(), ['user_id' => 'id']);
     }
 }

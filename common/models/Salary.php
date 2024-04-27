@@ -18,6 +18,15 @@ class Salary extends \yii\db\ActiveRecord
         return 'salary';
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'user_id',
+            'salary',
+            'type'
+        ];
+    }
     public function rules()
     {
         return [
@@ -40,5 +49,4 @@ class Salary extends \yii\db\ActiveRecord
     {
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
-
 }
