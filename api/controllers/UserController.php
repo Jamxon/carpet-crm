@@ -66,7 +66,7 @@ class UserController extends Controller
             return $user;
     }
 
-    public function actionBlock()
+    public function actionBlockuser()
     {
         $user = User::findOne(\Yii::$app->request->post('id'));
         $user->status = 0;
