@@ -3,6 +3,7 @@ namespace api\controllers;
 
 use api\models\User;
 use common\models\Salary;
+use Yii;
 use yii\data\ActiveDataProvider;
 use yii\rest\Controller;
 use yii\web\Response;
@@ -68,7 +69,7 @@ class UserController extends Controller
 
     public function actionBlockuser()
     {
-        $request_body = Yii::$app->request->getRawBody();
+        $request_body = \Yii::$app->request->getRawBody();
         $data = json_decode($request_body, true);
         $userId = $data['id'];
         $user = User::findOne($userId);
