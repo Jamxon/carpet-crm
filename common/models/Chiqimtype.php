@@ -14,7 +14,7 @@ class Chiqimtype extends ActiveRecord
 {
     public static function tableName()
     {
-        return 'chiqimtype';
+        return 'chiqim_type';
     }
 
     public function rules()
