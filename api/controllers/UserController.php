@@ -77,7 +77,7 @@ class UserController extends Controller
         }
     }
 
-    public function actionUnblock()
+    public function actionUnblockuser()
     {
         $user = User::findOne(\Yii::$app->request->post('id'));
         $user->status = 10;
