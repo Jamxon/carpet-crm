@@ -37,7 +37,7 @@ class UserController extends Controller
         return new ActiveDataProvider([
             'query' => User::find(),
             'pagination' => [
-                'pageSize' => 20,
+                'pageSize' => 50,
             ],
         ]);
     }
