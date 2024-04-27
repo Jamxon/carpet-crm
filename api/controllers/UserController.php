@@ -66,9 +66,9 @@ class UserController extends Controller
             return $user;
     }
 
-    public function actionBlock($id)
+    public function actionBlock()
     {
-        $user = User::findOne($id);
+        $user = User::findOne(\Yii::$app->request->post('id'));
         $user->status = 0;
         if ($user->save()){
             return ['status' => 'Blocklandi'];
@@ -77,9 +77,9 @@ class UserController extends Controller
         }
     }
 
-    public function actionUnblock($id)
+    public function actionUnblock()
     {
-        $user = User::findOne($id);
+        $user = User::findOne(\Yii::$app->request->post('id'));
         $user->status = 10;
         if ($user->save()){
             return ['status' => 'Blockdan chiqarildi'];
