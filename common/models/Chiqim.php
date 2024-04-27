@@ -25,7 +25,7 @@ class Chiqim extends ActiveRecord
         return [
             'id',
             'chiqimtype',
-            'miqdor',
+            'miqdori',
             'comment',
         ];
     }
@@ -33,9 +33,9 @@ class Chiqim extends ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'miqdor'], 'required'],
-            [['type_id', 'miqdor'], 'string'],
-            [['comment'], 'string'],
+            [['type_id', 'miqdori'], 'required'],
+            [['type_id',], 'string'],
+            [['comment','miqdori'], 'string'],
             [['created_at'], 'safe'],
         ];
     }
