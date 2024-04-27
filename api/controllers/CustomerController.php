@@ -128,11 +128,12 @@ class CustomerController extends Controller
             ]
         ]);
     }
-    public function actionSearchbyphone($phone)
+    public function actionSearchByPhone($phone)
     {
         return new ActiveDataProvider([
             'query' => \common\models\Customer::find()
-                ->where(['phone_1', $phone]),
+                ->where(['phone_1' => $phone])
+                ->orWhere(['phone_2' => $phone]),
             'pagination' => [
                 'pageSize' => 10,
             ]
