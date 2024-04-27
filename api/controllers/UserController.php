@@ -146,9 +146,16 @@ class UserController extends Controller
     public function actionView($id)
     {
         $user = User::findOne($id);
-        $userChiqim = Chiqim::where(['user_id' => $id])->all();
+        if (!$user) {
+            return ['error' => 'Foydalanuvchi topilmadi'];
+        }
+
+        // Foydalanuvchining chiqimlari uchun bog'lanuvchi optimallashtirish
+        $userChiqim = Chiqim::find()->where(['user_id' => $id])->all();
+
         return ['user' => $user, 'userChiqim' => $userChiqim];
     }
+
     public function actionDelete($id)
     {
         $user = User::findOne($id);
