@@ -20,6 +20,16 @@ class Chiqim extends ActiveRecord
         return 'chiqim';
     }
 
+    public function fields()
+    {
+        return [
+            'id',
+            'chiqimtype',
+            'miqdor',
+            'comment',
+        ];
+    }
+
     public function rules()
     {
         return [

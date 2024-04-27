@@ -2,6 +2,7 @@
 namespace api\controllers;
 
 use api\models\User;
+use common\models\Chiqim;
 use common\models\Salary;
 use Yii;
 use yii\data\ActiveDataProvider;
@@ -142,7 +143,9 @@ class UserController extends Controller
     }
     public function actionView($id)
     {
-        return User::findOne($id);
+        $user = User::findOne($id);
+        $userChiqim = Chiqim::where(['user_id' => $id])->all();
+        return ['user' => $user, 'userChiqim' => $userChiqim];
     }
     public function actionDelete($id)
     {
