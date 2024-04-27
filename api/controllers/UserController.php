@@ -77,6 +77,17 @@ class UserController extends Controller
         }
     }
 
+    public function actionUnblock($id)
+    {
+        $user = User::findOne($id);
+        $user->status = 10;
+        if ($user->save()){
+            return ['status' => 'Blockdan chiqarildi'];
+        }else{
+            return $user->getErrors();
+        }
+    }
+
     public function actionGetblockedusers()
     {
         $users = User::find()
