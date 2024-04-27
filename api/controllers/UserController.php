@@ -68,14 +68,21 @@ class UserController extends Controller
 
     public function actionBlockuser()
     {
-        $user = User::findOne(\Yii::$app->request->post('id'));
-        $user->status = 0;
-        if ($user->save()){
-            return ['status' => 'Blocklandi'];
-        }else{
-            return $user->getErrors();
+        $userId = \Yii::$app->request->post('id');
+        $user = User::findOne($userId);
+
+        if ($user !== null) {
+            $user->status = 0;
+            if ($user->save()) {
+                return ['status' => 'Blocklandi'];
+            } else {
+                return $user->getErrors();
+            }
+        } else {
+            return ['error' => 'User not found for ID: ' . $userId];
         }
     }
+
 
     public function actionUnblockuser()
     {
