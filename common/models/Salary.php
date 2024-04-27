@@ -30,7 +30,7 @@ class Salary extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['user_id', 'salary', 'type'], 'integer'],
+            [['user_id', 'salary'], 'integer'],
             [['user_id', 'salary', 'type'], 'required'],
             [['user_id', 'salary', 'type'], 'safe'],
         ];
