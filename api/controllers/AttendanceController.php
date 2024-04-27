@@ -59,9 +59,6 @@ class AttendanceController extends Controller
 
             return new ActiveDataProvider([
                 'query' => $query,
-                'pagination' => [
-                    'pageSize' => 10,
-                ],
             ]);
         } else {
             throw new \yii\web\MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
