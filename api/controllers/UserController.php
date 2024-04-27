@@ -49,6 +49,7 @@ class UserController extends Controller
          $user->auth_key = \Yii::$app->security->generateRandomString();
             $user->password_hash = \Yii::$app->security->generatePasswordHash(\Yii::$app->request->post('password'));
             $user->phone = \Yii::$app->request->post('phone');
+            $user->phone2 = \Yii::$app->request->post('phone2') ?? null;
             $user->comp_id = \Yii::$app->request->post('comp_id');
             $user->type_id = \Yii::$app->request->post('type_id');
             $user->status = 10;
@@ -126,6 +127,7 @@ class UserController extends Controller
                 $user->password_hash = \Yii::$app->security->generatePasswordHash(\Yii::$app->request->post('password'));
             $user->password_reset_token = \Yii::$app->security->generateRandomString() . '_' . time();
             $user->phone = \Yii::$app->request->post('phone');
+            $user->phone2 = \Yii::$app->request->post('phone2') ?? null;
             $user->comp_id = \Yii::$app->request->post('comp_id');
             $user->type_id = \Yii::$app->request->post('type_id');
             $user->status = 10;

@@ -40,6 +40,7 @@ class User extends \common\models\User
             'comp_id',
             'type_id',
             'phone',
+            'phone2',
             'status',
             'salary'
         ];
