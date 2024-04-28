@@ -80,24 +80,24 @@ class AttendanceController extends Controller
         $model = new Attendance();
         $model->load(\Yii::$app->request->post(), '');
         if ($model->save()) {
-            return $model;
+            return ['status' => 'success'];
         } else {
             return $model->getErrors();
         }
     }
 
-    public function actionUpdate($id)
+    public function actionUpdate()
     {
-        $model = Attendance::findOne($id);
+        $model = Attendance::findOne(\Yii::$app->request->post('id'));
         if ($model) {
             $model->load(\Yii::$app->request->post(), '');
             if ($model->save()) {
-                return $model;
+                return ['status' => 'success'];
             } else {
                 return $model->getErrors();
             }
         } else {
-            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
+            throw new \yii\web\NotFoundHttpException("Attendance with id ".\Yii::$app->request->post('id')." not found");
         }
     }
 
@@ -144,7 +144,7 @@ class AttendanceController extends Controller
                             $kpi->date = date('Y-m-d h:i:s');
                             $kpi->comment = "Kunlik maosh";
                             if ($kpi->save()) {
-                                return $model;
+                                return ['status' => 'success'];
                             } else {
                                 return $kpi->getErrors();
                             }
@@ -153,14 +153,14 @@ class AttendanceController extends Controller
                             $kpi->date = date('Y-m-d h:i:s');
                             $kpi->comment = "Yarim kunlik maosh";
                             if ($kpi->save()) {
-                                return $model;
+                                return ['status' => 'success'];
                             } else {
                                 return $kpi->getErrors();
                             }
                         }
                     }
                 }
-                return $model;
+                return ['status' => 'success'];
             } else {
                 return $model->getErrors();
             }
