@@ -114,7 +114,7 @@ class AttendanceController extends Controller
 
     public function actionView($id)
     {
-        $model = Attendance::find()->where(['user_id' => $id])->with('user');
+        $model = Attendance::find()->where(['user_id' => $id]);
         if ($model) {
             return $model;
         } else {
