@@ -118,6 +118,7 @@ class AttendanceController extends Controller
             $model->full_time = \Yii::$app->request->post('full_time');
             $model->go_time = date('Y-m-d H:i:s');
             $model->status = "Ketdi";
+            $model->comment = \Yii::$app->request->post('comment');
             if ($model->save()) {
                 if ($model->user->type->name != "Operator") {
                     $kpi = new Kpi();
