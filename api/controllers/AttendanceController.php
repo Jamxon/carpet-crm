@@ -53,8 +53,8 @@ class AttendanceController extends Controller
 
         $query = Attendance::find();
 
-        $startDate = $this->validateDate($startDate);
-        $endDate = $this->validateDate($endDate);
+//        $startDate = $this->validateDate($startDate);
+//        $endDate = $this->validateDate($endDate);
 
         if ($startDate !== null) {
             $query->andWhere(['>=', 'come_time', $startDate]);
