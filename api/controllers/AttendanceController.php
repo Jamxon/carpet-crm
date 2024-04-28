@@ -126,39 +126,40 @@ class AttendanceController extends Controller
     {
         $model = Attendance::findOne(\Yii::$app->request->post('id'));
         if ($model) {
-            $model->full_time = \Yii::$app->request->post('full_time');
+            $model->come_time = \Yii::$app->request->post('come_time');
             $model->go_time = \Yii::$app->request->post('go_time');
-            $model->status = "Ketdi";
+            $model->full_time = \Yii::$app->request->post('full_time');
+            $model->status = 'Ketdi';
             $model->comment = \Yii::$app->request->post('comment');
             if ($model->save()) {
-                if ($model->user->type->name != "Operator") {
-                    $kpi = new Kpi();
-                    $salary = Salary::findOne(['user_id' => $model->user_id, 'type' => 'Kunlik']);
-                    if ($salary){
-                        $kpi->user_id = $model->user_id;
-                        $kpi->order_id = 0;
-                        $kpi->customer_id = 0;
-                        if ($model->full_time == 1){
-                            $kpi->salary_id = $salary->salary;
-                            $kpi->date = date('Y-m-d h:i:s');
-                            $kpi->comment = "Kunlik maosh";
-                            if ($kpi->save()) {
-                                return $model;
-                            } else {
-                                return $kpi->getErrors();
-                            }
-                        }else{
-                            $kpi->salary_id = $salary->salary / 2;
-                            $kpi->date = date('Y-m-d h:i:s');
-                            $kpi->comment = "Yarim kunlik maosh";
-                            if ($kpi->save()) {
-                                return $model;
-                            } else {
-                                return $kpi->getErrors();
-                            }
-                        }
-                    }
-                }
+//                if ($model->user->type->name != "Operator") {
+//                    $kpi = new Kpi();
+//                    $salary = Salary::findOne(['user_id' => $model->user_id, 'type' => 'Kunlik']);
+//                    if ($salary){
+//                        $kpi->user_id = $model->user_id;
+//                        $kpi->order_id = 0;
+//                        $kpi->customer_id = 0;
+//                        if ($model->full_time == 1){
+//                            $kpi->salary_id = $salary->salary;
+//                            $kpi->date = date('Y-m-d h:i:s');
+//                            $kpi->comment = "Kunlik maosh";
+//                            if ($kpi->save()) {
+//                                return $model;
+//                            } else {
+//                                return $kpi->getErrors();
+//                            }
+//                        }else{
+//                            $kpi->salary_id = $salary->salary / 2;
+//                            $kpi->date = date('Y-m-d h:i:s');
+//                            $kpi->comment = "Yarim kunlik maosh";
+//                            if ($kpi->save()) {
+//                                return $model;
+//                            } else {
+//                                return $kpi->getErrors();
+//                            }
+//                        }
+//                    }
+//                }
                 return $model;
             } else {
                 return $model->getErrors();
