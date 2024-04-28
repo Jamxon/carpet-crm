@@ -133,7 +133,7 @@ class AttendanceController extends Controller
             if ($model->save()) {
                 if ($model->user->type->name != "Operator") {
                     $kpi = new Kpi();
-                    $salary = Salary::find()->where(['user_id' => $model->user_id,'type' => 'Kunlik'])->one();
+                    $salary = Salary::findOne(['user_id' => $model->user_id, 'type' => 'Kunlik']);
                     if ($salary){
                         $kpi->user_id = $model->user_id;
                         $kpi->order_id = 0;
