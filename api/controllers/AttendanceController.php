@@ -116,7 +116,7 @@ class AttendanceController extends Controller
         $model = Attendance::findOne(\Yii::$app->request->post('id'));
         if ($model) {
             $model->full_time = \Yii::$app->request->post('full_time');
-            $model->go_time = date('Y-m-d H:i:s');
+            $model->go_time = \Yii::$app->request->post('go_time');
             $model->status = "Ketdi";
             $model->comment = \Yii::$app->request->post('comment');
             if ($model->save()) {
@@ -153,7 +153,7 @@ class AttendanceController extends Controller
                 return $model->getErrors();
             }
         } else {
-            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
+            throw new \yii\web\NotFoundHttpException("Attendance with id ".\Yii::$app->request->post('id')." not found");
         }
     }
 }
