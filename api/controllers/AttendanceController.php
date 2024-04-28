@@ -42,7 +42,7 @@ class AttendanceController extends Controller
         return \api\models\Attendance::find()->all();
     }
 
-    public function actionAttendance()
+    public function actionDate()
     {
         if (!\Yii::$app->request->isPost) {
             throw new MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
