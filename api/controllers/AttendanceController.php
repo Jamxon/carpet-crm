@@ -43,26 +43,31 @@ class AttendanceController extends Controller
 
     public function actionDate()
     {
-        if (\Yii::$app->request->isPost) {
+
             $startDate = \Yii::$app->request->post('start_date');
             $endDate = \Yii::$app->request->post('end_date');
 
-            $query = Attendance::find();
-
-            if (!empty($startDate)) {
-                $query->andWhere(['>=', 'come_time', $startDate]);
-            }
-
-            if (!empty($endDate)) {
-                $query->andWhere(['<=', 'go_time', $endDate]);
-            }
-
-            return new ActiveDataProvider([
-                'query' => $query,
-            ]);
-        } else {
-            throw new \yii\web\MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
-        }
+            return $startDate.$endDate;
+//        if (\Yii::$app->request->isPost) {
+//            $startDate = \Yii::$app->request->post('start_date');
+//            $endDate = \Yii::$app->request->post('end_date');
+//
+//            $query = Attendance::find();
+//
+//            if (!empty($startDate)) {
+//                $query->andWhere(['>=', 'come_time', $startDate]);
+//            }
+//
+//            if (!empty($endDate)) {
+//                $query->andWhere(['<=', 'go_time', $endDate]);
+//            }
+//
+//            return new ActiveDataProvider([
+//                'query' => $query,
+//            ]);
+//        } else {
+//            throw new \yii\web\MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
+//        }
     }
     public function actionCreate()
     {
