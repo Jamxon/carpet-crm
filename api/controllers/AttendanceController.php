@@ -8,6 +8,7 @@ use common\models\Kpi;
 use common\models\Salary;
 use yii\data\ActiveDataProvider;
 use yii\rest\Controller;
+use yii\web\MethodNotAllowedHttpException;
 use yii\web\Response;
 
 class AttendanceController extends Controller
@@ -41,33 +42,38 @@ class AttendanceController extends Controller
         return \api\models\Attendance::find()->all();
     }
 
-    public function actionDate()
+    public function actionAttendance()
     {
+        if (!\Yii::$app->request->isPost) {
+            throw new MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
+        }
 
-            $startDate = \Yii::$app->request->post('start_date');
-            $endDate = \Yii::$app->request->post('end_date');
+        $startDate = \Yii::$app->request->post('start_date');
+        $endDate = \Yii::$app->request->post('end_date');
 
-            return $startDate.$endDate;
-//        if (\Yii::$app->request->isPost) {
-//            $startDate = \Yii::$app->request->post('start_date');
-//            $endDate = \Yii::$app->request->post('end_date');
-//
-//            $query = Attendance::find();
-//
-//            if (!empty($startDate)) {
-//                $query->andWhere(['>=', 'come_time', $startDate]);
-//            }
-//
-//            if (!empty($endDate)) {
-//                $query->andWhere(['<=', 'go_time', $endDate]);
-//            }
-//
-//            return new ActiveDataProvider([
-//                'query' => $query,
-//            ]);
-//        } else {
-//            throw new \yii\web\MethodNotAllowedHttpException("Method Not Allowed. This endpoint only supports POST requests.");
-//        }
+        $query = Attendance::find();
+
+        $startDate = $this->validateDate($startDate);
+        $endDate = $this->validateDate($endDate);
+
+        if ($startDate !== null) {
+            $query->andWhere(['>=', 'come_time', $startDate]);
+        }
+
+        if ($endDate !== null) {
+            $query->andWhere(['<=', 'go_time', $endDate]);
+        }
+
+        return new ActiveDataProvider([
+            'query' => $query,
+        ]);
+    }
+    private function validateDate($date)
+    {
+        if (preg_match('/^\d{4}-\d{2}-\d{2}$/', $date)) {
+            return $date;
+        }
+        return null;
     }
     public function actionCreate()
     {
