@@ -114,12 +114,9 @@ class AttendanceController extends Controller
 
     public function actionView($id)
     {
-        $model = Attendance::find()->where(['user_id' => $id]);
-        if ($model) {
-            return $model;
-        } else {
-            throw new \yii\web\NotFoundHttpException("Attendance with id $id not found");
-        }
+        return new ActiveDataProvider([
+            'query' => Attendance::find()->where(['user_id'=>$id]),
+        ]);
     }
 
     public function actionGo()
