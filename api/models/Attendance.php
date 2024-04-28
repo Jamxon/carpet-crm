@@ -46,7 +46,7 @@ class Attendance extends \common\models\Attendance
         return [
             [['user_id', 'full_time', 'daily_salary'], 'integer'],
             [['come_time', 'go_time'], 'safe'],
-            [['comment'], 'string', 'max' => 255],
+            [['comment','status'], 'string', 'max' => 255],
         ];
     }
 
@@ -61,6 +61,7 @@ class Attendance extends \common\models\Attendance
             'come_time' => 'Come Time',
             'go_time' => 'Go Time',
             'full_time' => 'Full Time',
+            'status' => 'Status',
             'daily_salary' => 'Daily Salary',
             'comment' => 'Comment',
         ];
