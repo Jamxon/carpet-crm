@@ -50,7 +50,7 @@ class AttendanceController extends Controller
             $query = Attendance::find();
 
             if (!empty($startDate)) {
-                $query->andWhere(['>=', 'come_time', $startDate]);
+                $query->andWhere(['=', 'come_time', $startDate]);
             }
 
 //            if (!empty($endDate)) {
