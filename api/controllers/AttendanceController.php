@@ -53,9 +53,9 @@ class AttendanceController extends Controller
                 $query->andWhere(['>=', 'come_time', $startDate]);
             }
 
-            if (!empty($endDate)) {
-                $query->andWhere(['<=', 'go_time', $endDate]);
-            }
+//            if (!empty($endDate)) {
+//                $query->andWhere(['<=', 'go_time', $endDate]);
+//            }
 
             return new ActiveDataProvider([
                 'query' => $query,
