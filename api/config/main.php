@@ -113,6 +113,7 @@ return [
                 'GET order/delivering' => 'order/delivering',
                 'GET order/complete' => 'order/complete',
                 'GET order/cancelled' => 'order/cancelled',
+                'GET order/cancel' => 'order/cancel',
                 'GET main/options' => 'main/options',
                 'GET main/index' => 'main/index',
                 'GET main/registered_customer' => 'main/registered_customer',
