@@ -177,8 +177,20 @@ class OrderController extends Controller
                 }
             }
         }
-        return $order;
+        return ['Success'];
     }
+
+    public function actionCancel($id)
+    {
+        $model = Order::find($id);
+        $model->status = 'Bekor qilindi';
+        if ($model->save()){
+            return $model;
+        }else{
+            return $model->getErrors();
+        }
+    }
+
     public function actionDelete($id)
     {
         $model = Order::findOne($id);
