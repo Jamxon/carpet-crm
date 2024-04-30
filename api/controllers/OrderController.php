@@ -85,7 +85,7 @@ class OrderController extends Controller
                 $order->driver_id = \Yii::$app->request->post('driver_id');
                 $order->finish_discount_price = null;
                 $order->comment = \Yii::$app->request->post('comment_order');
-                if ($customer->save()){
+                if ($order->save()){
                     $kpi = new Kpi();
                     $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
                     if ($salary->type == "Kpi"){
