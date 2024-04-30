@@ -58,8 +58,12 @@ class Order extends \yii\db\ActiveRecord
             'record_id',
             'date',
             'status',
+            'discount_type',
+            'discount_item',
             'finish_discount_price',
+            'discount_amount',
             'driver',
+            'is_reclean',
             'comment',
         ];
     }
