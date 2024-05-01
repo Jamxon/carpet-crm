@@ -157,7 +157,7 @@ class OrderController extends Controller
             $order->discount_amount = \Yii::$app->request->post('discount_amount');
             $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
             $order->driver_id = \Yii::$app->request->post('driver_id');
-            $order->comment = \Yii::$app->request->post('comment');
+            $order->comment = \Yii::$app->request->post('comment') ?? null;
             if ($order->save()){
                 if(\Yii::$app->request->post('orderitem')){
                     foreach (\Yii::$app->request->post('orderitem') as $item){
