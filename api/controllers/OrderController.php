@@ -40,7 +40,7 @@ class OrderController extends Controller
 
     public function actionOptions()
     {
-        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
+        \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PATCH, PUT, DELETE, OPTIONS');
     }
 
     public function actions()
