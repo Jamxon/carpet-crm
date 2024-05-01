@@ -182,6 +182,8 @@ class OrderController extends Controller
                     return ['Success'];
                 }
                 return ['Success'];
+            }else{
+                $order->getErrors();
             }
             return ['Success'];
         }
