@@ -179,8 +179,11 @@ class OrderController extends Controller
                     if (!$orderLocation->save()){
                         return $orderLocation->getErrors();
                     }
+                    return ['Success'];
                 }
+                return ['Success'];
             }
+            return ['Success'];
         }
         return ['Success'];
     }
