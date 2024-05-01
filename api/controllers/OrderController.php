@@ -213,7 +213,7 @@ class OrderController extends Controller
     }
     public function actionSearch($id)
     {
-        $model = new ActiveDataProvider([
+        return new ActiveDataProvider([
             'query' => Order::find()->where(['like', 'id', $id]),
         ]);
     }
