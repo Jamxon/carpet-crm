@@ -157,24 +157,26 @@ class OrderController extends Controller
             $order->driver_id = \Yii::$app->request->post('driver_id');
             $order->comment = \Yii::$app->request->post('comment');
             if ($order->save()){
-                foreach (\Yii::$app->request->post('orderitem') as $item){
-                    $orderItem = new OrderItem();
-                    $orderItem->order_id = $id;
-                    $orderItem->clean_item_id = $item['clean_item_id'];
-                    $orderItem->count = $item['count'];
-                    $orderItem->size = $item['size'];
-                    if (!$orderItem->save()){
-                        return $orderItem->getErrors();
+                if(\Yii::$app->request->post('orderitem')){
+                    foreach (\Yii::$app->request->post('orderitem') as $item){
+                        $orderItem = OrderItem::findOne($item['id']);
+                        $orderItem->order_id = $id;
+                        $orderItem->clean_item_id = $item['clean_item_id'];
+                        $orderItem->count = $item['count'];
+                        $orderItem->size = $item['size'];
+                        if (!$orderItem->save()){
+                            return $orderItem->getErrors();
+                        }
                     }
                 }
-                $orderLocation->order_id = $id;
-                $orderLocation->latitude = \Yii::$app->request->post('latitude');
-                $orderLocation->longitude = \Yii::$app->request->post('longitude');
-                $orderLocation->address = \Yii::$app->request->post('address');
-                if ($orderLocation->save()){
-                    return ['Success'];
-                } else {
-                    return $orderLocation->getErrors();
+                if (\Yii::$app->request->post('latitude')){
+                    $orderLocation->order_id = $id;
+                    $orderLocation->latitude = \Yii::$app->request->post('latitude');
+                    $orderLocation->longitude = \Yii::$app->request->post('longitude');
+                    $orderLocation->address = \Yii::$app->request->post('address');
+                    if (!$orderLocation->save()){
+                        return $orderLocation->getErrors();
+                    }
                 }
             }
         }
