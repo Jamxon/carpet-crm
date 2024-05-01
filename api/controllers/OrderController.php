@@ -211,10 +211,10 @@ class OrderController extends Controller
             return $model->getErrors();
         }
     }
-    public function actionSearch()
+    public function actionSearch($id)
     {
         $model = new ActiveDataProvider([
-            'query' => Order::find()->where(['like', 'id', \Yii::$app->request->get('id')]),
+            'query' => Order::find()->where(['like', 'id', $id]),
         ]);
     }
 
