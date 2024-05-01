@@ -146,47 +146,47 @@ class OrderController extends Controller
     {
         $order = Order::findOne(\Yii::$app->request->post('id'));
         $orderLocation = new OrderLocation();
-        if (\Yii::$app->request->post('update') == 1){
-            $order->customer_id = \Yii::$app->request->post('customer_id');
-            $order->record_id = \Yii::$app->request->post('record_id');
-            $order->date = \Yii::$app->request->post('date');
-            $order->submit_date = \Yii::$app->request->post('submit_date');
-            $order->status = \Yii::$app->request->post('status');
-            $order->discount_type = \Yii::$app->request->post('discount_type');
-            $order->discount_item = \Yii::$app->request->post('discount_item');
-            $order->discount_amount = \Yii::$app->request->post('discount_amount');
-            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
-            $order->driver_id = \Yii::$app->request->post('driver_id');
-            $order->comment = \Yii::$app->request->post('comment') ?? null;
-            if ($order->save()){
-                if(\Yii::$app->request->post('orderitem')){
-                    foreach (\Yii::$app->request->post('orderitem') as $item){
-                        $orderItem = OrderItem::findOne($item['id']);
-                        $orderItem->order_id = \Yii::$app->request->post('id');
-                        $orderItem->clean_item_id = $item['clean_item_id'];
-                        $orderItem->count = $item['count'];
-                        $orderItem->size = $item['size'];
-                        if (!$orderItem->save()){
-                            return $orderItem->getErrors();
-                        }
-                    }
-                }
-                if (\Yii::$app->request->post('latitude')){
-                    $orderLocation->order_id = \Yii::$app->request->post('id');
-                    $orderLocation->latitude = \Yii::$app->request->post('latitude');
-                    $orderLocation->longitude = \Yii::$app->request->post('longitude');
-                    $orderLocation->address = \Yii::$app->request->post('address');
-                    if (!$orderLocation->save()){
-                        return $orderLocation->getErrors();
-                    }
-                    return $order;
-                }
-                return $order;
-            }else{
-                $order->getErrors();
-            }
-            return $order;
-        }
+//        if (\Yii::$app->request->post('update') == 1){
+//            $order->customer_id = \Yii::$app->request->post('customer_id');
+//            $order->record_id = \Yii::$app->request->post('record_id');
+//            $order->date = \Yii::$app->request->post('date');
+//            $order->submit_date = \Yii::$app->request->post('submit_date');
+//            $order->status = \Yii::$app->request->post('status');
+//            $order->discount_type = \Yii::$app->request->post('discount_type');
+//            $order->discount_item = \Yii::$app->request->post('discount_item');
+//            $order->discount_amount = \Yii::$app->request->post('discount_amount');
+//            $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
+//            $order->driver_id = \Yii::$app->request->post('driver_id');
+//            $order->comment = \Yii::$app->request->post('comment') ?? null;
+//            if ($order->save()){
+//                if(\Yii::$app->request->post('orderitem')){
+//                    foreach (\Yii::$app->request->post('orderitem') as $item){
+//                        $orderItem = OrderItem::findOne($item['id']);
+//                        $orderItem->order_id = \Yii::$app->request->post('id');
+//                        $orderItem->clean_item_id = $item['clean_item_id'];
+//                        $orderItem->count = $item['count'];
+//                        $orderItem->size = $item['size'];
+//                        if (!$orderItem->save()){
+//                            return $orderItem->getErrors();
+//                        }
+//                    }
+//                }
+//                if (\Yii::$app->request->post('latitude')){
+//                    $orderLocation->order_id = \Yii::$app->request->post('id');
+//                    $orderLocation->latitude = \Yii::$app->request->post('latitude');
+//                    $orderLocation->longitude = \Yii::$app->request->post('longitude');
+//                    $orderLocation->address = \Yii::$app->request->post('address');
+//                    if (!$orderLocation->save()){
+//                        return $orderLocation->getErrors();
+//                    }
+//                    return $order;
+//                }
+//                return $order;
+//            }else{
+//                $order->getErrors();
+//            }
+//            return $order;
+//        }
         return $order;
     }
 
