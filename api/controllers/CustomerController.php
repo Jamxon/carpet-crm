@@ -122,7 +122,10 @@ class CustomerController extends Controller
                 ->where(['LIKE', 'name', $data])
                 ->orWhere(['LIKE', 'phone_1', $data])
                 ->orWhere(['LIKE', 'phone_2', $data])
-                ->orwhere(['LIKE', 'address', $data])
+                ->orwhere(['LIKE', 'address', $data]),
+            'pagination' => [
+                'pageSize' => 1000,
+            ],
         ]);
     }
     public function actionSearchbyphone($phone)
