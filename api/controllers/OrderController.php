@@ -162,7 +162,7 @@ class OrderController extends Controller
                 if(\Yii::$app->request->post('orderitem')){
                     foreach (\Yii::$app->request->post('orderitem') as $item){
                         $orderItem = OrderItem::findOne($item['id']);
-                        $orderItem->order_id = $id;
+                        $orderItem->order_id = \Yii::$app->request->post('id');
                         $orderItem->clean_item_id = $item['clean_item_id'];
                         $orderItem->count = $item['count'];
                         $orderItem->size = $item['size'];
@@ -172,22 +172,22 @@ class OrderController extends Controller
                     }
                 }
                 if (\Yii::$app->request->post('latitude')){
-                    $orderLocation->order_id = $id;
+                    $orderLocation->order_id = \Yii::$app->request->post('id');
                     $orderLocation->latitude = \Yii::$app->request->post('latitude');
                     $orderLocation->longitude = \Yii::$app->request->post('longitude');
                     $orderLocation->address = \Yii::$app->request->post('address');
                     if (!$orderLocation->save()){
                         return $orderLocation->getErrors();
                     }
-                    return ['Success'];
+                    return $order;
                 }
-                return ['Success'];
+                return $order;
             }else{
                 $order->getErrors();
             }
-            return ['Success'];
+            return $order;
         }
-        return ['Success'];
+        return $order;
     }
 
     public function actionCancel($id)
