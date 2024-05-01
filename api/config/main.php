@@ -114,7 +114,7 @@ return [
                 'GET order/complete' => 'order/complete',
                 'GET order/cancelled' => 'order/cancelled',
                 'GET order/cancel' => 'order/cancel',
-                'PATCH order/update' => 'order/update',
+                'POST order/update' => 'order/update',
                 'GET main/options' => 'main/options',
                 'GET main/index' => 'main/index',
                 'GET main/registered_customer' => 'main/registered_customer',
