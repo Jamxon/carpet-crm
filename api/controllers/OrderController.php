@@ -78,6 +78,7 @@ class OrderController extends Controller
             if ($customer->save()) {
                 $order->customer_id = $customer->id;
                 $order->date = \Yii::$app->request->post('date_order');
+                $order->submit_date = \Yii::$app->request->post('submit_date');
                 $order->status = "Olib kelishda";
                 $order->discount_type = \Yii::$app->request->post('discount_type');
                 $order->discount_item = \Yii::$app->request->post('discount_item');
@@ -110,6 +111,7 @@ class OrderController extends Controller
         elseif (\Yii::$app->request->post('add_new_order') == 1) {
             $order->customer_id = \Yii::$app->request->post('customer_id');
             $order->date = \Yii::$app->request->post('date_order');
+            $order->submit_date = \Yii::$app->request->post('submit_date');
             $order->status = "Olib kelishda";
             $order->discount_type = \Yii::$app->request->post('discount_type');
             $order->discount_item = \Yii::$app->request->post('discount_item');
