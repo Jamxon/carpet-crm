@@ -144,7 +144,7 @@ class OrderController extends Controller
     }
     public function actionUpdate()
     {
-        return \Yii::$app->request->post('id');
+        return \Yii::$app->request->getBodyParam('id');
         $order = Order::find()->where(['id' => $id])->one();
         $orderLocation = new OrderLocation();
 //        if (\Yii::$app->request->post('update') == 1){
