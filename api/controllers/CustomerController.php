@@ -131,9 +131,6 @@ class CustomerController extends Controller
             'query' => \common\models\Customer::find()
                 ->where(['LIKE', 'phone_1', $phone])
                 ->orWhere(['LIKE', 'phone_2', $phone]),
-            'pagination' => [
-                'pageSize' => 10,
-            ]
         ]);
     }
 }
