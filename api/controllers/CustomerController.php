@@ -117,17 +117,16 @@ class CustomerController extends Controller
     }
     public function actionSearch($data)
     {
-        return $data;
-//        return new ActiveDataProvider([
-//            'query' => \common\models\Customer::find()
-//                ->where(['LIKE', 'name', $data])
-//                ->orWhere(['LIKE', 'phone_1', $data])
-//                ->orWhere(['LIKE', 'phone_2', $data])
-//                ->orwhere(['LIKE', 'address', $data]),
-//            'pagination' => [
-//                'pageSize' => 10,
-//            ]
-//        ]);
+        return new ActiveDataProvider([
+            'query' => \common\models\Customer::find()
+                ->where(['LIKE', 'name', $data])
+                ->orWhere(['LIKE', 'phone_1', $data])
+                ->orWhere(['LIKE', 'phone_2', $data])
+                ->orwhere(['LIKE', 'address', $data]),
+            'pagination' => [
+                'pageSize' => 10,
+            ]
+        ]);
     }
     public function actionSearchbyphone($phone)
     {
