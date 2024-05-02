@@ -193,7 +193,7 @@ class OrderController extends Controller
 
     public function actionCancel($id)
     {
-        $model = Order::find($id);
+        $model = Order::findOne($id);
         $model->status = 'Bekor qilindi';
         if ($model->save()){
             return $model;
