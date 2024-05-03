@@ -89,16 +89,19 @@ class OrderController extends Controller
                 $order->comment = \Yii::$app->request->post('comment_order');
                 if ($order->save()){
                     $kpi = new Kpi();
-                    $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
-                    if ($salary->type == "Kpi"){
-                        $kpi->user_id = \Yii::$app->request->post('employer_id');
-                        $kpi->order_id = 0;
-                        $kpi->customer_id = $customer->id;
-                        $kpi->salary_id = $salary->salary;
-                        $kpi->date = date('Y-m-d H:i:s');
-                        $kpi->comment = "Olingan mijoz ($customer->name) uchun kpi";
-                        if (!$kpi->save()){
-                            return $kpi->getErrors();
+                    $user = \common\models\User::findOne(\Yii::$app->request->post('employer_id'));
+                    if ($user->type != 'Admin'){
+                        $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
+                        if ($salary && $salary->type == "Kpi"){
+                            $kpi->user_id = \Yii::$app->request->post('employer_id');
+                            $kpi->order_id = 0;
+                            $kpi->customer_id = $customer->id;
+                            $kpi->salary_id = $salary->salary;
+                            $kpi->date = date('Y-m-d H:i:s');
+                            $kpi->comment = "Olingan mijoz ($customer->name) uchun kpi";
+                            if (!$kpi->save()){
+                                return $kpi->getErrors();
+                            }
                         }
                     }
                     return ["Success"];
