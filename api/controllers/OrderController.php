@@ -176,6 +176,7 @@ class OrderController extends Controller
                         $orderItem->order_id = \Yii::$app->request->post('id');
                         $orderItem->count = $item['count'];
                         $orderItem->size = $item['size'];
+                        $orderItem->status = "Yuvilmadi";
                         if (!$orderItem->save()){
                             return $orderItem->getErrors();
                         }
