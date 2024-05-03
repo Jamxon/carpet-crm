@@ -34,8 +34,8 @@ class Chiqim extends ActiveRecord
     public function rules()
     {
         return [
-            [['type_id', 'miqdori'], 'required'],
-            [['type_id',], 'string'],
+            [['type_id', 'miqdori','user_id'], 'required'],
+            [['type_id','miqdori','user_id'], 'integer'],
             [['comment','miqdori'], 'string'],
             [['created_at'], 'safe'],
         ];
