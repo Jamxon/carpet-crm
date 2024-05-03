@@ -24,7 +24,8 @@ class Chiqim extends ActiveRecord
     {
         return [
             'id',
-            'chiqimtype',
+            'user',
+            'type',
             'miqdori',
             'comment',
         ];
@@ -40,8 +41,12 @@ class Chiqim extends ActiveRecord
         ];
     }
 
-    public function getChiqimtype()
+    public function getType()
     {
         return $this->hasOne(Chiqimtype::className(), ['id' => 'type_id']);
+    }
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }
