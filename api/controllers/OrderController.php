@@ -85,6 +85,7 @@ class OrderController extends Controller
                 $order->discount_amount = \Yii::$app->request->post('discount_amount');
                 $order->driver_id = \Yii::$app->request->post('driver_id');
                 $order->finish_discount_price = null;
+                $order->has_called = 0;
                 $order->comment = \Yii::$app->request->post('comment_order');
                 if ($order->save()){
                     $kpi = new Kpi();
@@ -118,6 +119,7 @@ class OrderController extends Controller
             $order->discount_amount = \Yii::$app->request->post('discount_amount');
             $order->driver_id = \Yii::$app->request->post('driver_id');
             $order->finish_discount_price = null;
+            $order->has_called = 0;
             $order->comment = \Yii::$app->request->post('comment_order');
                     $kpi = new Kpi();
                     $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
@@ -158,6 +160,7 @@ class OrderController extends Controller
             $order->discount_amount = \Yii::$app->request->post('discount_amount');
             $order->finish_discount_price = \Yii::$app->request->post('finish_discount_price');
             $order->driver_id = \Yii::$app->request->post('driver_id');
+            $order->has_called = \Yii::$app->request->post('has_called');
             $order->comment = \Yii::$app->request->post('comment') ?? null;
             if ($order->save()){
                 if(\Yii::$app->request->post('orderitem')){
@@ -189,6 +192,17 @@ class OrderController extends Controller
             return $order;
         }
         return $order;
+    }
+
+    public function actionHascall($id)
+    {
+        $model = Order::findOne($id);
+        $model->has_called = 1;
+        if ($model->save()){
+            return $model;
+        }else{
+            return $model->getErrors();
+        }
     }
 
     public function actionCancel($id)

@@ -21,6 +21,7 @@ use Yii;
  * @property string|null $finish_discount_price
  * @property string|null $driver_id
  * @property string|null $is_reclean
+ * @property boolean|null $has_called
  * @property string|null $comment
  * @property string|null $created_at
  *
@@ -45,6 +46,7 @@ class Order extends \yii\db\ActiveRecord
         return [
             [['customer_id', 'record_id','finish_discount_price'], 'integer'],
             [['date'], 'safe'],
+            ['has_called', 'boolean'],
             [['status', 'comment'], 'string', 'max' => 255],
             [['customer_id'], 'exist', 'skipOnError' => true, 'targetClass' => Customer::class, 'targetAttribute' => ['customer_id' => 'id']],
         ];
@@ -64,6 +66,7 @@ class Order extends \yii\db\ActiveRecord
             'discount_amount',
             'driver',
             'is_reclean',
+            'has_called',
             'comment',
         ];
     }
@@ -79,6 +82,12 @@ class Order extends \yii\db\ActiveRecord
             'date' => 'Date',
             'status' => 'Status',
             'finish_discount_price' => 'Finish Discount Price', // Add this line
+            'discount_type' => 'Discount Type',
+            'discount_item' => 'Discount Item',
+            'discount_amount' => 'Discount Amount',
+            'driver_id' => 'Driver ID',
+            'is_reclean' => 'Is Reclean',
+            'has_called' => 'Has Called',
             'comment' => 'Comment',
         ];
     }
