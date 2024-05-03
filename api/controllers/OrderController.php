@@ -171,9 +171,9 @@ class OrderController extends Controller
             if ($order->save()){
                 if(\Yii::$app->request->post('orderitem')){
                     foreach (\Yii::$app->request->post('orderitem') as $item){
-                        $orderItem = OrderItem::findOne($item['id']);
-                        $orderItem->order_id = \Yii::$app->request->post('id');
+                        $orderItem = new OrderItem;
                         $orderItem->clean_item_id = $item['clean_item_id'];
+                        $orderItem->order_id = \Yii::$app->request->post('id');
                         $orderItem->count = $item['count'];
                         $orderItem->size = $item['size'];
                         if (!$orderItem->save()){
