@@ -65,7 +65,7 @@ class CustomerController extends Controller
            if ($customer->save()){
                $kpi = new Kpi();
                $salary = Salary::find()->where(['user_id' => \Yii::$app->request->post('employer_id')])->one();
-               if ($salary->type == "Kpi"){
+               if ($salary && $salary->type == "Kpi"){
                    $kpi->user_id = \Yii::$app->request->post('employer_id');
                    $kpi->order_id = 0;
                    $kpi->customer_id = $customer->id;
