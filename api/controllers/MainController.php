@@ -41,8 +41,13 @@ class MainController extends Controller
         $registered_customer = Customer::find()->where(['>=', 'created_at', $startDate])
             ->andWhere(['<=', 'created_at', $endDate])
             ->count();
-        $registered_order = Order::find()->where(['created_at' => \Yii::$app->request->get('date')])->count();
-        $receive_order = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])->count();
+        $registered_order = Order::find()->where([ '>=','created_at', $startDate])
+            ->andWhere(['<=', 'created_at', $endDate])
+            ->count();
+        $receive_order = Order::find()->where([ '>=','created_at', $startDate])
+            ->andWhere(['<=', 'created_at', $endDate])
+            ->andWhere(['=', 'status' , "Olib kelishda"])
+            ->count();
         $bringing = Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->count();
         $cancelled = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->count();
         $registered_order_item = OrderItem::find()
