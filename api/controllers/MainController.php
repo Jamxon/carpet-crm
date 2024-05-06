@@ -54,8 +54,7 @@ class MainController extends Controller
             ->andWhere(['=', 'status', 'Bekor qilindi'])
             ->count();
         $registered_order_item = OrderItem::find()
-            ->leftJoin('clean_item', 'clean_item.id = order_item.clean_item_id')
-            ->leftJoin('order', 'order.id = order_item.order_id')
+            ->join('order', 'order.id = order_item.order_id')
             ->andWhere([ '>=','created_at', $startDate])
             ->andWhere(['<=', 'created_at', $endDate])
             ->count();
