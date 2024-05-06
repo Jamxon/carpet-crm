@@ -54,10 +54,11 @@ class MainController extends Controller
             ->andWhere(['=', 'status', 'Bekor qilindi'])
             ->count();
         $registered_order_item = OrderItem::find()
-            ->join('order', 'order.id = order_item.order_id')
-            ->andWhere([ '>=','created_at', $startDate])
-            ->andWhere(['<=', 'created_at', $endDate])
+            ->join('INNER JOIN', 'order', 'order.id = order_item.order_id')
+            ->andWhere(['>=', 'order_item.created_at', $startDate])
+            ->andWhere(['<=', 'order_item.created_at', $endDate])
             ->count();
+
         $cleaned = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->count();
         $packaged = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->count();
         $completed = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yakunlandi'])->count();
