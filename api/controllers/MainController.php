@@ -57,7 +57,8 @@ class MainController extends Controller
             ->select('order_item.clean_item_id, order_item.order_id, order_item.size, order_item.count')
             ->leftJoin('clean_item', 'clean_item.id = order_item.clean_item_id')
             ->leftJoin('order', 'order.id = order_item.order_id')
-            ->where(['created_at' => \Yii::$app->request->get('date')])
+            ->andWhere([ '>=','created_at', $startDate])
+            ->andWhere(['<=', 'created_at', $endDate])
             ->count();
         $cleaned = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->count();
         $packaged = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Yetkazib berishda'])->count();
