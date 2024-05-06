@@ -46,7 +46,7 @@ class MainController extends Controller
             ->count();
         $receive_order = Order::find()->where([ '>=','created_at', $startDate])
             ->andWhere(['<=', 'created_at', $endDate])
-//            ->andWhere(['=', 'status', 'Olib kelishda'])
+            ->andWhere(['=', 'status', 'Olib kelishda'])
             ->count();
         $bringing = Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->count();
         $cancelled = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Bekor qilindi' ])->count();
