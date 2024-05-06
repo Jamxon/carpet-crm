@@ -55,8 +55,8 @@ class MainController extends Controller
             ->count();
         $registered_order_item = OrderItem::find()
             ->join('INNER JOIN', 'order', 'order.id = order_item.order_id')
-            ->andWhere(['>=', 'order_item.created_at', $startDate])
-            ->andWhere(['<=', 'order_item.created_at', $endDate])
+            ->andWhere(['>=', 'order.created_at', $startDate])
+            ->andWhere(['<=', 'order.created_at', $endDate])
             ->count();
 
         $cleaned = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Quritishda'])->count();
