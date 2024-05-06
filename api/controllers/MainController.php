@@ -36,8 +36,8 @@ class MainController extends Controller
 
     public function actionIndex()
     {
-            $startDate = \Yii::$app->request->get('start_date');
-            $endDate = \Yii::$app->request->get('end_date');
+            $startDate = date(\Yii::$app->request->get('start_date'));
+            $endDate = date(\Yii::$app->request->get('end_date'));
         $registered_customer = Customer::find()->where(['>=', 'created_at', $startDate])
             ->andWhere(['<=', 'created_at', $endDate])
             ->count();
