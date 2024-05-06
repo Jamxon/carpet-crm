@@ -63,7 +63,7 @@ class MainController extends Controller
         return [
             'registered_customer' => $registered_customer,
             'registered_order' => $registered_order,
-            'receive_order' => $receive_order,
+            'receive_order' => $received_order,
             'bringing' => $bringing,
             'cancelled' => $cancelled,
             'cleaned' => $cleaned,
