@@ -33,9 +33,14 @@ class MainController extends Controller
     {
         \Yii::$app->response->getHeaders()->set('Allow', 'GET, POST, PUT, DELETE, OPTIONS');
     }
+
     public function actionIndex()
     {
-        $registered_customer = Customer::find()->where(['created_at' => date(\Yii::$app->request->get('date'))])->count();
+            $startDate = \Yii::$app->request->get('start_date');
+            $endDate = \Yii::$app->request->get('end_date');
+        $registered_customer = Customer::find()->where(['>=', 'created_at', $startDate])
+            ->andWhere(['<=', 'created_at', $endDate])
+            ->count();
         $registered_order = Order::find()->where(['created_at' => \Yii::$app->request->get('date')])->count();
         $receive_order = Order::find()->where(['created_at' => \Yii::$app->request->get('date'), 'status' => 'Qabul qilindi'])->count();
         $bringing = Order::find()->where(['created_at' => \Yii::$app->request->get('date'),'status' => 'Olib kelishda'])->count();
