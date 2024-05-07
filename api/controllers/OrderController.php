@@ -171,56 +171,26 @@ class OrderController extends Controller
             if ($order->save()){
                 if(\Yii::$app->request->post('orderitem')){
                     foreach (\Yii::$app->request->post('orderitem') as $item){
-                        if (OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=', 'clean_item_id', $item['clean_item_id']])){
-                            $orderItem = OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=', 'clean_item_id', $item['clean_item_id']]);
-                            if ($orderItem){
-                                if (!$orderDelete = OrderItem::findOne($orderItem->id)->delete()){
-                                    return $orderDelete->getErrors();
-                                }
-                                $orderItem = new OrderItem;
-                                $orderItem->clean_item_id = $item['clean_item_id'];
-                                $orderItem->order_id = $id;
-                                $orderItem->count = $item['count'];
-                                $orderItem->size = $item['size'];
-                                $orderItem->status = "Yuvilmadi";
-                                if (!$orderItem->save()){
-                                    return $orderItem->getErrors();
-                                }
-                            }
-                        }else{
-                            $orderItem = new OrderItem;
-                            $orderItem->clean_item_id = $item['clean_item_id'];
-                            $orderItem->order_id = $id;
-                            $orderItem->count = $item['count'];
-                            $orderItem->size = $item['size'];
-                            $orderItem->status = "Yuvilmadi";
-                            if (!$orderItem->save()){
-                                return $orderItem->getErrors();
-                            }
+                        $orderItem = new OrderItem;
+                        $orderItem->clean_item_id = $item['clean_item_id'];
+                        $orderItem->order_id = $id;
+                        $orderItem->count = $item['count'];
+                        $orderItem->size = $item['size'];
+                        $orderItem->status = "Yuvilmadi";
+                        if (!$orderItem->save()){
+                            return $orderItem->getErrors();
                         }
                     }
                 }
                 if (\Yii::$app->request->post('latitude')){
-                    if (OrderLocation::find()->where(['=','order_id',$id])){
-                        $orderLocation1 = OrderLocation::find()->where(['=','order_id',$id]);
-                        $orderLocation1->order_id = $id;
-                        $orderLocation1->latitude = \Yii::$app->request->post('latitude');
-                        $orderLocation1->longitude = \Yii::$app->request->post('longitude');
-                        $orderLocation1->address = \Yii::$app->request->post('address');
-                        if (!$orderLocation1->save()){
-                            return $orderLocation1->getErrors();
-                        }
-                        return $order;
-                    }else{
-                        $orderLocation->order_id = $id;
-                        $orderLocation->latitude = \Yii::$app->request->post('latitude');
-                        $orderLocation->longitude = \Yii::$app->request->post('longitude');
-                        $orderLocation->address = \Yii::$app->request->post('address');
-                        if (!$orderLocation->save()){
-                            return $orderLocation->getErrors();
-                        }
-                        return $order;
+                    $orderLocation->order_id = $id;
+                    $orderLocation->latitude = \Yii::$app->request->post('latitude');
+                    $orderLocation->longitude = \Yii::$app->request->post('longitude');
+                    $orderLocation->address = \Yii::$app->request->post('address');
+                    if (!$orderLocation->save()){
+                        return $orderLocation->getErrors();
                     }
+                    return $order;
                 }
                 return $order;
             }else{
