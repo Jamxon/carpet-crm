@@ -172,8 +172,8 @@ class OrderController extends Controller
                     foreach (\Yii::$app->request->post('orderitem') as $item){
                         if (OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=','clean_item_id',$item['clean_item_id']])){
                             $orderItem = OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=','clean_item_id',$item['clean_item_id']]);
-                            if (!$orderItem->destroy()){
-                                return $orderItem->getErrors();
+                            if (!$orderDelete = OrderItem::findOne($orderItem->id)->delete()){
+                                return $orderDelete->getErrors();
                             }
                             $orderItem = new OrderItem;
                             $orderItem->clean_item_id = $item['clean_item_id'];
