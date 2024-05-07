@@ -68,6 +68,7 @@ class Order extends \yii\db\ActiveRecord
             'driver',
             'is_reclean',
             'has_called',
+            'location',
             'comment',
         ];
     }
@@ -119,5 +120,9 @@ class Order extends \yii\db\ActiveRecord
         }else{
             return $this->hasOne(User::class, ['id' => 'driver_id']);
         }
+    }
+    public function getLocation()
+    {
+        return $this->hasOne(OrderLocation::class, ['order_id' => 'id']);
     }
 }
