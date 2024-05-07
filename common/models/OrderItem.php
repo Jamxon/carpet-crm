@@ -41,6 +41,7 @@ class OrderItem extends \yii\db\ActiveRecord
     public function fields()
     {
         return [
+            'id',
             'cleanItem' => function () {
                 return $this->cleanItem;
             },
