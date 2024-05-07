@@ -48,6 +48,8 @@ class OrderItem extends \yii\db\ActiveRecord
             'order' => function () {
                 return $this->order;
             },
+            'order_id',
+            'clean_item_id',
             'size',
             'count',
         ];
