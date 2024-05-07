@@ -170,8 +170,8 @@ class OrderController extends Controller
             if ($order->save()){
                 if(\Yii::$app->request->post('orderitem')){
                     foreach (\Yii::$app->request->post('orderitem') as $item){
-                        if (OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=','clean_item_id',$item['clean_item_id']])){
-                            $orderItem = OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=','clean_item_id',$item['clean_item_id']]);
+                        if (OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=', 'clean_item_id', $item['clean_item_id']])){
+                            $orderItem = OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=', 'clean_item_id', $item['clean_item_id']]);
                             if (!$orderDelete = OrderItem::findOne($orderItem->id)->delete()){
                                 return $orderDelete->getErrors();
                             }
