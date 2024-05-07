@@ -172,17 +172,19 @@ class OrderController extends Controller
                     foreach (\Yii::$app->request->post('orderitem') as $item){
                         if (OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=', 'clean_item_id', $item['clean_item_id']])){
                             $orderItem = OrderItem::find()->where(['=', 'order_id', $id])->andWhere(['=', 'clean_item_id', $item['clean_item_id']]);
-                            if (!$orderDelete = OrderItem::findOne($orderItem->id)->delete()){
-                                return $orderDelete->getErrors();
-                            }
-                            $orderItem = new OrderItem;
-                            $orderItem->clean_item_id = $item['clean_item_id'];
-                            $orderItem->order_id = $id;
-                            $orderItem->count = $item['count'];
-                            $orderItem->size = $item['size'];
-                            $orderItem->status = "Yuvilmadi";
-                            if (!$orderItem->save()){
-                                return $orderItem->getErrors();
+                            if ($orderItem){
+                                if (!$orderDelete = OrderItem::findOne($orderItem->id)->delete()){
+                                    return $orderDelete->getErrors();
+                                }
+                                $orderItem = new OrderItem;
+                                $orderItem->clean_item_id = $item['clean_item_id'];
+                                $orderItem->order_id = $id;
+                                $orderItem->count = $item['count'];
+                                $orderItem->size = $item['size'];
+                                $orderItem->status = "Yuvilmadi";
+                                if (!$orderItem->save()){
+                                    return $orderItem->getErrors();
+                                }
                             }
                         }else{
                             $orderItem = new OrderItem;
