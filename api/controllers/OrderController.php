@@ -30,7 +30,7 @@ class OrderController extends Controller
         $behaviors['contentNegotiator']['formats']['application/json'] = Response::FORMAT_JSON;
         $behaviors['authenticator'] = [
             'class' => \yii\filters\auth\HttpBearerAuth::className(),
-            'except' => ['options', 'update','bringing','cleaning', 'hascall','drying','packaging','delivering','complete','cancelled','reclean','search','cancel'],
+            'except' => ['options','bringing','cleaning', 'hascall','drying','packaging','delivering','complete','cancelled','reclean','search','cancel'],
         ];
         $behaviors['corsFilter'] = [
             'class' => \yii\filters\Cors::className(),
