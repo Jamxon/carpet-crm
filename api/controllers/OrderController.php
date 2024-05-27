@@ -172,7 +172,7 @@ class OrderController extends Controller
                 if(\Yii::$app->request->post('orderitem')){
                     foreach (\Yii::$app->request->post('orderitem') as $item){
                         for ($i = 0; $i < $item['count']; $i++){
-                            $orderItem = OrderItem::findOne($item['id']);
+                            $orderItem = new OrderItem();
                             $orderItem->clean_item_id = $item['clean_item_id'];
                             $orderItem->order_id = $id;
                             $orderItem->count = $item['count'];
