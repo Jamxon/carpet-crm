@@ -177,7 +177,7 @@ class OrderController extends Controller
                             $orderItem->order_id = $id;
                             $orderItem->count = $item['count'];
                             $orderItem->size = $item['size'];
-                            $orderItem->status = $item['status'];
+                            $orderItem->status = "Yuvilmadi";
                             if (!$orderItem->save()){
                                 return $orderItem->getErrors();
                             }
