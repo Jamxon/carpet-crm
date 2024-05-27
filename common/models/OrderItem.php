@@ -13,6 +13,7 @@ use Yii;
  * @property int|null $order_id
  * @property int|null $size
  * @property int|null $count
+ * @property int|null $status
  *
  * @property Cleanitem $cleanItem
  * @property Order $order
