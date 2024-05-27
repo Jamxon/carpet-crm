@@ -11,8 +11,8 @@ use Yii;
  *
  * @property int|null $clean_item_id
  * @property int|null $order_id
- * @property int|null $size
- * @property int|null $count
+ * @property int|null $razmer
+ * @property int|null $narxi
  * @property int|null $status
  *
  * @property Cleanitem $cleanItem
@@ -34,7 +34,7 @@ class OrderItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['clean_item_id', 'order_id',  'count'], 'integer'],
+            [['clean_item_id', 'order_id',  'narxi'], 'integer'],
             [['clean_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => CleanItem::class, 'targetAttribute' => ['clean_item_id' => 'id']],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::class, 'targetAttribute' => ['order_id' => 'id']],
         ];
@@ -49,8 +49,8 @@ class OrderItem extends \yii\db\ActiveRecord
             'order' => function () {
                 return $this->order;
             },
-            'size',
-            'count',
+            'razmer',
+            'narxi',
         ];
     }
 
@@ -62,8 +62,8 @@ class OrderItem extends \yii\db\ActiveRecord
         return [
             'clean_item_id' => 'Clean Item ID',
             'order_id' => 'Order ID',
-            'size' => 'Size',
-            'count' => 'Count',
+            'razmer' => 'Size',
+            'narxi' => 'Price',
         ];
     }
 
