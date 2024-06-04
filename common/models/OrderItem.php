@@ -35,7 +35,7 @@ class OrderItem extends \yii\db\ActiveRecord
     {
         return [
             [['clean_item_id', 'order_id', 'narxi'], 'integer'],
-            [['razmer'], 'string', 'max' => 255],
+            [['razmer', 'status'], 'string', 'max' => 255],
             [['clean_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cleanitem::class, 'targetAttribute' => ['clean_item_id' => 'id']],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::class, 'targetAttribute' => ['order_id' => 'id']],
         ];
