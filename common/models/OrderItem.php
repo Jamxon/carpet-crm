@@ -11,9 +11,9 @@ use Yii;
  *
  * @property int|null $clean_item_id
  * @property int|null $order_id
- * @property int|null $razmer
+ * @property string|null $razmer
  * @property int|null $narxi
- * @property int|null $status
+ * @property string|null $status
  *
  * @property Cleanitem $cleanItem
  * @property Order $order
@@ -34,8 +34,9 @@ class OrderItem extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['clean_item_id', 'order_id',  'narxi'], 'integer'],
-            [['clean_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => CleanItem::class, 'targetAttribute' => ['clean_item_id' => 'id']],
+            [['clean_item_id', 'order_id', 'narxi'], 'integer'],
+            [['razmer'], 'string', 'max' => 255],
+            [['clean_item_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cleanitem::class, 'targetAttribute' => ['clean_item_id' => 'id']],
             [['order_id'], 'exist', 'skipOnError' => true, 'targetClass' => Order::class, 'targetAttribute' => ['order_id' => 'id']],
         ];
     }
