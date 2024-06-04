@@ -52,6 +52,7 @@ class OrderItem extends \yii\db\ActiveRecord
             },
             'razmer',
             'narxi',
+            'status',
         ];
     }
 
