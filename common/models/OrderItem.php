@@ -66,6 +66,7 @@ class OrderItem extends \yii\db\ActiveRecord
             'order_id' => 'Order ID',
             'razmer' => 'Size',
             'narxi' => 'Price',
+            'status' => 'Status',
         ];
     }
 
